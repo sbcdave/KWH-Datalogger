@@ -1,32 +1,31 @@
 
-SHUT OK
-AT+CMEE=2
-OK
-AT+CIPSHUT
-SHUT OK
-AT+CGATT=0
-OK
-AT+CIPSHUT
-SHUT OK
-AT+CIPMUX=0
-OK
-AT+CSTT="wholesale"
-OK
-AT+CIICR
-OK
-AT+CIFSR
-26.51.140.247
+Call Ready
 
-SHUT OK
-AT+CIPSTART="TCP","time.nist.gov","37"
+SMS Ready
+[[0m[31m*     [0m] A start job is running for getTime.sh service (16s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (17s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (17s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (18s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (18s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (19s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (19s / no limit)[K[     [31m*[0m] A start job is running for getTime.sh service (20s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (21s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (21s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (22s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (22s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (23s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (24s / no limit)[K[[0m[31m*     [0m] A start job is running for getTime.sh service (24s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (25s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (25s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (26s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (26s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (27s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (28s / no limit)[K[     [31m*[0m] A start job is running for getTime.sh service (28s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (29s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (29s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (30s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (31s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (31s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (32s / no limit)[K[[0m[31m*     [0m] A start job is running for getTime.sh service (32s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (33s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (33s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (34s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (35s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (35s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (36s / no limit)[K[     [31m*[0m] A start job is running for getTime.sh service (36s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (37s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (38s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (38s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (39s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (39s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (40s / no limit)[K[[0m[31m*     [0m] A start job is running for getTime.sh service (40s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (41s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (42s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (42s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (43s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (43s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (44s / no limit)[K[     [31m*[0m] A start job is running for getTime.sh service (44s / no limit)AT+CMEE=2
 OK
-
+[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (45s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (45s / no limit)AT+CIPSHUT
+SHUT OK
+[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (46s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (46s / no limit)AT+CGATT=0
+OK
+[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (47s / no limit)AT+CGATT=1
+OK
+[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (50s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (50s / no limit)AT+CIPSHUT
+SHUT OK
+[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (51s / no limit)[K[     [31m*[0m] A start job is running for getTime.sh service (51s / no limit)AT+CIPMUX=0
+OK
+[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (52s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (52s / no limit)AT+CSTT="wholesale"
+OK
+[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (53s / no limit)AT+CIICR
+OK
+[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (54s / no limit)[K[[0m[31m*     [0m] A start job is running for getTime.sh service (55s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (55s / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (56s / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (56s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (57s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (57s / no limit)AT+CIFSR
+100.149.231.219
+[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (58s / no limit)[K[     [31m*[0m] A start job is running for getTime.sh service (58s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (59s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (59s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (1min / no limit)[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (1min / no limit)[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (1min 1s / no limit)AT+CIPSTART="TCP","time.nist.gov","37"
+OK
+[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (1min 1s / no limit)[K[[0m[31m*     [0m] A start job is running for getTime.sh service (1min 2s / no limit)[K[[1;31m*[0m[31m*    [0m] A start job is running for getTime.sh service (1min 2s / no limit)
 CONNECT OK
-Þ#˜ú
-Tue Feb  6 03:01:14 UTC 2018
-
-OK
-AT+CIPCLOSE
-+CME ERROR: operation not allowed
-
-OK
+[K[[31m*[1;31m*[0m[31m*   [0m] A start job is running for getTime.sh service (1min 3s / no limit)Þ)!™[K[ [31m*[1;31m*[0m[31m*  [0m] A start job is running for getTime.sh service (1min 3s / no limit)[K[  [31m*[1;31m*[0m[31m* [0m] A start job is running for getTime.sh service (1min 4s / no limit)[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (1min 4s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (1min 5s / no limit)
+Thu Feb  7 14:21:15 UTC 1907
+[K[     [31m*[0m] A start job is running for getTime.sh service (1min 5s / no limit)[K[    [31m*[1;31m*[0m] A start job is running for getTime.sh service (1min 6s / no limit)AT+CIPCLOSE
+CLOSE OK
+[K[   [31m*[1;31m*[0m[31m*[0m] A start job is running for getTime.sh service (1min 6s / no limit)AT+CIPSHUT

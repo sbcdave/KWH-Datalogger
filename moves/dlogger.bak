@@ -1,0 +1,47 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          data logger
+# Required-Start:    $all
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Runs data logger services
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
+
+. /lib/init/vars.sh
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+    log_begin_msg "Starting datalogger service"
+    rm /etc/cron.d/dcrond
+    /KWH/datalogger/transceive/simServer.py &
+
+#Make thing here to disable and re-enable cron after time is set
+#    /KWH/datalogger/lib/pigpio/pigpiod
+#    echo "pigpiod started!"
+#    /KWH/datalogger/pulse/PU01.py &
+#    /KWH/datalogger/pulse/PU02.py &
+#    /KWH/datalogger/pulse/PU03.py &
+#    /KWH/datalogger/pulse/PU04.py &
+#    /KWH/datalogger/pulse/PU05.py &
+#    /KWH/datalogger/pulse/PU06.py &
+#    /KWH/datalogger/pulse/PU07.py &
+#    /KWH/datalogger/pulse/PU08.py &
+    log_end_msg $?
+    exit 0
+    ;;
+  stop)
+    log_begin_msg "Stopping data logger service"
+    killall pigpiod
+    killall python
+    log_end_msg $?
+    exit 0
+    ;;
+  *)
+    echo "Usage: /etc/init.d/datalogger {start|stop|status}"
+    exit 1
+    ;;
+esac
