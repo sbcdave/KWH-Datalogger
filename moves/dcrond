@@ -1,1 +1,1 @@
-* * * * * root bash /datalogger/dcrond.sh > /datalogger/dcrond.log 2>&1
+#* * * * * pi bash /KWH/datalogger/transceive/tcp/dcrond.sh > /KWH/datalogger/transceive/tcp/dcrond.log 2>&1
