@@ -1,0 +1,13 @@
+/KWH/datalogger/conf/datalogger.conf sourced...
+Waiting on AT+CIPSHUT...
+AT+CFUN=0
++CPIN: NOT READY
+
+OK
+AT+CFUN=1
++CPIN: READY
+
+OK
+AT+CGATT=1
+ERROR
+Waiting on AT+CIPMUX=0...

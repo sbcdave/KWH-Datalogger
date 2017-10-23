@@ -15,19 +15,19 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
 
 case "$1" in
   start)
-    log_begin_msg "Starting datalogger service"
-    sudo /KWH/datalogger/lib/pigpio/pigpiod
+    log_begin_msg "Starting pigpio daemon"
+    /KWH/datalogger/lib/pigpio/pigpiod
     log_end_msg $?
     exit 0
     ;;
   stop)
-    log_begin_msg "Stopping data logger service"
+    log_begin_msg "Stopping pigpio daemon"
     killall pigpiod
     log_end_msg $?
     exit 0
     ;;
   *)
-    echo "Usage: /etc/init.d/datalogger {start|stop|status}"
+    echo "Usage: /etc/init.d/pigpiod {start|stop|status}"
     exit 1
     ;;
 esac

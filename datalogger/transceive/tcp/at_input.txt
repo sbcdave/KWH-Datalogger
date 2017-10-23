@@ -1,0 +1,4 @@
+AT+CSTT="wholesale"
+AT+CIICR
+AT+CIFSR
+AT+CIPSTART="TCP","kwhstg.org","11002"

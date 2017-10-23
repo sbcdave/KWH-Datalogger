@@ -62,10 +62,18 @@ main() {
     lock $PROGNAME \
         || eexit "Only one instance of $PROGNAME can run at one time."
 
-    do_A
-    do_B
+# Do stuff, e.g.
+#    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+#	/KWH/datalogger/transceive/send_at.sh +CMGF=1; \
+#	sleep 2
+#	/KWH/datalogger/transceive/send_at.sh +cmgs=\"$1\"$'\n'${@: -`expr $# - 1`}$'\cZ'
+#    else
+#        echo "Usage: send <phone number> <message>"
+#    fi
+
+
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME
 }
-main
+main $*

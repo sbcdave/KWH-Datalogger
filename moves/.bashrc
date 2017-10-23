@@ -115,4 +115,4 @@ fi
 
 
 # set env variables
-source /datalogger/conf/datalogger.conf
+. /KWH/datalogger/conf/datalogger.conf

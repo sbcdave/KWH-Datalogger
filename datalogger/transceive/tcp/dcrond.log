@@ -1,0 +1,4 @@
+cat: no process found
+eive/send_at.sh: line 6:  2430 Terminated              cat /dev/ttyAMA0 >> /KWH/datalogger/transceive/ttyAMA0.log
+cat: no process found
+/KWH/datalogger/transceive/tcp/tcpSend.sh: line 38:  2451 Terminated              atinout ${DPATH}/transceive/at_input.txt /dev/ttyAMA0 ${DPATH}/transceive/ttyAMA0.log

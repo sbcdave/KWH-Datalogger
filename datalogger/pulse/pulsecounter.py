@@ -13,15 +13,15 @@ execfile("/KWH/datalogger/conf/pyvars.py")
 channel = str(argv[1])
 global count
 
-pigpio.setmode(pi.BCM)
-pigpio.setup(32, pi.IN, pull_up_down=pi.PUD_DOWN)
+pigpio.setmode(pi.BOARD)
+pigpio.setup(16, pi.IN, pull_up_down=pi.PUD_DOWN)
 
 def signal_handler(signal, frame):
         print('...closing PU'+channel)
         with open("/KWH/datalogger/pulse/PU"+channel, 'w') as fd:
 	        fd.write(str(count))
         exit(0)
-	pigpio.remove_event_detect(32)
+	pigpio.remove_event_detect(16)
 	sleep(1)
 	pigpio.cleanup()
 
@@ -50,7 +50,7 @@ def counter(channel):
 	count += 1
 
 
-pigpio.add_event_detect(32, pi.RISING, callback=counter, bouncetime=300)
+pigpio.add_event_detect(16, pi.RISING, callback=counter, bouncetime=300)
 
 while True:
 	global count
