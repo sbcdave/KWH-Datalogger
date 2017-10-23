@@ -1,3 +1,0 @@
-cd to directory above upload directory
-git init
-git add <directory to upload>
