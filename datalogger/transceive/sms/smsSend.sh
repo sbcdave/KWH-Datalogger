@@ -7,7 +7,7 @@ readonly LOCK_FD=200
 lock() {
     local prefix=$1
     local fd=${2:-$LOCK_FD}
-    local lock_file=$LOCKFILE_DIR/$prefix.lock
+    local lock_file=/KWH/datalogger/conf/SIM_LOCK
 
     # create lock file
     eval "exec $fd>$lock_file"
@@ -60,14 +60,18 @@ main() {
     ttrap "cleanup $PROGNAME" SIGHUP SIGINT SIGQUIT SIGTERM
 
     lock $PROGNAME \
-        || eexit "Only one instance of $PROGNAME can run at one time."
+        || eexit "SIM in use!"
 
+    try=true
+    while try; do
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
 	/KWH/datalogger/transceive/send_at.sh +CMGF=1; \
 	sleep 2
-	/KWH/datalogger/transceive/send_at.sh +cmgs=\"$1\"$'\n'${@: -`expr $# - 1`}$'\cZ'
+	/KWH/datalogger/transceive/send_at.sh +cmgs=\"$1\"$'\n'${@: -`expr $# - 1`}$'\cZ' \
+/KWH/datalogger/transceive/sms/smsSend.log 2>&1
     else
         echo "Usage: send <phone number> <message>"
+        try=false
     fi
 
 

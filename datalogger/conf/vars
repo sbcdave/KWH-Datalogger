@@ -20,3 +20,4 @@ export PU06=`cat /KWH/datalogger/conf/PU06`
 export PU07=`cat /KWH/datalogger/conf/PU07`
 export PU08=`cat /KWH/datalogger/conf/PU08`
 export PORT=`cat /KWH/datalogger/conf/PORT`
+export PORT=`cat /KWH/datalogger/conf/PORT`

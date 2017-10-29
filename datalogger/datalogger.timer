@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs KWH Data Logger service every minute
+
+[Timer]
+OnBootSec=60 
+OnCalendar=*:*:0
+AccuracySec=1
+
+[Install]
+WantedBy=timers.target

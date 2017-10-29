@@ -1,0 +1,87 @@
+at+csq
++CSQ: 13,0
+
+OK
+at
+OK
+at+cipshut
+SHUT OK
+at+cipmux=0
+OK
+at
+OK
+at+cgatt=1
+OK
+at+cipshut
+SHUT OK
+at+cipmux=0
+OK
+at+cstt="wholesale"
+OK
+at+ciicr
+OK
+at+cifsr
+22.83.192.145
+at+cipstart="tcp","kwhstg.org","11002"
+OK
+
+CONNECT OK
+at+cipsend
+> test
+
+
+SEND OK
+@888
+at+cipclose
+CLOSE OK
+at
+OK
+at
+OK
+at+csq
++CSQ: 13,0
+
+OK
+at+csq
++CSQ: 13,0
+
+OK
+AT+CMGL="ALL"
+ERROR
+AT
+OK
+AT
+OK
+AT
+OK
+AT+CSQ
++CSQ: 14,0
+
+OK
+AT+CSQ
++CSQ: 14,0
+
+OK
+AT+CIPSHUT
+SHUT OK
+AT+CGATT=0
+OK
+AT+CIPSHUT
+SHUT OK
+AT+CGATT=0
+OK
+AT+CGATT=1
+OK
+AT+CIPSHUT
+SHUT OK
+AT+CGATT=0
+OK
+1234123456789101112AT+CIPSHUT
+SHUT OK
+AT+CGATT=0
+OK
+AT+CGATT=1
+OK
+AT+CIPSHUT
+SHUT OK
+AT+CGATT=0test

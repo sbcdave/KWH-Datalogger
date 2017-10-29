@@ -42,3 +42,5 @@ with open('/KWH/datalogger/conf/PU08', 'r') as conf:
 	PU08=conf.read()
 with open('/KWH/datalogger/conf/PORT') as conf:
 	PORT=conf.read()
+with open('/KWH/datalogger/conf/PORT') as conf:
+	PORT=conf.read()

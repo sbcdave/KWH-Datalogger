@@ -23,6 +23,19 @@
  *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
+ * Modified by: Dave Goldsmith - sbcdave
+ * Date:        24 Oct 2017
+ *
+ * Reason:      is_final_result function wasn't catching responses that
+ *              I needed to hanlde for the SIM800L. e.g. AT+CIPSHUT
+ *              was responding with SHUT OK, and the case statement didn't
+ *              cover that. Also added cases for a returned IP address,
+ *              CLOSE OK, and the @888 response from the KWH server 
+ *              upon successful transmision. I was unable to resolve the >
+ *              response that AT+CIPSEND sends back because the SIM800L
+ *              doesn't include a \n at the end of that response, which is
+ *              a requirement for fgets(). I'm hanlding the CIPSEND 
+ *              by echoing into the device instead.
  */
 
 #include <stdio.h>
@@ -34,7 +47,7 @@
 
 #define MAX_LINE_LENGTH (4 * 1024)
 static char buf[MAX_LINE_LENGTH];
-static char buf2[MAX_LINE_LENGTH];
+static int DEBUG=1;
 
 static struct option long_options[] = {
 	{"help", no_argument, NULL, 'h'},
@@ -78,21 +91,31 @@ static void help(const char * const argv0)
 }
 
 /* Replace '\n' with '\r', aka `tr '\012' '\015'` */
+/*
 static bool tr_lf_cr(const char *s)
 {
-	char *p;
-	p = strchr(s, '\n');
-	if (p == NULL || p[1] != '\0') {
-		return false;
+	if(DEBUG){
+		printf("tr_lf_cr\n");
 	}
-	*p = '\r';
-	return true;
+        char *p;
+        p = strchr(s, '\n');
+        if (p == NULL || p[1] != '\0') {
+                return false;
+        }
+        *p = '\r';
+        return true;
 }
-
+*/
+/*
 static void strip_cr(char *s)
 {
+	if(DEBUG){
+		printf("strip_cr\n");
+	}
 	char *from, *to;
 	from = to = s;
+	// This seems like it could cause the program to go rogue
+	// through memory looking for \0 or \r
 	while (*from != '\0') {
 		if (*from == '\r') {
 			from++;
@@ -102,19 +125,17 @@ static void strip_cr(char *s)
 	}
 	*to = '\0';
 }
-
+*/
 static bool is_final_result(const char * const response)
 {
-#define STARTS_WITH(a, b) ( strncmp((a), (b), strlen(b)) == 0)
+	if(DEBUG){
+		printf("is_final_result\n");
+		printf(response);
+	}
+
 	switch (response[0]) {
 	case '+':
-		if (STARTS_WITH(&response[1], "CME ERROR:")) {
-			return true;
-		}
-		if (STARTS_WITH(&response[1], "CMS ERROR:")) {
-			return true;
-		}
-		return false;
+		return true;
 	case 'B':
 		if (strcmp(&response[1], "USY\r\n") == 0) {
 			return true;
@@ -137,15 +158,90 @@ static bool is_final_result(const char * const response)
 			return true;
 		}
 		return false;
+        case 'S':
+                if (strcmp(&response[1], "HUT OK\r\n") == 0) {
+                        return true;
+                }
+                return false;
+        case 'C':
+                if (strcmp(&response[1], "LOSE OK\r\n") == 0) {
+                        return true;
+                }
+                return false;
+        case '@':
+                if (strcmp(&response[1], "888\n") == 0) {
+                        return true;
+                }
+                return false;
+        case '>':
+                return true;
+        case '1':
+                return true;
+        case '2':
+                return true;
+        case '3':
+                return true;
+        case '4':
+                return true;
+        case '5':
+                return true;
+        case '6':
+                return true;
+        case '7':
+                return true;
+        case '8':
+                return true;
+        case '9':
+                return true;
 	case 'O':
-		if (strcmp(&response[1], "K\r\n") == 0) {
-			return true;
-		}
-		/* no break */
+		return true;
 	default:
 		return false;
 	}
 
+}
+
+char * line_builder(FILE *fp) {
+   int c;
+   char *ret; 
+   char str[4096];
+   int n = 0;
+
+	if(DEBUG){
+		printf("line_builder\n");
+	}
+
+   do {
+        c = fgetc(fp);
+        if(c == 'a' || c == 'b' || c == 'c' || c == 'd' || c == 'e' ||
+	   c == 'f' || c == 'g' || c == 'h' || c == 'i' || c == 'j' ||
+	   c == 'k' || c == 'l' || c == 'm' || c == 'n' || c == 'o' ||
+	   c == 'p' || c == 'q' || c == 'r' || c == 's' || c == 't' ||
+	   c == 'u' || c == 'v' || c == 'w' || c == 'x' || c == 'y' ||
+	   c == 'z' || c == 'A' || c == 'B' || c == 'C' || c == 'D' ||
+	   c == 'E' || c == 'F' || c == 'G' || c == 'H' || c == 'I' ||
+	   c == 'J' || c == 'K' || c == 'L' || c == 'M' || c == 'N' ||
+	   c == 'O' || c == 'P' || c == 'Q' || c == 'R' || c == 'S' ||
+	   c == 'T' || c == 'U' || c == 'V' || c == 'W' || c == 'X' ||
+	   c == 'Y' || c == 'Z' || c == '0' || c == '1' || c == '2' ||
+	   c == '3' || c == '4' || c == '5' || c == '6' || c == '7' ||
+	   c == '8' || c == '9' || c == '>') {
+	        str[n] = (char)c;
+        	n++;
+		if (n > 4000) {
+			break;
+		}
+        }
+	else {
+		break;
+	}
+   } while(1);
+   str[n]='\r';
+   n++;
+   str[n]='\n';
+//   str[n++]='\0';
+   ret=str;
+   return ret;
 }
 
 int main(int argc, char *argv[])
@@ -154,7 +250,7 @@ int main(int argc, char *argv[])
 	FILE *modem;
 	FILE *output;
 	char *line;
-	bool success;
+//	bool success;
 	int res;
 
 	while (true) {
@@ -229,32 +325,51 @@ int main(int argc, char *argv[])
 
 	goto start;
 	while (line != NULL) {
-		success = tr_lf_cr(line);
-		if (! success) {
-			fprintf(stderr, "invalid string: '%s'\n", line);
-			return EXIT_FAILURE;
-		}
+/*                success = tr_lf_cr(line);
+                if (! success) {
+                        fprintf(stderr, "invalid string: '%s'\n", line);
+                        return EXIT_FAILURE;
+                }*/
 		res = fputs(line, modem);
 		if (res < 0) {
 			fprintf(stderr, "failed to send '%s' to modem (res = %d)\n", line, res);
 			return EXIT_FAILURE;
 		}
 		do {
-			line = fgets(buf, (int)sizeof(buf), modem);
+			if(DEBUG){
+				printf("do\n");
+			}
+
+			line = line_builder(modem);
+			if(DEBUG){
+				printf(line);
+			}
 			if (line == NULL) {
 				fprintf(stderr, "EOF from modem\n");
 				return EXIT_FAILURE;
 			}
-			strcpy(buf2, line);
-			strip_cr(buf2);
-			res = fputs(buf2, output);
+			if(DEBUG){
+				printf("line!NULL\n");
+			}
+			strcpy(buf, line);
+			if(DEBUG){
+				printf("strcpy finished\n");
+			}
+//			strip_cr(buf);
+			res = fputs(buf, output);
 			if (res < 0) {
-				fprintf(stderr, "failed to write '%s' to output file (res = %d)\n", buf2, res);
+				fprintf(stderr, "failed to write '%s' to output file (res = %d)\n", buf, res);
 				return EXIT_FAILURE;
 			}
 		} while (! is_final_result(line));
 start:
-		line = fgets(buf, (int)sizeof(buf), atcmds);
+		if(DEBUG){
+			printf("while\n");
+		}
+		line = line_builder(atcmds);
+		if (line == "\r\n") {
+			line = NULL;
+		}
 	}
 
 	if (strcmp(OUTPUT_FILE, "-") != 0) {

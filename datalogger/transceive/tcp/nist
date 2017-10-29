@@ -1,0 +1,1 @@
+AT+CIPSTART="TCP","time.nist.gov","37"
