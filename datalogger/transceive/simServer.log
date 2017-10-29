@@ -63178,3 +63178,423 @@ received: AT+CIPSHUT
 wrote to sim: AT+CIPSHUT
 
 bytes to read: 23
+accepted: ('127.0.0.1', 59162)
+received: AT+CMEE=2
+
+wrote to sim: AT+CMEE=2
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59166)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 15
+accepted: ('127.0.0.1', 59170)
+received: AT+CGATT=0
+
+wrote to sim: AT+CGATT=0
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59174)
+received: AT+CGATT=1
+
+wrote to sim: AT+CGATT=1
+
+bytes to read: 16
+accepted: ('127.0.0.1', 59178)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 10
+accepted: ('127.0.0.1', 59182)
+received: AT+CIPMUX=0
+
+wrote to sim: AT+CIPMUX=0
+
+bytes to read: 6
+accepted: ('127.0.0.1', 59188)
+received: AT+CSTT="wholesale"
+
+wrote to sim: AT+CSTT="wholesale"
+
+bytes to read: 17
+accepted: ('127.0.0.1', 59192)
+received: AT+CIICR
+
+wrote to sim: AT+CIICR
+
+bytes to read: 25
+accepted: ('127.0.0.1', 59196)
+received: AT+CIFSR
+
+wrote to sim: AT+CIFSR
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59200)
+received: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+bytes to read: 25
+accepted: ('127.0.0.1', 59204)
+received: AT+CIPSEND
+
+wrote to sim: AT+CIPSEND
+
+bytes to read: 58
+accepted: ('127.0.0.1', 59210)
+received: #STA:99002;TM:10/29/2017,20:17:01;C:86;V:0000;AD01:0.005128;AD02:0.750000;AD03:0.007692;AD04:0.007692;AD05:3.282051;AD06:0.010256;PU01:7;PU02:2;PU03:3;PU04:426571;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+wrote to sim: #STA:99002;TM:10/29/2017,20:17:01;C:86;V:0000;AD01:0.005128;AD02:0.750000;AD03:0.007692;AD04:0.007692;AD05:3.282051;AD06:0.010256;PU01:7;PU02:2;PU03:3;PU04:426571;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59214)
+received: AT+CIPCLOSE
+
+wrote to sim: AT+CIPCLOSE
+
+bytes to read: 214
+accepted: ('127.0.0.1', 59218)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 23
+accepted: ('127.0.0.1', 59224)
+received: AT+CMEE=2
+
+wrote to sim: AT+CMEE=2
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59230)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 15
+accepted: ('127.0.0.1', 59234)
+received: AT+CGATT=0
+
+wrote to sim: AT+CGATT=0
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59238)
+received: AT+CGATT=1
+
+wrote to sim: AT+CGATT=1
+
+bytes to read: 16
+accepted: ('127.0.0.1', 59248)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 10
+accepted: ('127.0.0.1', 59260)
+received: AT+CIPMUX=0
+
+wrote to sim: AT+CIPMUX=0
+
+bytes to read: 6
+accepted: ('127.0.0.1', 59274)
+received: AT+CSTT="wholesale"
+
+wrote to sim: AT+CSTT="wholesale"
+
+bytes to read: 17
+accepted: ('127.0.0.1', 59280)
+received: AT+CIICR
+
+wrote to sim: AT+CIICR
+
+bytes to read: 25
+accepted: ('127.0.0.1', 59284)
+received: AT+CIFSR
+
+wrote to sim: AT+CIFSR
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59288)
+received: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+bytes to read: 26
+accepted: ('127.0.0.1', 59292)
+received: AT+CIPSEND
+
+wrote to sim: AT+CIPSEND
+
+bytes to read: 58
+accepted: ('127.0.0.1', 59296)
+received: #STA:99002;TM:10/29/2017,20:18:02;C:86;V:0000;AD01:0.003846;AD02:0.750000;AD03:0.005128;AD04:0.008974;AD05:3.283333;AD06:0.008974;PU01:7;PU02:2;PU03:3;PU04:427172;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+wrote to sim: #STA:99002;TM:10/29/2017,20:18:02;C:86;V:0000;AD01:0.003846;AD02:0.750000;AD03:0.005128;AD04:0.008974;AD05:3.283333;AD06:0.008974;PU01:7;PU02:2;PU03:3;PU04:427172;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59300)
+received: AT+CIPCLOSE
+
+wrote to sim: AT+CIPCLOSE
+
+bytes to read: 214
+accepted: ('127.0.0.1', 59304)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 23
+accepted: ('127.0.0.1', 59308)
+received: AT+CMEE=2
+
+wrote to sim: AT+CMEE=2
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59312)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 15
+accepted: ('127.0.0.1', 59316)
+received: AT+CGATT=0
+
+wrote to sim: AT+CGATT=0
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59320)
+received: AT+CGATT=1
+
+wrote to sim: AT+CGATT=1
+
+bytes to read: 16
+accepted: ('127.0.0.1', 59324)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 10
+accepted: ('127.0.0.1', 59328)
+received: AT+CIPMUX=0
+
+wrote to sim: AT+CIPMUX=0
+
+bytes to read: 6
+accepted: ('127.0.0.1', 59332)
+received: AT+CSTT="wholesale"
+
+wrote to sim: AT+CSTT="wholesale"
+
+bytes to read: 17
+accepted: ('127.0.0.1', 59338)
+received: AT+CIICR
+
+wrote to sim: AT+CIICR
+
+bytes to read: 25
+accepted: ('127.0.0.1', 59342)
+received: AT+CIFSR
+
+wrote to sim: AT+CIFSR
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59346)
+received: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+bytes to read: 26
+accepted: ('127.0.0.1', 59350)
+received: AT+CIPSEND
+
+wrote to sim: AT+CIPSEND
+
+bytes to read: 58
+accepted: ('127.0.0.1', 59354)
+received: #STA:99002;TM:10/29/2017,20:19:01;C:86;V:0000;AD01:0.000000;AD02:0.750000;AD03:0.007692;AD04:0.011538;AD05:3.279487;AD06:0.006410;PU01:7;PU02:2;PU03:3;PU04:427773;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+wrote to sim: #STA:99002;TM:10/29/2017,20:19:01;C:86;V:0000;AD01:0.000000;AD02:0.750000;AD03:0.007692;AD04:0.011538;AD05:3.279487;AD06:0.006410;PU01:7;PU02:2;PU03:3;PU04:427773;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59358)
+received: AT+CIPCLOSE
+
+wrote to sim: AT+CIPCLOSE
+
+bytes to read: 214
+accepted: ('127.0.0.1', 59362)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 23
+accepted: ('127.0.0.1', 59366)
+received: AT+CMEE=2
+
+wrote to sim: AT+CMEE=2
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59370)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 15
+accepted: ('127.0.0.1', 59374)
+received: AT+CGATT=0
+
+wrote to sim: AT+CGATT=0
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59380)
+received: AT+CGATT=1
+
+wrote to sim: AT+CGATT=1
+
+bytes to read: 16
+accepted: ('127.0.0.1', 59392)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 10
+accepted: ('127.0.0.1', 59400)
+received: AT+CIPMUX=0
+
+wrote to sim: AT+CIPMUX=0
+
+bytes to read: 6
+accepted: ('127.0.0.1', 59404)
+received: AT+CSTT="wholesale"
+
+wrote to sim: AT+CSTT="wholesale"
+
+bytes to read: 17
+accepted: ('127.0.0.1', 59412)
+received: AT+CIICR
+
+wrote to sim: AT+CIICR
+
+bytes to read: 25
+accepted: ('127.0.0.1', 59416)
+received: AT+CIFSR
+
+wrote to sim: AT+CIFSR
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59420)
+received: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+bytes to read: 24
+accepted: ('127.0.0.1', 59424)
+received: AT+CIPSEND
+
+wrote to sim: AT+CIPSEND
+
+bytes to read: 58
+accepted: ('127.0.0.1', 59432)
+received: #STA:99002;TM:10/29/2017,20:20:01;C:86;V:0000;AD01:0.003846;AD02:0.750000;AD03:0.008974;AD04:0.008974;AD05:3.278205;AD06:0.007692;PU01:7;PU02:2;PU03:3;PU04:428375;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+wrote to sim: #STA:99002;TM:10/29/2017,20:20:01;C:86;V:0000;AD01:0.003846;AD02:0.750000;AD03:0.008974;AD04:0.008974;AD05:3.278205;AD06:0.007692;PU01:7;PU02:2;PU03:3;PU04:428375;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59436)
+received: AT+CIPCLOSE
+
+wrote to sim: AT+CIPCLOSE
+
+bytes to read: 214
+accepted: ('127.0.0.1', 59440)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 23
+accepted: ('127.0.0.1', 59468)
+received: AT+CMEE=2
+
+wrote to sim: AT+CMEE=2
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59472)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 15
+accepted: ('127.0.0.1', 59476)
+received: AT+CGATT=0
+
+wrote to sim: AT+CGATT=0
+
+bytes to read: 21
+accepted: ('127.0.0.1', 59480)
+received: AT+CGATT=1
+
+wrote to sim: AT+CGATT=1
+
+bytes to read: 16
+accepted: ('127.0.0.1', 59484)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 10
+accepted: ('127.0.0.1', 59488)
+received: AT+CIPMUX=0
+
+wrote to sim: AT+CIPMUX=0
+
+bytes to read: 6
+accepted: ('127.0.0.1', 59492)
+received: AT+CSTT="wholesale"
+
+wrote to sim: AT+CSTT="wholesale"
+
+bytes to read: 17
+accepted: ('127.0.0.1', 59498)
+received: AT+CIICR
+
+wrote to sim: AT+CIICR
+
+bytes to read: 25
+accepted: ('127.0.0.1', 59512)
+received: AT+CIFSR
+
+wrote to sim: AT+CIFSR
+
+bytes to read: 14
+accepted: ('127.0.0.1', 59518)
+received: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+bytes to read: 26
+accepted: ('127.0.0.1', 59522)
+received: AT+CIPSEND
+
+wrote to sim: AT+CIPSEND
+
+bytes to read: 44
+accepted: ('127.0.0.1', 59526)
+received: #STA:99002;TM:10/29/2017,20:21:01;C:86;V:0000;AD01:0.003846;AD02:0.751282;AD03:0.005128;AD04:0.008974;AD05:3.284615;AD06:0.007692;PU01:7;PU02:2;PU03:3;PU04:428975;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+wrote to sim: #STA:99002;TM:10/29/2017,20:21:01;C:86;V:0000;AD01:0.003846;AD02:0.751282;AD03:0.005128;AD04:0.008974;AD05:3.284615;AD06:0.007692;PU01:7;PU02:2;PU03:3;PU04:428975;PU05:5;PU06:6;DI:333000;DO:0000;#
+
+bytes to read: 47
+accepted: ('127.0.0.1', 59532)
+received: AT+CIPCLOSE
+
+wrote to sim: AT+CIPCLOSE
+
+bytes to read: 196
+accepted: ('127.0.0.1', 59536)
+received: AT+CIPSHUT
+
+wrote to sim: AT+CIPSHUT
+
+bytes to read: 23
