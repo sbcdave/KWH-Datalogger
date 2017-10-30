@@ -16,6 +16,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
 case "$1" in
   start)
     log_begin_msg "Starting datalogger service"
+    /KWH/datalogger/datetime/getTime.sh
     /KWH/datalogger/lib/pigpio/pigpiod
     echo "pigpiod started!"
     /KWH/datalogger/transceive/simServer.py &
