@@ -63,13 +63,36 @@ main() {
     do
 	sleep 1
     done
-    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-	echo AT+CMGF=1 | nc localhost 9999 &&
-	sleep 2
-	echo AT+CMGS=\"$1\"$'\n'${@: -`expr $# - 1`}$'\cZ' | nc localhost 9999
-    else
-        echo "Usage: send <phone number> <message>"
-    fi
+
+    SIM_PORT=9999
+
+    . /KWH/datalogger/conf/datalogger.conf
+
+    echo AT+CMEE=2 | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CIPSHUT | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CGATT=0 | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CGATT=1 | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CIPSHUT | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CIPMUX=0 | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CSTT=\"wholesale\" | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CIICR | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CIFSR | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" | nc localhost ${SIM_PORT} &&
+    sleep 2
+    /KWH/datalogger/datetime/setTime.sh $(grep -A4 'AT+CIPSTART=TCP,time.nist.gov,37' /KWH/datalogger/transceive/tcp/SIMComs.log | tail -c 6 | head -c 4) &&
+    sleep 3
+    echo AT+CIPCLOSE | nc localhost ${SIM_PORT} &&
+    sleep 2
+    echo AT+CIPSHUT | nc localhost ${SIM_PORT}
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME

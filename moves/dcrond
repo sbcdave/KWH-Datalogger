@@ -1,1 +1,1 @@
-#* * * * * pi bash /KWH/datalogger/transceive/tcp/dcrond.sh > /KWH/datalogger/transceive/tcp/dcrond.log 2>&1
+* * * * * pi bash /KWH/datalogger/transceive/tcp/transmit.sh >> /KWH/datalogger/transceive/tcp/transmit.log 2>&1

@@ -59,37 +59,36 @@ main() {
     # trap signals
     ttrap "cleanup $PROGNAME" SIGHUP SIGINT SIGQUIT SIGTERM
 
-    lock $PROGNAME \
-        || eexit "SIM in use!"
+    lock $PROGNAME || eexit "SIM Busy!"
 
-. /KWH/datalogger/conf/datalogger.conf
+    . /KWH/datalogger/conf/datalogger.conf
 
     echo AT+CMEE=2 | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIPSHUT | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CGATT=0 | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CGATT=1 | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIPSHUT | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIPMUX=0 | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CSTT=\"wholesale\" | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIICR | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIFSR | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIPSTART=\"TCP\",\"$DOMAIN\",\"$PORT\" | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIPSEND | nc localhost 9999 &&
-sleep 3
+    sleep 3
     cat /KWH/datalogger/transceive/tcp/tstring | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIPCLOSE | nc localhost 9999 &&
-sleep 2
+    sleep 2
     echo AT+CIPSHUT | nc localhost 9999
 
     # standard cleanup on proper exit so we never leave the lock file around
