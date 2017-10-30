@@ -7,6 +7,8 @@ sudo chown -R pi:pi KWH
 cd KWH
 sudo git clone https://github.com/sbcdave/KWH.git
 
+#investigate shutting down uneccesary services
+
 sudo ln -n /KWH/datalogger/conf/datalogger.conf /etc/defaults/datalogger.conf
 sudo printf "\n. /KWH/datalogger/conf/datalogger.conf\n" >> /etc/profile
 sudo printf "\n. /KWH/datalogger/conf/datalogger.conf\n" >> /root/.bashrc
