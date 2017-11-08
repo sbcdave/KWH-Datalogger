@@ -11,12 +11,12 @@ pi = pigpio.pi()
 if not pi.connected:
     exit()
 
-DI1=26
+DIN=26
 
-pi.set_mode(DI1, pigpio.INPUT)
-pi.set_pull_up_down(DI1, pigpio.PUD_DOWN)
+pi.set_mode(DIN, pigpio.INPUT)
+pi.set_pull_up_down(DIN, pigpio.PUD_DOWN)
 
-pulse_cb = pi.callback(DI1, pigpio.RISING_EDGE)
+pulse_cb = pi.callback(DIN, pigpio.RISING_EDGE)
 
 while True:
 

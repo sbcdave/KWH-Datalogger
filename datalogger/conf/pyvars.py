@@ -28,10 +28,6 @@ with open('/KWH/datalogger/conf/PU03', 'r') as conf:
 	PU03=conf.read()
 with open('/KWH/datalogger/conf/PU04', 'r') as conf:
 	PU04=conf.read()
-with open('/KWH/datalogger/conf/STA', 'r') as conf:
-	STA=conf.read()
-with open('/KWH/datalogger/conf/APN', 'r') as conf:
-	APN=conf.read()
 with open('/KWH/datalogger/conf/PU05', 'r') as conf:
 	PU05=conf.read()
 with open('/KWH/datalogger/conf/PU06', 'r') as conf:
@@ -40,7 +36,9 @@ with open('/KWH/datalogger/conf/PU07', 'r') as conf:
 	PU07=conf.read()
 with open('/KWH/datalogger/conf/PU08', 'r') as conf:
 	PU08=conf.read()
-with open('/KWH/datalogger/conf/PORT') as conf:
-	PORT=conf.read()
-with open('/KWH/datalogger/conf/PORT') as conf:
-	PORT=conf.read()
+with open('/KWH/datalogger/conf/STA', 'r') as conf:
+	STA=conf.read()
+with open('/KWH/datalogger/conf/APN', 'r') as conf:
+	APN=conf.read()
+with open('/KWH/datalogger/conf/SIM_PORT') as conf:
+	SIM_PORT=conf.read()

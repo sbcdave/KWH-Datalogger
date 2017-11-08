@@ -37,9 +37,11 @@ bias = 0.000
 # instantiating needed arrays
 value = []
 channel = []
+conf = [PU01, PU02, PU03, PU04, PU05, PU06, PU07, PU08]
 
 # collecting samples in 2-d array: value x channel
 for j in range(8):
+    if conf[j] == '1':
 	for i in range(samples):
 		# using this because unable to append 1st element
 		if i == 0:
@@ -55,11 +57,14 @@ for j in range(8):
 # computing responses and storing in values[]
 values = [0]*8
 for i in range(8):
+    if conf[i] == '1':
 	values[i] = (channel[i][len(channel[i])/2-2] + \
 		    channel[i][len(channel[i])/2-1] + \
 		    channel[i][len(channel[i])/2] + \
 		    channel[i][len(channel[i])/2+1] + \
 		    channel[i][len(channel[i])/2+2]) / 5
+    else:
+	values[i] = 0.0
 
 # write channel values to files
 with open(DPATH + '/adc/AD01', 'w') as a1:

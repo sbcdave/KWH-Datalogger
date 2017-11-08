@@ -88,7 +88,7 @@ main() {
     sleep 2
     echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" | nc localhost ${SIM_PORT} &&
     sleep 2
-    /KWH/datalogger/datetime/setTime.sh $(grep -A4 'AT+CIPSTART=TCP,time.nist.gov,37' /KWH/datalogger/transceive/tcp/SIMComs.log | tail -c 6 | head -c 4) &&
+    /KWH/datalogger/datetime/setTime.sh $(grep -A4 'AT+CIPSTART="TCP","time.nist.gov","37"' /KWH/datalogger/transceive/tcp/SIMComs.log | tail -c 6 | head -c 4) &&
     sleep 3
     echo AT+CIPCLOSE | nc localhost ${SIM_PORT} &&
     sleep 2
