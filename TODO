@@ -9,7 +9,6 @@ Maybe add csq to list and record that and limited bytes of other necessary
 info to analyze whether the lost packet was due to reception or an issue
 with timing communication to the sim
 
-
 Finish pulse code to launch configured channels on boot
 
 Consider schmit trigger or other safety
@@ -20,5 +19,14 @@ start testing temp sensors
 
 investigate parsing smsRead and building inital SMS configurability
 
-
 Improve getTime logic to be more selective and properly acquire the 32 time bits.
+
+Add log cycling service to prevent filling the SD card, but still allow
+simple logging via DEBUG conf
+
+figure out conf reload for all code that starts at boot and won't know
+about updated ENV variables from SMS commands
+
+setup SMS request for DEBUG and each log file so we can query logs remotely
+
+setup simServer to test SIM coms and reset when necessary

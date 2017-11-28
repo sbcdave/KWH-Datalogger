@@ -62,6 +62,7 @@ main() {
     lock $PROGNAME || eexit "SIM Busy!"
 
     . /KWH/datalogger/conf/datalogger.conf
+    . /KWH/datalogger/conf/vars
 
     echo AT+CMEE=2 | nc localhost 9999 &&
     sleep 2

@@ -20,3 +20,5 @@ export PU08=`cat /KWH/datalogger/conf/PU08`
 export STA=`cat /KWH/datalogger/conf/STA`
 export APN=`cat /KWH/datalogger/conf/APN`
 export SIM_PORT=`cat /KWH/datalogger/conf/SIM_PORT`
+export TX_INTRVL=`cat /KWH/datalogger/conf/TX_INTRVL`
+export DEBUG=`cat /KWH/datalogger/conf/DEBUG`

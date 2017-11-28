@@ -42,3 +42,7 @@ with open('/KWH/datalogger/conf/APN', 'r') as conf:
 	APN=conf.read()
 with open('/KWH/datalogger/conf/SIM_PORT') as conf:
 	SIM_PORT=conf.read()
+with open('/KWH/datalogger/conf/TX_INTRVL') as conf:
+	TX_INTRVL=conf.read()
+with open('/KWH/datalogger/conf/DEBUG') as conf:
+	DEBUG=conf.read()
