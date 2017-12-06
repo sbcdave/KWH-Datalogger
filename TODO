@@ -1,17 +1,17 @@
 adjust sim server to respond with the modem response
 This way I can check each response message as needed instead of having
 to write all responses to a log file
-
 Once that's done analyze server response and time stamp in a file
 to look for missing time stamps
 
-Maybe add csq to list and record that and limited bytes of other necessary
+add csq to simServer and record that and limited bytes of other necessary
 info to analyze whether the lost packet was due to reception or an issue
 with timing communication to the sim
 
-Finish pulse code to launch configured channels on boot
+Finish pulse code to launch configured channels on boot - might axe pulse
+code (or at least reduce channels) when modbus is working
 
-Consider schmit trigger or other safety
+Consider schmit trigger, opto-isolators, or other safety hardware
 
 start testing modbus
 
@@ -22,11 +22,27 @@ investigate parsing smsRead and building inital SMS configurability
 Improve getTime logic to be more selective and properly acquire the 32 time bits.
 
 Add log cycling service to prevent filling the SD card, but still allow
-simple logging via DEBUG conf
+simple logging via DEBUG conf - make log retention configurable
 
 figure out conf reload for all code that starts at boot and won't know
 about updated ENV variables from SMS commands
 
 setup SMS request for DEBUG and each log file so we can query logs remotely
 
-setup simServer to test SIM coms and reset when necessary
+*setup simServer to test SIM coms and reset when necessary
+
+Set up transmit to transmit data about used/available memory for graphing
+
+Set up transmit to transmit data about reception strength for graphing
+
+Set up transmit to send data about bytes transmitted, so we can track our
+data usage and associate it to cost.
+
+Devise new server side TCPIP app so we can take advantage of a compressed
+transmission instead of sending KP format ASCII and wasting data
+This will also allow us to devise software retransmission of old data
+and completely eliminate missed data packets
+
+Consider rsync for sending the data and storing all data in a local 
+graphite/influxdb instance
+

@@ -64,8 +64,15 @@ main() {
     . /KWH/datalogger/conf/datalogger.conf
     . /KWH/datalogger/conf/vars
 
-    echo AT+CMEE=2 | nc localhost 9999 &&
+    if [[ "$DEBUG" = "1" ]]; then
+	echo "Starting"
+    fi
+    echo AT+CMEE=2 | nc localhost 9999 > /KWH/datalogger/transceive/tcp/temp.txt &&
     sleep 2
+    echo "past cmee"
+    if [[ "$DEBUG" = "1" ]]; then
+	cat /KWH/datalogger/transceive/tcp/temp.txt
+    fi
     echo AT+CIPSHUT | nc localhost 9999 &&
     sleep 2
     echo AT+CGATT=0 | nc localhost 9999 &&
