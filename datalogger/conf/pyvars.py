@@ -52,3 +52,11 @@ with open('/KWH/datalogger/conf/DEBUG') as conf:
 	DEBUG=conf.read()
 with open('/KWH/datalogger/conf/DEBUG') as conf:
 	DEBUG=conf.read()
+with open('/KWH/datalogger/conf/DEBUG') as conf:
+	DEBUG=conf.read()
+with open('/KWH/datalogger/conf/DEBUG') as conf:
+	DEBUG=conf.read()
+with open('/KWH/datalogger/conf/DEBUG') as conf:
+	DEBUG=conf.read()
+with open('/KWH/datalogger/conf/DEBUG') as conf:
+	DEBUG=conf.read()

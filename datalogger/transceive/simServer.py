@@ -50,14 +50,9 @@ with open("/KWH/datalogger/conf/SIM_PORT", "w") as SIM_PORT:
 execfile("/KWH/datalogger/conf/pyvars.py")
 
 if DEBUG == "1":
-    log.write(str(port))
-    log.write(os.environ["SIM_PORT"])
-
-if DEBUG == "1":
-    log.write("SIM_PORT: "+os.environ["SIM_PORT"]+"\n")
+    log.write("SIM_PORT: "+str(port))
     log.write("Listening...\n")
-
-log.close()
+    log.close()
 
 s.listen(100)
 sim = serial.Serial('/dev/ttyAMA0', 115200, timeout=5)
@@ -104,7 +99,7 @@ while True:
             with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
                 log.write("Configuring stty settings for SIM coms\n")
 	subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
-	time.sleep(1)
+	time.sleep(2)
     if DEBUG == "1":
         with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
             log.write("Bytes to read: "+str(bytesToRead)+"\n")

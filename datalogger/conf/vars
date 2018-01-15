@@ -25,3 +25,7 @@ export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
 export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
 export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
 export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
+export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
+export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
+export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
+export DEBUG=`cat /KWH/datalogger/conf/DEBUG`
