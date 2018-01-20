@@ -57,19 +57,25 @@ eexit() {
 
 main() {
     # trap signals
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+	echo -n ""
+    else
+        echo "Usage: sendsms <phone number> <message>";
+	exit 0;
+    fi
+
     ttrap "cleanup $PROGNAME" SIGHUP SIGINT SIGQUIT SIGTERM
 
     while $(lock $PROGNAME)
     do
 	sleep 1
     done
-    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-	echo AT+CMGF=1 | nc localhost 9999 &&
-	sleep 2
-	echo AT+CMGS=\"$1\"$'\n'${@: -`expr $# - 1`}$'\cZ' | nc localhost 9999
-    else
-        echo "Usage: send <phone number> <message>"
-    fi
+
+    . /KWH/datalogger/conf/datalogger.conf
+
+    echo AT+CMGF=1 | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CMGS=\"$1\"$'\n'${@: -`expr $# - 1`}$'\cZ' | nc localhost $SIM_PORT
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME

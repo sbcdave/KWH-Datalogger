@@ -46,17 +46,5 @@ with open('/KWH/datalogger/conf/TX_INTRVL') as conf:
 	TX_INTRVL=conf.read()
 with open('/KWH/datalogger/conf/DEBUG') as conf:
 	DEBUG=conf.read()
-with open('/KWH/datalogger/conf/DEBUG') as conf:
-	DEBUG=conf.read()
-with open('/KWH/datalogger/conf/DEBUG') as conf:
-	DEBUG=conf.read()
-with open('/KWH/datalogger/conf/DEBUG') as conf:
-	DEBUG=conf.read()
-with open('/KWH/datalogger/conf/DEBUG') as conf:
-	DEBUG=conf.read()
-with open('/KWH/datalogger/conf/DEBUG') as conf:
-	DEBUG=conf.read()
-with open('/KWH/datalogger/conf/DEBUG') as conf:
-	DEBUG=conf.read()
-with open('/KWH/datalogger/conf/DEBUG') as conf:
-	DEBUG=conf.read()
+with open('/KWH/datalogger/conf/AD11') as conf:
+	AD11=conf.read()

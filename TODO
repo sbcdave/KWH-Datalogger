@@ -47,3 +47,5 @@ Consider rsync for sending the data and storing all data in a local
 graphite/influxdb instance
 
 investigate other_code.txt
+
+Ensure that time setting code is solid

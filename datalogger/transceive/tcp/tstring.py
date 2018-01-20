@@ -34,6 +34,12 @@ if AD07 == "1":
 if AD08 == "1":
     with open(DPATH + '/adc/AD08', 'a+') as AD08:
 	str = str + ";AD08:" + AD08.read()
+# need to add the rest of the temp sensors here and configure them
+# in the conf
+
+if AD11 == "1":
+    with open(DPATH + '/temp/temp1', 'a+') as AD11:
+	str = str + ";AD11:" + AD11.read()
 
 # digital channels
 if PU01 == "1":

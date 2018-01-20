@@ -84,12 +84,12 @@ while True:
     if DEBUG == "1":
         with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
             log.write("Wrote to sim: "+data+"\n")
-
+    time.sleep(.5)
     bytesToRead = sim.inWaiting()
     if bytesToRead < 1:
         if DEBUG == "1":
             with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-                log.write("No SIM response...rebooting SIM!\n")
+                log.write(str(bytesToRead)+" bytes from SIM...rebooting SIM!\n")
         execfile("/KWH/datalogger/transceive/reset_sim.py")
         if DEBUG == "1":
             with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
