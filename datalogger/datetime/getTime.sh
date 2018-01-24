@@ -64,35 +64,29 @@ main() {
 	sleep 1
     done
 
-    SIM_PORT=9999
-
     . /KWH/datalogger/conf/datalogger.conf
 
-    echo AT+CMEE=2 | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CIPSHUT | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CGATT=0 | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CGATT=1 | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CIPSHUT | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CIPMUX=0 | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CSTT=\"wholesale\" | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CIICR | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CIFSR | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" | nc localhost ${SIM_PORT} &&
-    sleep 2
-    /KWH/datalogger/datetime/setTime.sh $(grep -A4 'AT+CIPSTART="TCP","time.nist.gov","37"' /KWH/datalogger/transceive/tcp/SIMComs.log | tail -c 6 | head -c 4) &&
-    sleep 3
-    echo AT+CIPCLOSE | nc localhost ${SIM_PORT} &&
-    sleep 2
-    echo AT+CIPSHUT | nc localhost ${SIM_PORT}
+    log="/KWH/datalogger/datetime/datetime.log"
+
+    echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    echo AT+CGATT=0 | nc localhost $SIM_PORT >> $log
+    echo AT+CGATT=1 | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    echo AT+CIPMUX=0 | nc localhost $SIM_PORT >> $log
+    echo AT+CSTT=\"wholesale\" | nc localhost $SIM_PORT >> $log
+    echo AT+CIICR | nc localhost $SIM_PORT >> $log
+    echo AT+CIFSR | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" \
+	| nc localhost $SIM_PORT >> $log
+    echo AT+CIPSEND | nc localhost $SIM_PORT \
+	> /KWH/datalogger/datetime/bits
+#    cat /KWH/datalogger/datetime/Z | nc localhost $SIM_PORT \
+    cat /KWH/datalogger/datetime/bits >> $log
+#    /KWH/datalogger/datetime/setTime.sh $(grep -A4 'AT+CIPSTART="TCP","time.nist.gov","37"' /KWH/datalogger/transceive/tcp/SIMComs.log | tail -c 6 | head -c 4) >> $log
+    echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    /KWH/datalogger/datetime/setTime.sh `tail -c 4 /KWH/datalogger/datetime/bits`
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME

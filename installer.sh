@@ -17,3 +17,7 @@ source /KWH/datalogger/conf/datalogger.conf
 
 sudo mv /KWH/datalogger/moves/dcrond /etc/cron.d/.
 sudo chmod 644 /etc/cron.d/dcrond
+
+#add stuff here to setup config.txt for adding the dtoverlays for shutting
+#off bluetooth
+sudo systemctl mask serial-getty@ttyAMA0.service

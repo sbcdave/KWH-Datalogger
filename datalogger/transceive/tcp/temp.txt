@@ -1,4 +1,0 @@
-
-SHUT OK
-AT+CMEE=2
-OK

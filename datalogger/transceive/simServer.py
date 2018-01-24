@@ -2,113 +2,143 @@
 import socket
 import time
 import signal
-import sys
 import serial
-import os
 import subprocess
+
 # Load environment variables
 execfile("/KWH/datalogger/conf/pyvars.py")
 
+# Global variables
+RESET_LIMIT = 1
+
 def signal_handler(signal, frame):
-    if DEBUG == "1":
-	log.write('Closing SIM Server\n')
-       	log.close()
-        comslog.close()
+    if DEBUG == "1": log('SIGINT received...Closing SIM Server\n')
     sim.close()
     s.close()
     cs.close()
     exit(0)
 signal.signal(signal.SIGINT, signal_handler)
 
-if DEBUG == "1":
-    log = open("/KWH/datalogger/transceive/simServer.log", "a")
-    log.write("Starting SIM Server\n")
+# Log function
+def log(logText):
+    with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
+	log.write(logText)
+
+# Reconfigure communications protocol with SIM Chip
+def configure():
+    execfile("/KWH/datalogger/conf/pyvars.py")
+    if DEBUG == "1": log("Configuration variables reloaded\n")    
+    subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
+    if DEBUG == "1": log("Executed ttyAMA0_setup.sh\n")    
+
+# Reset the SIM card
+def reset():
+    execfile("/KWH/datalogger/transceive/reset_sim.py")
+    if DEBUG == "1": log("Sleeping 5 for SIM reboot and reconfigure!\n")
+    time.sleep(4)
+    configure()
+    time.sleep(1)
+
+# Logs in simServer.log if the env variable DEBUG is 1
+if DEBUG == "1": log("Starting SIM Server\n")
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = ''
 port = 9999
 port_chosen = False
 
-if DEBUG == "1":
-    log.write("Starting port selection\n")
+if DEBUG == "1": log("Starting port selection\n") 
 
+# Find an open port for the service
 while not port_chosen:
     try:
 	s.bind((host, port))
         port_chosen = True
     except:
-	if DEBUG == "1":
-            log.write("Port "+str(port)+" in use\n")
+	if DEBUG == "1": log("Port "+str(port)+" in use\n")
 	port = port + 1
 
-if DEBUG == "1":	
-    log.write("Port "+str(port)+" selected\n")
-
+# Update the env variables with the chosen active SIM_PORT
 with open("/KWH/datalogger/conf/SIM_PORT", "w") as SIM_PORT:
     SIM_PORT.write(str(port))
 
-execfile("/KWH/datalogger/conf/pyvars.py")
+if DEBUG == "1": log("SIM_PORT: "+str(port)+"\nListening...\n")
 
-if DEBUG == "1":
-    log.write("SIM_PORT: "+str(port))
-    log.write("Listening...\n")
-    log.close()
+reset()
 
-s.listen(100)
+s.listen(1)
 sim = serial.Serial('/dev/ttyAMA0', 115200, timeout=5)
 sim.flushInput()
 sim.flushOutput()
 
+# Daemon listen on SIM_PORT for SIM commands
 while True:
+    # Waits for a command
     cs,addr = s.accept()
-    if DEBUG == "1":
-	with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-	    log.write("Accepted: "+str(addr)+"\n")
+
+    configure()
+
+    cmd = cs.recv(1024)
+    if DEBUG == "2": log("Received: "+cmd+"\n")
+
+    # Send command to SIM
+    try:
+	sim.write(cmd)
+
+        if DEBUG == "1": log("Wrote to sim: "+cmd+"\n")
+
+        if cmd == "AT+CGATT=1\n" \
+            or cmd == "AT+CIICR\n":
+            time.sleep(2)
+
+        if cmd == "AT+CIPSTART=\"TCP\",\""+DOMAIN+"\",\""+PORT+"\"\n":
+            time.sleep(3)
+
+        # Get SIM response
+        fromSIM = sim.inWaiting()
+
+        # If no response, restart SIM, reset config, and retry
+        count = 0
+        while fromSIM < 1 and count < RESET_LIMIT:
+#           time.sleep(1)
+#           fromSIM = sim.inWaiting()
+#           if fromSIM > 0:
+#	        break
+            if DEBUG == "1": log(str(fromSIM)+" bytes from SIM. Resetting SIM!\n")
+            reset()
+            count += 1
+            try:
+                sim.write(cmd)
+	    except:
+	        log("EXCEPTION: Write Failed")
+            if DEBUG == "1": log("Wrote to sim: "+cmd+"\n")
+            time.sleep(0.5)
+            fromSIM = sim.inWaiting()
+
+        if DEBUG == "1": log("Bytes to read: "+str(fromSIM)+"\n")
+        resp = sim.read(fromSIM)
+        if DEBUG == "1": log("Sim response: "+resp+"\n")
+        if resp == "":
+            resp = "No response"
+        cs.send(resp)
+        if DEBUG == "1": log("Response sent to: "+str(addr)+"\n")
+
+#        fromSIM = sim.inWaiting()
+#        if fromSIM > 0:
+#            if DEBUG == "1": log("Bytes to read: "+str(fromSIM)+"\n")
+#            resp = sim.read(fromSIM)
+#            if DEBUG == "1": log("Sim response: "+resp+"\n")
+#            cs.send(resp)
+#            if DEBUG == "2": log("Response sent to: "+str(addr)+"\n")
+
+#        sim.flushInput()
+#        sim.flushOutput()
     
-    subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
-    if DEBUG == "1":
-	with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-	    log.write("ttyAMA0_setup.sh complete\n")    
+#       time.sleep(.5)
+        cs.close()
+    except:
+        log("EXCEPTION: Write Failed")
+        reset()
 
-    execfile("/KWH/datalogger/conf/pyvars.py")
-    if DEBUG == "1":
-	with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-	    log.write("Configuration variables reloaded\n")    
-
-    data = cs.recv(1024)
-    if DEBUG == "1":
-	with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-            log.write("Received: "+data+"\n")
-
-    sim.write(data)
-    if DEBUG == "1":
-        with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-            log.write("Wrote to sim: "+data+"\n")
-    time.sleep(.5)
-    bytesToRead = sim.inWaiting()
-    if bytesToRead < 1:
-        if DEBUG == "1":
-            with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-                log.write(str(bytesToRead)+" bytes from SIM...rebooting SIM!\n")
-        execfile("/KWH/datalogger/transceive/reset_sim.py")
-        if DEBUG == "1":
-            with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-                log.write("Sleeping 1 for SIM reboot!\n")
-        time.sleep(1)
-        if DEBUG == "1":
-            with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-                log.write("Configuring stty settings for SIM coms\n")
-	subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
-	time.sleep(2)
-    if DEBUG == "1":
-        with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-            log.write("Bytes to read: "+str(bytesToRead)+"\n")
-    resp = sim.read(bytesToRead)
-    if DEBUG == "1":
-        with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-            log.write("Sim response: "+resp+"\n")
-    cs.send(resp)
-    if DEBUG == "1":
-        with open("/KWH/datalogger/transceive/simServer.log", "a") as log:
-            log.write("Response sent to: "+str(addr)+"\n")
     cs.close()
+    log("Client connection closed")

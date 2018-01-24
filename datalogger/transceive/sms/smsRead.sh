@@ -64,11 +64,10 @@ main() {
 	sleep 1
     done
 
-    echo AT+CMGL=\"ALL\" | nc localhost 9999 &&
-    sleep 2
-    echo AT | nc localhost 9999
-    sleep 2
-    tail -c 1000 /KWH/datalogger/transceive/tcp/SIMComs.log
+    . /KWH/datalogger/conf/datalogger.conf
+
+    echo AT+CMGL=\"ALL\" | nc localhost $SIM_PORT \
+	> /KWH/datalogger/transceive/sms/read.txt
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME

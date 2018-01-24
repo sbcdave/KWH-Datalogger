@@ -49,3 +49,5 @@ graphite/influxdb instance
 investigate other_code.txt
 
 Ensure that time setting code is solid
+
+Fix installer to update config.txt

@@ -48,3 +48,21 @@ with open('/KWH/datalogger/conf/DEBUG') as conf:
 	DEBUG=conf.read()
 with open('/KWH/datalogger/conf/AD11') as conf:
 	AD11=conf.read()
+with open('/KWH/datalogger/conf/AD09') as conf:
+	AD09=conf.read()
+with open('/KWH/datalogger/conf/AD10') as conf:
+	AD10=conf.read()
+with open('/KWH/datalogger/conf/AD12') as conf:
+	AD12=conf.read()
+with open('/KWH/datalogger/conf/AD13') as conf:
+	AD13=conf.read()
+with open('/KWH/datalogger/conf/AD14') as conf:
+	AD14=conf.read()
+with open('/KWH/datalogger/conf/AD15') as conf:
+	AD15=conf.read()
+with open('/KWH/datalogger/conf/AD16') as conf:
+	AD16=conf.read()
+with open('/KWH/datalogger/conf/AD17') as conf:
+	AD17=conf.read()
+with open('/KWH/datalogger/conf/AD18') as conf:
+	AD18=conf.read()

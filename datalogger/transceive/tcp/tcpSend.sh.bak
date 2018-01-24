@@ -63,24 +63,35 @@ main() {
 
     . /KWH/datalogger/conf/datalogger.conf
 
-    log="/KWH/datalogger/transceive/tcp/tcpSend.log"
-
-    echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
-    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
-    echo AT+CGATT=0 | nc localhost $SIM_PORT >> $log
-    echo AT+CGATT=1 | nc localhost $SIM_PORT >> $log
-    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
-    echo AT+CIPMUX=0 | nc localhost $SIM_PORT >> $log
-    echo AT+CSTT=\"wholesale\" | nc localhost $SIM_PORT >> $log
-    echo AT+CIICR | nc localhost $SIM_PORT >> $log
-    echo AT+CIFSR | nc localhost $SIM_PORT >> $log
+    echo AT+CMEE=2 | nc localhost $SIM_PORT  &&
+    sleep 2
+    echo AT+CIPSHUT | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CGATT=0 | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CGATT=1 | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CIPSHUT | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CIPMUX=0 | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CSTT=\"wholesale\" | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CIICR | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CIFSR | nc localhost $SIM_PORT &&
+    sleep 2
     echo AT+CIPSTART=\"TCP\",\"$DOMAIN\",\"$PORT\" \
-	| nc localhost $SIM_PORT >> $log
-    echo AT+CIPSEND | nc localhost $SIM_PORT >> $log
+	| nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CIPSEND | nc localhost $SIM_PORT &&
+    sleep 3
     cat /KWH/datalogger/transceive/tcp/tstring \
-	| nc localhost $SIM_PORT >> $log
-    echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
-    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+	| nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CIPCLOSE | nc localhost $SIM_PORT &&
+    sleep 2
+    echo AT+CIPSHUT | nc localhost $SIM_PORT
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME
