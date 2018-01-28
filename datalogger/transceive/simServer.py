@@ -9,7 +9,7 @@ import subprocess
 execfile("/KWH/datalogger/conf/pyvars.py")
 
 # Global variables
-RESET_LIMIT = 1
+RESET_LIMIT = 3
 
 def signal_handler(signal, frame):
     if DEBUG == "1": log('SIGINT received...Closing SIM Server\n')
@@ -27,9 +27,9 @@ def log(logText):
 # Reconfigure communications protocol with SIM Chip
 def configure():
     execfile("/KWH/datalogger/conf/pyvars.py")
-    if DEBUG == "1": log("Configuration variables reloaded\n")    
+    if DEBUG == "2": log("Configuration variables reloaded\n")    
     subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
-    if DEBUG == "1": log("Executed ttyAMA0_setup.sh\n")    
+    if DEBUG == "2": log("Executed ttyAMA0_setup.sh\n")    
 
 # Reset the SIM card
 def reset():
@@ -62,9 +62,12 @@ while not port_chosen:
 with open("/KWH/datalogger/conf/SIM_PORT", "w") as SIM_PORT:
     SIM_PORT.write(str(port))
 
-if DEBUG == "1": log("SIM_PORT: "+str(port)+"\nListening...\n")
+if DEBUG == "1": log("SIM_PORT: "+str(port)+"\n")
 
 reset()
+
+if DEBUG == "1": log("Listening...\n")
+
 
 s.listen(1)
 sim = serial.Serial('/dev/ttyAMA0', 115200, timeout=5)
@@ -87,12 +90,17 @@ while True:
 
         if DEBUG == "1": log("Wrote to sim: "+cmd+"\n")
 
+	# Command specific delays
         if cmd == "AT+CGATT=1\n" \
-            or cmd == "AT+CIICR\n":
-            time.sleep(2)
-
-        if cmd == "AT+CIPSTART=\"TCP\",\""+DOMAIN+"\",\""+PORT+"\"\n":
+            or cmd == "AT+CIFSR\n" \
+            or cmd[0] == "\#":
             time.sleep(3)
+        elif cmd == "AT+CIPSTART=\"TCP\",\""+DOMAIN+"\",\""+PORT+"\"\n" \
+            or cmd == "AT+CIICR\n" \
+            or cmd == "AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\"\n":
+            time.sleep(4)
+        else:
+            time.sleep(.3)
 
         # Get SIM response
         fromSIM = sim.inWaiting()
@@ -100,10 +108,10 @@ while True:
         # If no response, restart SIM, reset config, and retry
         count = 0
         while fromSIM < 1 and count < RESET_LIMIT:
-#           time.sleep(1)
-#           fromSIM = sim.inWaiting()
-#           if fromSIM > 0:
-#	        break
+            time.sleep(1)
+            fromSIM = sim.inWaiting()
+            if fromSIM > 0:
+                break
             if DEBUG == "1": log(str(fromSIM)+" bytes from SIM. Resetting SIM!\n")
             reset()
             count += 1
@@ -121,24 +129,24 @@ while True:
         if resp == "":
             resp = "No response"
         cs.send(resp)
-        if DEBUG == "1": log("Response sent to: "+str(addr)+"\n")
+        if DEBUG == "2": log("Response sent to: "+str(addr)+"\n")
 
-#        fromSIM = sim.inWaiting()
-#        if fromSIM > 0:
-#            if DEBUG == "1": log("Bytes to read: "+str(fromSIM)+"\n")
-#            resp = sim.read(fromSIM)
-#            if DEBUG == "1": log("Sim response: "+resp+"\n")
-#            cs.send(resp)
-#            if DEBUG == "2": log("Response sent to: "+str(addr)+"\n")
+        fromSIM = sim.inWaiting()
+        if fromSIM > 0:
+            if DEBUG == "1": log("Bytes to read: "+str(fromSIM)+"\n")
+            resp = sim.read(fromSIM)
+            if DEBUG == "1": log("Sim response: "+resp+"\n")
+            cs.send(resp)
+            if DEBUG == "2": log("Response sent to: "+str(addr)+"\n")
 
-#        sim.flushInput()
-#        sim.flushOutput()
+        sim.flushInput()
+        sim.flushOutput()
     
-#       time.sleep(.5)
+#        time.sleep(.5)
         cs.close()
     except:
         log("EXCEPTION: Write Failed")
         reset()
 
     cs.close()
-    log("Client connection closed")
+    if DEBUG == "2": log("Client connection closed\n")

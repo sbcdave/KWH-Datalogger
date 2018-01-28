@@ -79,7 +79,17 @@ main() {
     echo AT+CIPSEND | nc localhost $SIM_PORT >> $log
     cat /KWH/datalogger/transceive/tcp/tstring \
 	| nc localhost $SIM_PORT >> $log
+    sleep 3
     echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
+
+    success=`tail -c 28 $log | head -c 4`
+    if [ $success = "@888" ]; then
+	DATE=`date +%s`
+	echo "RPi.TX_Success 1 $DATE" | nc -q0 127.0.0.1 2003
+    else
+	tail -c 500 $log >> /KWH/datalogger/tranceive/tcp/fail.log
+    fi
+
     echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
 
     # standard cleanup on proper exit so we never leave the lock file around

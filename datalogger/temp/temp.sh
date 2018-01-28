@@ -6,9 +6,12 @@ DEVICES=$(ls $W1DIR)
 #Output sting
 OUTPUT=""
 
+counter=0;
+
 #cycle across all founded sensors
 for DEVICE in $DEVICES
 do
+counter=`expr $counter + 1`
 #ignor master
 if [ $DEVICE != "w1_bus_master1" ]
 then
@@ -53,7 +56,7 @@ then
 #We need to adjust this to put the correct temp in the correct file, 
 #with the files labeled in a way that we know what temp belongs to what 
 #sensor
-	    echo -n "$INTEGER.$FRAC" > /KWH/datalogger/temp/temp1
+	    echo -n "$INTEGER.$FRAC" > /KWH/datalogger/temp/temp$counter
         else
 	#CRC is invalid - error
 	    echo "$DEVICE=CRC ERROR" >&2

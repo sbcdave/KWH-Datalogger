@@ -41,6 +41,11 @@ if AD11 == "1":
     with open(DPATH + '/temp/temp1', 'a+') as AD11:
 	str = str + ";AD11:" + AD11.read()
 
+if AD12 == "1":
+    with open(DPATH + '/temp/temp2', 'a+') as AD12:
+	str = str + ";AD12:" + AD12.read()
+
+
 # digital channels
 if PU01 == "1":
     with open(DPATH + '/pulse/PU01', 'a+') as PU01:

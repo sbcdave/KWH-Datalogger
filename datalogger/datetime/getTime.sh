@@ -78,8 +78,8 @@ main() {
     echo AT+CIICR | nc localhost $SIM_PORT >> $log
     echo AT+CIFSR | nc localhost $SIM_PORT >> $log
     echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" \
-	| nc localhost $SIM_PORT >> $log
-    echo AT+CIPSEND | nc localhost $SIM_PORT \
+	| nc localhost $SIM_PORT \
+#    echo AT+CIPSEND | nc localhost $SIM_PORT \
 	> /KWH/datalogger/datetime/bits
 #    cat /KWH/datalogger/datetime/Z | nc localhost $SIM_PORT \
     cat /KWH/datalogger/datetime/bits >> $log
