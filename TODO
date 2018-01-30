@@ -46,3 +46,5 @@ investigate other_code.txt
 Ensure that time setting code is solid
 
 test installer.sh
+
+create logdel alias
