@@ -66,8 +66,10 @@ main() {
 
     . /KWH/datalogger/conf/datalogger.conf
 
-    echo AT+CMGL=\"ALL\" | nc localhost $SIM_PORT \
+    echo AT+CMGF=1 | nc localhost $SIM_PORT \
 	> /KWH/datalogger/transceive/sms/read.txt
+    echo AT+CMGL=\"ALL\" | nc localhost $SIM_PORT \
+	>> /KWH/datalogger/transceive/sms/read.txt
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME

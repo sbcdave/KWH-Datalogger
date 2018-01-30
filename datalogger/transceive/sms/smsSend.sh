@@ -74,7 +74,7 @@ main() {
     . /KWH/datalogger/conf/datalogger.conf
 
     echo AT+CMGF=1 | nc localhost $SIM_PORT &&
-    sleep 2
+    sleep 1
     echo AT+CMGS=\"$1\"$'\n'${@: -`expr $# - 1`}$'\cZ' | nc localhost $SIM_PORT
 
     # standard cleanup on proper exit so we never leave the lock file around

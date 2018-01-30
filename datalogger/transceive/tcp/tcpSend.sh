@@ -83,10 +83,7 @@ main() {
     echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
 
     success=`tail -c 28 $log | head -c 4`
-    if [ $success = "@888" ]; then
-	DATE=`date +%s`
-	echo "RPi.TX_Success 1 $DATE" | nc -q0 127.0.0.1 2003
-    else
+    if [ $success != "@888" ]; then
 	tail -c 500 $log >> /KWH/datalogger/tranceive/tcp/fail.log
     fi
 

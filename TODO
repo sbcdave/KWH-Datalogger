@@ -1,7 +1,4 @@
-adjust sim server to respond with the modem response
-This way I can check each response message as needed instead of having
-to write all responses to a log file
-Once that's done analyze server response and time stamp in a file
+analyze server response and time stamp in a file
 to look for missing time stamps
 
 add csq to simServer and record that and limited bytes of other necessary
@@ -18,8 +15,6 @@ start testing modbus
 start testing temp sensors
 
 investigate parsing smsRead and building inital SMS configurability
-
-Improve getTime logic to be more selective and properly acquire the 32 time bits.
 
 Add log cycling service to prevent filling the SD card, but still allow
 simple logging via DEBUG conf - make log retention configurable
@@ -50,4 +45,4 @@ investigate other_code.txt
 
 Ensure that time setting code is solid
 
-Fix installer to update config.txt
+test installer.sh
