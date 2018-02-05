@@ -4,6 +4,6 @@
 cd /KWH
 git init
 git add .
-git commit -m "v`expr $(cat version) + 1`" &&
-cat $(expr $(cat version) + 1) > version
+git commit -m "v`expr $(cat /KWH/version) + 1`" &&
+echo $(expr $(cat /KWH/version) + 1) > /KWH/version
 git push -v origin master
