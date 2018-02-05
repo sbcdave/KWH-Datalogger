@@ -46,3 +46,7 @@ dtoverlay=w1-gpio" >> /KWH/config.txt
 sudo cp /KWH/config.txt /boot/config.txt
 rm /KWH/config.txt
 
+#Install minimal modbus
+cd /KWH/datalogger/lib/MinimalModbus-0.7
+sudo ./setup.py build
+sudo ./setup.py install
