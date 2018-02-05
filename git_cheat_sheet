@@ -3,3 +3,4 @@ git init
 git add .
 git commit -m "version"
 git push -v origin master
+git commit -m "v`expr $(cat version) + 1`"
