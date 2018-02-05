@@ -48,3 +48,5 @@ Ensure that time setting code is solid
 test installer.sh
 
 create logdel alias
+
+Figure out server data delay
