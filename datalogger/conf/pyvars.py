@@ -68,3 +68,9 @@ with open('/KWH/datalogger/conf/AD18') as conf:
 	AD18=conf.read()
 with open('/KWH/datalogger/conf/ver') as conf:
 	ver=conf.read()
+with open('/KWH/datalogger/conf/TEMP1') as conf:
+	TEMP1=conf.read()
+with open('/KWH/datalogger/conf/TEMP2') as conf:
+	TEMP2=conf.read()
+with open('/KWH/datalogger/conf/TEMP3') as conf:
+	TEMP3=conf.read()

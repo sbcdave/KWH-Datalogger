@@ -33,3 +33,6 @@ export AD16=`cat /KWH/datalogger/conf/AD16`
 export AD17=`cat /KWH/datalogger/conf/AD17`
 export AD18=`cat /KWH/datalogger/conf/AD18`
 export ver=`cat /KWH/datalogger/conf/ver`
+export TEMP1=`cat /KWH/datalogger/conf/TEMP1`
+export TEMP2=`cat /KWH/datalogger/conf/TEMP2`
+export TEMP3=`cat /KWH/datalogger/conf/TEMP3`
