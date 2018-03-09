@@ -50,7 +50,7 @@ then
 	        fi
 	    fi
 
-	    echo -n "$INTEGER.$FRAC" > /KWH/datalogger/temp/$DEVICE
+	    echo -n "$INTEGER.$FRAC" > /KWH/datalogger/temperature/$DEVICE
         else
 	#CRC is invalid - error
 	    echo "$DEVICE=CRC ERROR" >&2

@@ -1,0 +1,28 @@
+
+SHUT OK
+AT+CMGF=1
+OK
+AT+CMGL="ALL"
++CMGL: 1,"REC READ","+12067787601","","17/10/17,20:08:57-24"
+Love iy
+
++CMGL: 2,"REC READ","+12067787601","","17/10/17,20:09:04-24"
+Love it! 
+
++CMGL: 3,"REC READ","+12067787601","","17/10/17,20:09:11-24"
+R u getting this? 
+
++CMGL: 5,"REC READ","+17203459175","","17/10/20,13:32:31-24"
+are you going to the game 
+
++CMGL: 6,"REC READ","+17203459175","","17/10/20,19:38:54-24"
+are you here 
+
++CMGL: 7,"REC READ","+17202568815","","17/10/21,09:06:55-24"
+Hey
+
++CMGL: 8,"REC READ","+17203459175","","18/02/11,20:36:07-28"
+what game
+
++CMGL: 9,"REC READ","+17202379217","","17/11/03,16:09:32-20"
+Hey Jake is on my team tonight and it's starts at 5 at the ice ranch 

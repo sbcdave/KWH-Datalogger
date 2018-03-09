@@ -1,0 +1,5 @@
+#!/bin/sh
+var=`cat read.txt`
+for i in $var; do
+    echo $i
+    done

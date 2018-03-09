@@ -55,3 +55,6 @@ Figure out server only keeping 1 day
 
 Create email notification of data stopping, with another notification of it
 restarting, and when restarting send X bytes based on data stopped window
+
+boot TIME test set the time to 2027 for some reason, still some bugs
+

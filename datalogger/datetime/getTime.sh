@@ -68,8 +68,6 @@ main() {
 
     log="/KWH/datalogger/datetime/datetime.log"
 
-    sleep 40 &&
-
     echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
     echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
     echo AT+CGATT=0 | nc localhost $SIM_PORT >> $log

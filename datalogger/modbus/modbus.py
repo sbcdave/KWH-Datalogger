@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import minimalmodbus as m
 
 inst = m.Instrument('/dev/spidev0.0', 1)
