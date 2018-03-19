@@ -1,6 +1,4 @@
 capture: 0
 datetime: 0
-/KWH/datalogger/transceive/tcp/transmit.sh: line 16: /KWH/datalogger/temp/temp.sh: No such file or directory
-temp: 127
+temp: 0
 tstring: 0
-tcpSend: 0

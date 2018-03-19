@@ -1,6 +1,0 @@
-import serial
-ser = serial.Serial('/dev/ttyAMA0', 115200, timeout=1)
-print (ser)
-
-#ser.write(':010310010001EA\r\n')
-#print repr(ser.read(1000))

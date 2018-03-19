@@ -58,3 +58,6 @@ restarting, and when restarting send X bytes based on data stopped window
 
 boot TIME test set the time to 2027 for some reason, still some bugs
 
+make program to build and interpret modbus commands
+
+make sure pulse code is working for all 8 channels

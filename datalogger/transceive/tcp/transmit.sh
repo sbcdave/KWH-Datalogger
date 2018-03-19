@@ -13,7 +13,7 @@ echo "capture: $?" > /KWH/datalogger/transceive/tcp/transmit.log
 echo "datetime: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 
 # Temp sensors
-/KWH/datalogger/temp/temp.sh
+/KWH/datalogger/temperature/temp.sh
 echo "temp: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 
 #/KWH/datalogger/modbus/modbus....

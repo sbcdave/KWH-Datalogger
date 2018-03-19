@@ -74,3 +74,7 @@ with open('/KWH/datalogger/conf/TEMP2') as conf:
 	TEMP2=conf.read()
 with open('/KWH/datalogger/conf/TEMP3') as conf:
 	TEMP3=conf.read()
+with open('/KWH/datalogger/conf/ADMPW') as conf:
+	ADMPW=conf.read()
+with open('/KWH/datalogger/conf/INQPW') as conf:
+	INQPW=conf.read()
