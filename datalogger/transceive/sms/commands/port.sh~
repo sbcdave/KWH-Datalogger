@@ -1,4 +1,0 @@
-#!/bin/bash
-
-/KWH/datalogger/conf/setConfig.sh PORT $1
-

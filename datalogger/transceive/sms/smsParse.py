@@ -14,6 +14,46 @@ readLog = "/KWH/datalogger/transceive/sms/read.log"
 printOn = 0
 useful = []
 
+
+def singleConfigChange(option, commandFile):
+    if DEBUG: print("Set "+option)
+    if printOn: print("Group Check!!! ")
+    if printOn: print(match.group(1))
+    if printOn: print(match.group(2))
+
+    #If password is good call the command file
+    if printOn: print(ADMPW)
+    if match.group(1) == ADMPW:
+        if DEBUG: print("Password match")
+        if DEBUG: print("Setting "+option+" to: "+match.group(2))
+        p = subprocess.Popen([commandFile, str(match.group(2))])
+        # wait until complete to start delete process
+        p.communicate()
+        if p.returncode == 0:
+            if DEBUG: print(option+" set success")
+            if DEBUG: print("Deleting sms #"+messNum[i])
+            p = subprocess.Popen([delPath, messNum[i]])
+            p.communicate()
+            if p.returncode == 0:
+                if DEBUG: print("Delete success")
+            else:
+                if DEBUG: print("Delete failed")
+            if DEBUG: print("Executing: "+sendPath+" "+phoneNums[i]+" "+option+" set to: "+match.group(2))
+            p = subprocess.Popen([sendPath, phoneNums[i], str(option+" set to: "+match.group(2))])
+            p.communicate()
+    else:
+        if DEBUG: print("Wrong password")
+        if DEBUG: print("Deleting sms #"+messNum[i])
+        p = subprocess.Popen([delPath, messNum[i]])
+        p.communicate()
+        if p.returncode == 0:
+            if DEBUG: print("Delete success")
+        else:
+            if DEBUG: print("Delete failed")
+        #On password fail we intentionally do not respond
+        #because it would help an attacker crack the password
+
+
 # Read sms from sim memory into read.log
 p = subprocess.Popen(readPath)
 # Wait for smsRead to complete
@@ -60,7 +100,7 @@ for item in parsing:
     messageNumbers.append(item[1])
     phoneNumbers.append(item[2])
 
-# removing "s and ,s from phone numbers
+# remove quotes and commas from phone numbers
 for i, item in enumerate(phoneNumbers):
     phoneNumbers[i] = item.replace("\"", "")
     phoneNumbers[i] = item.replace(",", "")    
@@ -69,11 +109,9 @@ for i, item in enumerate(phoneNumbers):
 # if you need to access a certain element
 # you can access by element number
 
-mn = ""
 messNum = []
 for item in messageNumbers:
     for char in item:
-        #if printOn: print(char)
         if char == "'":
             #do nothing
             #Skip this one
@@ -106,7 +144,6 @@ if printOn: print("\n")
 #if the message contents are not useful, then delete the message...
 #TEST -- delete message number 2...
 
-
 # Run through the elements in the messages list
 #and determine whether the message is valid
 #if it is, move to the next item
@@ -116,23 +153,22 @@ if printOn: print("\n")
 reset = re.compile(\
 r"\w*\s*(\d{4})#RESET#\s*\w*")
 #group 1 
-baseStation = re.compile(\
+stationId = re.compile(\
 r"\w*\s*(\d{4})#BST:(\d{5})#\s*\w*")
 #group 1 and 2
 setInquiryPass = re.compile(\
 r"\w*\s*(\d{4})#BPS:(\d{4}),(\d{4})#\s*\w*")
 #group 1, 2 and 3
 setServerDNS = re.compile(\
-r"\w*\s*(\d{4})#GDN:(\d{13})!#\s*\w*")
-#group 1 and 2
-setServerIP = re.compile(\
-r"\w*\s*(\d{4})#GIA:(\d{3}.\d{3}.\d{3}.\d{3})!#\s*\w*")
+r"\w*\s*(\d{4})#GDN:([A-z\.]*)\!#\s*\w*")
+#changed \d{13} to \w* and escaped the ! that followed
 #group 1 and 2
 setServerPort = re.compile(\
 r"\w*\s*(\d{4})#GIP:(\d{1,5})#\s*\w*")
 #group 1 and 2
 setupAPN = re.compile(\
-r"\w*\s*(\d{4})#GAN:(\d{6})!#\s*\w*")
+r"\w*\s*(\d{4})#GAN:(\w*)\!#\s*\w*")
+#changed \d{6} to \w* and escaped the ! that followed
 #group 1 and 2
 inquiryGSM = re.compile(\
 r"\w*\s*(\d{4})#E1#\s*\w*")
@@ -156,12 +192,15 @@ inquiryEE = re.compile(\
 r"\w*\s*(\d{4})#EE#\s*\w*")
 #group 1
 
-commandList = [reset, baseStation, setInquiryPass, setServerDNS, setServerIP, setServerPort, setupAPN, inquiryGSM,\
+commandList = [reset, stationId, setInquiryPass, setServerDNS, setServerPort, setupAPN, inquiryGSM,\
  setDigitalInputParams, setPulseCounter, analogIn, tempAnalogIn, inquiryE2, inquiryEE] 
 
 #File paths for processing
 portPath = "/KWH/datalogger/transceive/sms/commands/port.sh"
-
+staPath = "/KWH/datalogger/transceive/sms/commands/sta.sh"
+inqPath = "/KWH/datalogger/transceive/sms/commands/inq.sh"
+domainPath = "/KWH/datalogger/transceive/sms/commands/domain.sh"
+apnPath = "/KWH/datalogger/transceive/sms/commands/apn.sh"
 
 i = 0
 for index, item in enumerate(messages):
@@ -172,9 +211,6 @@ for index, item in enumerate(messages):
         #if printOn: print(command.search(fullMessage))
         match = command.search(fullMessage) 
         if match:
-
-
-
             #Keep it and break to check the next
             if printOn: print("Got a match!")
             #Process then delete
@@ -182,59 +218,16 @@ for index, item in enumerate(messages):
             #Execute the appropriate processing file
             if command == reset:
                 if DEBUG: print("reset")
-            elif command == baseStation:
-                if DEBUG: print("base station")
-               # if match.group(1) == PASSWORD --- Check that the administration password matches
-               
-            elif command == setInquiryPass:
-                if DEBUG: print("set inquiry password")
+            elif command == stationId:
+		singleConfigChange("Station ID", staPath)
+	    elif command == setInquiryPass:
+		singleConfigChange("Inquiry Password", inqPath)
             elif command == setServerDNS:
-                if DEBUG: print("set server DNS")
-            elif command == setServerIP:
-                if DEBUG: print("set server IP")
+		singleConfigChange("Server Domain", domainPath)
             elif command == setServerPort:
-                if DEBUG: print("set server port")
-                if printOn: print("Group Check!!! ")
-                if printOn: print(match.group(1))
-                if printOn: print(match.group(2))
-                #if printOn: print(subStr)
-
-                #If password is good call the port.sh file
-		if printOn: print(ADMPW)
-		if match.group(1) == ADMPW:
-		    if DEBUG: print("Password match")
-		    if DEBUG: print("Setting port to: "+match.group(2))
-	            p = subprocess.Popen([portPath, str(match.group(2))])
-		    # wait until to complete to start delete process
-                    p.communicate()
-		    if p.returncode == 0:
-			if DEBUG: print("Port set success")
-			if DEBUG: print("Deleting sms #"+messNum[i])
-			p = subprocess.Popen([delPath, messNum[i]])
-		        p.communicate()
-			if p.returncode == 0:
-			    if DEBUG: print("Delete success")
-			else: 
-			    if DEBUG: print("Delete failed")
-			if DEBUG: print("executing: "+sendPath+" "+phoneNums[i]+" Port set to: "+match.group(2))
-			p = subprocess.Popen([sendPath, phoneNums[i], "Port set to: "+match.group(2)])
-			p.communicate()
-		
-		else:
-		    if DEBUG: print("Wrong password")
-	            if DEBUG: print("Deleting sms #"+messNum[i])
-		    p = subprocess.Popen([delPath, messNum[i]])
-		    p.communicate()
-		    if p.returncode == 0:
-		        if DEBUG: print("Delete success")
-		    else: 
-		        if DEBUG: print("Delete failed")
-		    #On password fail we intentionally do not respond
-		    #because it would help an attacker crack the password
-		    
-                
+		singleConfigChange("Server Port", portPath)                
             elif command == setupAPN:
-                if DEBUG: print("setup APN")
+		singleConfigChange("APN", apnPath)
             elif command == inquiryGSM:
                 if DEBUG: print("inquiry GSM")
             elif command == setDigitalInputParams:
