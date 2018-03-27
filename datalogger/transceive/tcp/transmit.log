@@ -1,2 +1,5 @@
 capture: 0
 datetime: 0
+temp: 0
+tstring: 0
+tcpSend: 0
