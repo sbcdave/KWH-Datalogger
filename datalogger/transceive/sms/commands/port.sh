@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/KWH/datalogger/conf/setConf.sh PORT $1
+/KWH/datalogger/config/setConf.sh PORT $1

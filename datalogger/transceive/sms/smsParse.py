@@ -3,7 +3,7 @@ import re
 import subprocess
 
 # Load environment variables
-execfile("/KWH/datalogger/conf/pyvars.py")
+execfile("/KWH/datalogger/config/pyvars.py")
 DEBUG = int(DEBUG)
 
 # Setup local variables

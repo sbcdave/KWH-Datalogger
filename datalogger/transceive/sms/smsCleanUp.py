@@ -4,7 +4,7 @@ import subprocess
 import string
 import sys
 # Load environment variables
-execfile("/KWH/datalogger/conf/pyvars.py")
+execfile("/KWH/datalogger/config/pyvars.py")
 DEBUG = int(DEBUG)
 
 #Clean up all the messags after having processed them

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/KWH/datalogger/conf/setConf.sh APN $1
+/KWH/datalogger/config/setConf.sh APN $1

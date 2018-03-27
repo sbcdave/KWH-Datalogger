@@ -5,8 +5,8 @@ from sys import exit
 from requests import get
 from re import match
 
-# load datalogger environment variables from conf
-execfile("/datalogger/conf/pyvars.py")
+# load datalogger environment variables from config
+execfile("/datalogger/config/pyvars.py")
 
 def signal_handler(signal, frame):
         print('...closing PU01')
@@ -15,7 +15,7 @@ def signal_handler(signal, frame):
         exit(0)
 signal.signal(signal.SIGINT, signal_handler)
 
-# NEED to build conf logic for pulse channels and get this working again
+# NEED to build config logic for pulse channels and get this working again
 try:
 	r=get("http://"+DOMAIN+":8080/render/?target="+STA+".PU01.Total_Energy&from=-2min&format=raw")
 	mObj = match( r'.*60\|(.*).0,(.*)',r.text,flags=0)

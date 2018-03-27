@@ -7,8 +7,8 @@ from sys import argv
 from requests import get
 from re import search
 
-# load datalogger environment variables from conf
-execfile("/datalogger/conf/pyvars.py")
+# load datalogger environment variables from config
+execfile("/datalogger/config/pyvars.py")
 
 channel = str(argv[1])
 global count

@@ -1,8 +1,8 @@
 #!/usr/bin/python2.7
 
-# load datalogger environment variables from conf
+# load datalogger environment variables from config
 DPATH = "/KWH/datalogger"
-execfile(DPATH + "/conf/pyvars.py")
+execfile(DPATH + "/config/pyvars.py")
 
 # setup string(str) in KP format
 str = "#STA:" + STA + ";TM:"
@@ -35,7 +35,7 @@ if AD08 == "1":
     with open(DPATH + '/adc/AD08', 'a+') as AD08:
 	str = str + ";AD08:" + AD08.read()
 # need to add the rest of the temp sensors here and configure them
-# in the conf
+# in the config
 
 if AD11 == "1":
     with open(DPATH + '/temperature/' + TEMP1, 'a+') as AD11:

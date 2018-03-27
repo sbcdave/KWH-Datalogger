@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import datetime
-execfile("/KWH/datalogger/conf/pyvars.py")
+execfile("/KWH/datalogger/config/pyvars.py")
 
 dtm = datetime.datetime.today()
 dstr=str(dtm)

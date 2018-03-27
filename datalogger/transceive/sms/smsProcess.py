@@ -5,7 +5,7 @@ import subprocess
 import string
 import sys
 
-processFile = "/KWH/datalogger/conf/setConf.sh"
+processFile = "/KWH/datalogger/config/setConf.sh"
 
 #example update
 keyword = PORT

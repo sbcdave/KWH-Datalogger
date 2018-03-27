@@ -7,7 +7,7 @@ readonly LOCK_FD=200
 lock() {
     local prefix=$1
     local fd=${2:-$LOCK_FD}
-    local lock_file=/KWH/datalogger/conf/SIM_LOCK
+    local lock_file=/KWH/datalogger/config/SIM_LOCK
 
     # create lock file
     eval "exec $fd>$lock_file"
@@ -61,7 +61,7 @@ main() {
 
     lock $PROGNAME || eexit "SIM Busy!"
 
-    . /KWH/datalogger/conf/datalogger.conf
+    . /KWH/datalogger/config/datalogger.conf
 
     log="/KWH/datalogger/transceive/tcp/tcpSend.log"
 

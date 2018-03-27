@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import bitbang
 
-# load datalogger environment variables from conf
+# load datalogger environment variables from config
 DPATH = "/KWH/datalogger"
-execfile(DPATH + "/conf/pyvars.py")
+execfile(DPATH + "/config/pyvars.py")
 
 ################################################################################
 # 1. The RPi GPIO pins for the ADC are hard coded into bitbang.py
@@ -37,11 +37,11 @@ bias = 0.000
 # instantiating needed arrays
 value = []
 channel = []
-conf = [PU01, PU02, PU03, PU04, PU05, PU06, PU07, PU08]
+config = [PU01, PU02, PU03, PU04, PU05, PU06, PU07, PU08]
 
 # collecting samples in 2-d array: value x channel
 for j in range(8):
-    if conf[j] == '1':
+    if config[j] == '1':
 	for i in range(samples):
 		# using this because unable to append 1st element
 		if i == 0:
@@ -57,7 +57,7 @@ for j in range(8):
 # computing responses and storing in values[]
 values = [0]*8
 for i in range(8):
-    if conf[i] == '1':
+    if config[i] == '1':
 	values[i] = (channel[i][len(channel[i])/2-2] + \
 		    channel[i][len(channel[i])/2-1] + \
 		    channel[i][len(channel[i])/2] + \

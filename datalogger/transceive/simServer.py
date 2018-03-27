@@ -6,7 +6,7 @@ import serial
 import subprocess
 
 # Load environment variables
-execfile("/KWH/datalogger/conf/pyvars.py")
+execfile("/KWH/datalogger/config/pyvars.py")
 DEBUG = int(DEBUG)
 
 # Global variables
@@ -51,14 +51,14 @@ while not port_chosen:
 	port = port + 1
 
 # Update the env variables with the chosen active SIM_PORT
-with open("/KWH/datalogger/conf/SIM_PORT", "w") as SIM_PORT:
+with open("/KWH/datalogger/config/SIM_PORT", "w") as SIM_PORT:
     SIM_PORT.write(str(port))
 
 if DEBUG > 0: log("SIM_PORT: "+str(port)+"\n")
 
 reset()
 # Configure block
-execfile("/KWH/datalogger/conf/pyvars.py")
+execfile("/KWH/datalogger/config/pyvars.py")
 DEBUG = int(DEBUG)
 if DEBUG > 1: log("Configuration variables reloaded\n")    
 subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
@@ -79,7 +79,7 @@ while True:
     cs,addr = s.accept()
 
     # Configure block
-    execfile("/KWH/datalogger/conf/pyvars.py")
+    execfile("/KWH/datalogger/config/pyvars.py")
     DEBUG = int(DEBUG)
     if DEBUG > 1: log("Configuration variables reloaded\n")    
     subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
@@ -121,7 +121,7 @@ while True:
             if DEBUG > 0: log(str(fromSIM)+" bytes from SIM. Resetting SIM!\n")
             # No luck! Reset
             reset()
-	    execfile("/KWH/datalogger/conf/pyvars.py")
+	    execfile("/KWH/datalogger/config/pyvars.py")
 	    DEBUG = int(DEBUG)
 	    if DEBUG > 1: log("Configuration variables reloaded\n")    
 	    subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")
@@ -165,7 +165,7 @@ while True:
     except:
         log("EXCEPTION: Write Failed")
         reset()
-	execfile("/KWH/datalogger/conf/pyvars.py")
+	execfile("/KWH/datalogger/config/pyvars.py")
         DEBUG = int(DEBUG)
 	if DEBUG > 1: log("Configuration variables reloaded\n")    
         subprocess.Popen("/KWH/datalogger/transceive/ttyAMA0_setup.sh")

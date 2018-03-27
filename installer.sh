@@ -18,14 +18,14 @@ sudo chown -R pi:pi KWH
 #investigate shutting down uneccesary services
 
 # Create symlink from /etc/defaults to datalogger.conf file
-sudo ln -n /KWH/datalogger/conf/datalogger.conf /etc/defaults/datalogger.conf
+sudo ln -n /KWH/datalogger/config/datalogger.conf /etc/defaults/datalogger.conf
 # Add datalogger.conf file to /etc/profile and to root and pi's .bashrc
-sudo printf "\n. /KWH/datalogger/conf/datalogger.conf\n" >> /etc/profile
-sudo printf "\n. /KWH/datalogger/conf/datalogger.conf\n" >> /root/.bashrc
-printf "\n. /KWH/datalogger/conf/datalogger.conf\n" >> /home/pi/.bashrc
+sudo printf "\n. /KWH/datalogger/config/datalogger.conf\n" >> /etc/profile
+sudo printf "\n. /KWH/datalogger/config/datalogger.conf\n" >> /root/.bashrc
+printf "\n. /KWH/datalogger/config/datalogger.conf\n" >> /home/pi/.bashrc
 
 # Source the datalogger.conf file into environment variables
-source /KWH/datalogger/conf/datalogger.conf
+source /KWH/datalogger/config/datalogger.conf
 
 # Activate 1 minute transmission via cron
 sudo mv /KWH/datalogger/moves/dcrond /etc/cron.d/.

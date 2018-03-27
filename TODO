@@ -17,9 +17,9 @@ start testing temp sensors
 investigate parsing smsRead and building inital SMS configurability
 
 Add log cycling service to prevent filling the SD card, but still allow
-simple logging via DEBUG conf - make log retention configurable
+simple logging via DEBUG config - make log retention configurable
 
-figure out conf reload for all code that starts at boot and won't know
+figure out config reload for all code that starts at boot and won't know
 about updated ENV variables from SMS commands
 
 setup SMS request for DEBUG and each log file so we can query logs remotely
