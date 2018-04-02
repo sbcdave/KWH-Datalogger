@@ -213,7 +213,6 @@ tempAnalogInPath = "/KWH/datalogger/transceive/sms/commands/tempAnalogIn.sh"
 inqE2Path = "/KWH/datalogger/transceive/sms/commands/inqE2.sh"
 inqEEPath = "/KWH/datalogger/transceive/sms/commands/inqEE.sh" 
 
-
 i = 0
 for index, item in enumerate(messages):
     fullMessage = ' '.join(item)

@@ -115,4 +115,13 @@ fi
 
 
 # set env variables
-. /KWH/datalogger/conf/datalogger.conf
+. /KWH/datalogger/config/datalogger.conf
+
+# setup
+sudo modprobe w1-gpio
+
+# setup temp sensors
+sudo modprobe w1-therm
+
+# shutdown wifi to save power
+#sudo ifconfig wlan0 down

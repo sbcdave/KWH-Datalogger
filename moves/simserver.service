@@ -1,0 +1,15 @@
+[Unit]
+Description=simServer.py service
+After=sysinit.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/KWH
+ExecStart=/KWH/datalogger/transceive/simServer.py
+ExecStart=sudo rm /etc/cron.d/dcrond
+ExecStart=sudo /KWH/datalogger/lib/pigpiod
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
