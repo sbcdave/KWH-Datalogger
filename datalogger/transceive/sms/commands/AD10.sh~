@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/KWH/datalogger/config/setConfig.sh AD10 $1

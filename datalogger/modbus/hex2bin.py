@@ -17,9 +17,11 @@ def convert():
 
 #NOTEs: 
 #
-# Carrie had written this shell to take in arguments and use them like I had asked for, 
-# so I appended your code to the bottom and modified it slightly to make them work togethor
-# the usage is now: > ./conversion.py <start> <stop> <parity> <hex_data>
+# Carrie had written this shell of code to take in arguments and use them like I had asked, 
+# so I appended your code to the bottom and modified it slightly to make take advantage
+# of the argument input
+#
+# in a linux environment, the usage is: > ./conversion.py <start> <stop> <parity> <hex_data>
 # e.g. > ./conversion.py 0 0 0 0101
 #
 # Start bit and stop bit can only be 0 or 1, but
@@ -35,6 +37,26 @@ def convert():
 # is even the parity bit is 0.
 # Google this to confirm I don't have them backwards
 # 
+# In hex, a byte is two hex characters: e.g. 01 = 0000 0001, FF = 1111 1111
+# So each hex character is equivalent to 4 bits that range from 0-15 i.e. 0-F
+# The code currently treats each hex character as 8 bits. From the looks of it you
+# will need consume a second character in the for loop to decide on the 8 bits
+# that should be flipped, per byte.
+#
+# Also note that in modbus language a "character" is the byte + the extra bits
+# e.g. the byte 01 in modbus language is represented by the modbus character
+# x10000000ps where x is the start bit, 10000000 is the reversed byte, p is
+# the parity bit, and s is the stop bit.
+# The importance of this character is that if the parity bit is off, the character
+# length is 10 bits, otherwise, it is 11 bits.
+# I see that you chose 28 0's for the begin and end, I'm assuming you got that
+# from the 3.5 character lengths, but were assuming a character was 8 bits.
+# Note that it says at least 3.5 character lengths, and that we may want a
+# variable called character length, that is calculated by the input arguments
+# (i.e. 10 or 11) and then the number of 0's is calculated as 3.5 times the
+# charactler length, rounding up.
+#
+# Good work!
 
     print(startBit, stopBit, parityBit, data)
     print(bin(int(data,16)))
