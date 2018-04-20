@@ -52,12 +52,11 @@ PU06Path = "/KWH/datalogger/transceive/sms/commands/PU06.sh"
 PU07Path = "/KWH/datalogger/transceive/sms/commands/PU07.sh"
 PU08Path = "/KWH/datalogger/transceive/sms/commands/PU08.sh"
 
-
 def domainInputCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
 
-    if answer == "yes" or answer == "Yes":
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
         newValue = raw_input(" Enter a new name in the format: www.xxxx.____ fill in the xs. ")
         while not newValue.isalnum():
             newValue = raw_input(" Enter a valid string with letters and/or numbers ")
@@ -75,30 +74,44 @@ def domainInputCheck(answer):
         p = subprocess.Popen([domPath, newDom])
 
 def ApassCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
-    if answer == "yes" or answer == "Yes":
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
         newValue = raw_input(" Enter a new value. must be an integer between 0 and 9999. ")
-        while int(newValue) < 0 or int(newValue) >9999:
+        
+        while not newValue.isdigit():
             newValue = raw_input(" Enter a valid integer between 0 and 9999 ")
-        ###Run the subrpocess to change the password variable 
+
+            #Drop out of loop once you have an integer 
+        while  int(newValue) < 0 or int(newValue) >9999:
+            newValue = raw_input(" Enter a valid integer between 0 and 9999 ")
+        ###Run the subrpocess to change the password variable once all checks are passed 
         p = subprocess.Popen([ApassPath, newValue])
 
 def IpassCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
-    if answer == "yes" or answer == "Yes":
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
         newValue = raw_input(" Enter a new value. must be an integer between 0 and 9999. ")
+        
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer between 0 and 9999 ")
+            
         while int(newValue) < 0 or int(newValue) >9999:
             newValue = raw_input(" Enter a valid integer between 0 and 9999 ")
         ###Run the subrpocess to change the password variable 
         p = subprocess.Popen([IpassPath, newValue])
         
 def channelInputCheck(answer, index):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
-    if answer == "yes" or answer == "Yes":
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
         newValue = raw_input(" Enter a new value. Choices are 0 or 1 ")
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer: 0 or 1. ")
         while int(newValue) != 0 and int(newValue) != 1:
             newValue = raw_input(" Enter a valid answer: 0 or 1. ")
         ###Run the subrpocess to change the variable
@@ -142,10 +155,13 @@ def channelInputCheck(answer, index):
             p = subprocess.Popen([AD18Path, newValue])
 
 def PchannelInputCheck(answer, index):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
-    if answer == "yes" or answer == "Yes":
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
         newValue = raw_input(" Enter a new value. Choices are 0 or 1 ")
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer: 0 or 1. ")
         while int(newValue) != 0 and int(newValue) != 1:
             newValue = raw_input(" Enter a valid answer: 0 or 1. ")
         ###Run the subrpocess to change the variable
@@ -170,64 +186,70 @@ def PchannelInputCheck(answer, index):
 
             
 def portCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
-    if answer == "yes" or answer == "Yes":
-        newValue = raw_input(" Enter a new value. Integer between 1 and 99999 ")
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
+        newValue = raw_input(" Enter a new value. Integer between 0 and 99999 ")
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer between 0 and 9999 ")
         while int(newValue) <= 0 or int(newValue) > 99999:
-            newValue = raw_input(" Enter a valid answer: 1 through 99999. ")
+            newValue = raw_input(" Enter a valid answer: 0 through 99999. ")
         ###Run the subrpocess to change the variable 
     p = subprocess.Popen([portPath, newValue])
         
 def apnCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
-    if answer == "yes" or answer == "Yes":
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
         newValue = raw_input(" Enter a new APN:  ")
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer between 1 and 99999.  ")
         while int(newValue) < 1 or int(newValue) > 99999:
             newValue = raw_input(" Enter a valid answer: 1 through 99999. ")
         ###Run the subrpocess to change the variable 
         p = subprocess.Popen([apnPath, newValue])
 
 def txCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
-        answer = raw_input("Enter a valid answer: yes or no. ")        
-    if answer == "yes" or answer == "Yes":
-        newValue = raw_input(" Enter a new APN:  ")
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
+        answer = raw_input("Enter a valid answer: yes or no. ")
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
+        newValue = raw_input(" Enter a new Transmit Interval: 1 through 99999.   ")
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer between 0 and 99999 ")
         while int(newValue) < 0 or int(newValue) > 99999:
             newValue = raw_input(" Enter a valid answer: 1 through 99999. ")
         ###Run the subrpocess to change the variable
         p = subprocess.Popen([txPath, newValue])
 
 def debugCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
         answer = raw_input("Enter a valid answer: yes or no. ")
-    if answer == "yes" or answer == "Yes":
-        newValue = raw_input(" Enter a new value. 0 = OFF, 1 = ON  ")
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
+        newValue = raw_input(" Enter a new DEBUG value. 0 = OFF, 1 = ON  ")
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer: 0 or 1. ")
         while int(newValue) != 0 and int(newValue) != 1:
-            newValue = raw_input(" Enter a valid answer: 1 through 99999. ")
+            newValue = raw_input(" Enter a valid answer: 0 or 1. ")
         ###Run the subrpocess to change the variable 
         p = subprocess.Popen([debugPath, newValue])
 
 def staCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
-        answer = raw_input("Enter a valid answer: yes or no. ")        
-    if answer == "yes" or answer == "Yes":
-        newValue = raw_input(" Enter a new APN:  ")
+    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No" and answer != "n" and answer != "N" and answer != "y" and answer != "Y" and answer !=" ":
+        answer = raw_input("Enter a valid answer: yes or no. ")
+
+    if answer == "yes" or answer == "Yes" or answer == " " or answer == "y" or answer == "Y":
+        newValue = raw_input(" Enter a new Station Number:  ")
+        while not newValue.isdigit():
+            newValue = raw_input(" Enter a valid integer between 0 and 9999. ")
         while int(newValue) < 0 or int(newValue) > 99999:
             newValue = raw_input(" Enter a valid answer: 1 through 99999. ")
         ###Run the subrpocess to change the variable
         p = subprocess.Popen([staPath, newValue])
 
-def tempCheck(answer):
-    while answer != "yes" and answer != "no" and answer != "Yes" and answer != "No":
-        answer = raw_input("Enter a valid answer: yes or no. ")        
-    if answer == "yes" or answer == "Yes":
-        newValue = raw_input(" Enter a new APN:  ")
-        while float(newValue) < 0.0 or float(newValue) > 99999.0:
-            newValue = raw_input(" Enter a valid answer: 0.0 through 99999.0. ")
-        ###Run the subrpocess to change the variable 
-        
 
 print(" Reconfiguring Administration Password: Valid integers 0 - 9999.")
 answer = raw_input(" Administration password set to 1111, do you wish to change this value? ")
@@ -274,11 +296,5 @@ print(" Reconfiguring debug station number (STA): ")
 answer = raw_input(" STA set to: 99999, do you wish to change this value? ")
 staCheck(answer)
 
-#Open the temperature sensors folder and grab the number of temperature sensors
-t = 5 #Dummy variable for number of temperature sensors
 
-print(" Reconfiguring temperature sensors (TEMPX): ")
-for index in range(t):
-    answer = raw_input("TEMP" + str(index) + " set to ____, do you wish to change this value? ")
-    tempCheck(answer)
 

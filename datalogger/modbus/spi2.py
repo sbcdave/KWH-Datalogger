@@ -2,15 +2,17 @@
 import wiringpi
 import thread
 import time 
+import sys
 
 def send( ):
     SPIchannel = 0 #SPI Channel (CE0)
     SPIspeed = 2400 #Clock Speed in Hz
     wiringpi.wiringPiSetupGpio()
     wiringpi.wiringPiSPISetup(SPIchannel, SPIspeed)
-    sendData = chr(0)+chr(64)+chr(16)+chr(4)+chr(1)+chr(64)+chr(68)\
-    +chr(16)+chr(4)+chr(1)+chr(0)+chr(72)+chr(20)+chr(116)+chr(123)\
-    +chr(0)+chr(64)+chr(16)+chr(4)+chr(1) 
+    sendData = sys.argv[1]
+#    sendData = chr(0)+chr(64)+chr(16)+chr(4)+chr(1)+chr(64)+chr(68)\
+#    +chr(16)+chr(4)+chr(1)+chr(0)+chr(72)+chr(20)+chr(116)+chr(123)\
+#    +chr(0)+chr(64)+chr(16)+chr(4)+chr(1) 
     recvData = wiringpi.wiringPiSPIDataRW(SPIchannel, sendData)
     print recvData
 

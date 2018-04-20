@@ -97,5 +97,5 @@ def convert():
     length = len(output)
     return output
     
-print convert()
+return convert()
 

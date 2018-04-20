@@ -1,3 +1,4 @@
-('Message Numbers: ', [])
-('Phone Numbers: ', [])
-('Messages', [['SHUT', 'OK'], ['AT+CMGF=1'], ['OK'], ['AT+CMGL="ALL"']])
+Traceback (most recent call last):
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 210, in <module>
+    subprocess.Popen([delPath, messNum[i]])
+IndexError: list index out of range
