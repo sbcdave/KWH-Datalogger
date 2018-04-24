@@ -47,9 +47,13 @@ if AD12 == "1":
 
 
 # digital channels
+#Using PU01 temporarily to send signal until we adjust the server side tcpipapp code
 if PU01 == "1":
-    with open(DPATH + '/pulse/PU01', 'a+') as PU01:
+    with open(DPATH + '/signal/signal', 'a+') as PU01:
 	str = str + ";PU01:" + PU01.read() 
+#if PU01 == "1":
+#    with open(DPATH + '/pulse/PU01', 'a+') as PU01:
+#	str = str + ";PU01:" + PU01.read() 
 if PU02 == "1":
     with open(DPATH + '/pulse/PU02', 'a+') as PU02:
 	str = str + ";PU02:" + PU02.read() 

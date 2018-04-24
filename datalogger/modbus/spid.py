@@ -9,7 +9,7 @@ spi = spidev.SpiDev()
 spi.open(0, 0)
 spi.max_speed_hz = 2400
 #spi.mode = 0b00
-spi.loop = True
+#spi.loop = True
 
 #config R/W toggle pin
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_PINS)
