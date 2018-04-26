@@ -202181,3 +202181,436 @@ Sim response: AT+CIFSR
 
 Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
 
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: #STA:99002;TM:04/26/2018,05:40:02;C:86;V:0000;AD01:0.000000;AD02:0.738462;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:23.000;AD12:23.062;PU01:10
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+
+Bytes to read: 184
+Sim response: #STA:99002;TM:04/26/2018,05:40:02;C:86;V:0000;AD01:0.000000;AD02:0.738462;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:23.000;AD12:23.062;PU01:10
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 39
+Sim response: 
+SEND OK
+@888
+AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 26
+Sim response: AT+CSQ
++CSQ: 10,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 27
+Sim response: AT+CIFSR
+100.148.206.125
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: #STA:99002;TM:04/26/2018,05:41:01;C:86;V:0000;AD01:0.000000;AD02:0.738462;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:23.000;AD12:23.062;PU01:10
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+
+Bytes to read: 184
+Sim response: #STA:99002;TM:04/26/2018,05:41:01;C:86;V:0000;AD01:0.000000;AD02:0.738462;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:23.000;AD12:23.062;PU01:10
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 39
+Sim response: 
+SEND OK
+@888
+AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 10
+Sim response: AT+CIPSHUT
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 26
+Sim response: 
+SHUT OK
+AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 615
+Sim response: AT+CMGL="ALL"
++CMGL: 1,"REC READ","+14252681938","","18/04/25,23:05:16-24"
+1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
+
++CMGL: 2,"REC UNREAD","+14252681938","","18/04/25,23:34:44-24"
+1111#ADN05:0,0.000,0.000,0.000,0.000,0.000,0000,000000#
+
++CMGL: 3,"REC READ","+14252681938","","18/04/26,01:20:49-16"
+1111#test
+
++CMGL: 4,"REC READ","+14252681938","","18/04/25,23:20:51-24"
+1111#ADN05:0,0.000,0.000,0.000,0.000,0.000,0000,000000#
+
++CMGL: 5,"REC READ","+14252681938","","18/04/25,23:12:51-24"
+Garbage message
+
++CMGL: 6,"REC READ","+14252681938","","18/04/25,23:12:54-24"
+1111#GIP:11002#
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 183
+Sim response: 
++CMGL: 7,"REC READ","+14252681938","","18/04/25,23:20:55-24"
+Garbage message
+
++CMGL: 8,"REC READ","+14252681938","","18/04/25,23:20:58-24"
+1111#GIP:11002#
+
+OK
+AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=2
+
+Bytes to read: 15
+Sim response: AT+CMGD=2
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGS="+14252681938"
+Analog Channel 04 set to: 1
+
+Bytes to read: 53
+Sim response: AT+CMGS="+14252681938"Analog Channel 04 set to: 1
+> 
+Wrote to sim: AT+CMGF=1
+
+0 bytes from SIM. Resetting SIM!
+Sleeping 5 for SIM reboot and reconfigure!
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=3
+
+Bytes to read: 18
+Sim response: AT+CMGD=3
+ERROR
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 36
+Sim response: 
+Call Ready
+AT+CMGL="ALL"
+ERROR
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 28
+Sim response: AT+CMGF=1
+OK
+
+SMS Ready
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMGS="4252681938"""
+Analog Channel 05 set to: 0
+
+Bytes to read: 58
+Sim response: AT+CMGS="4252681938"""Analog Channel 05 set to: 0
+ERROR
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 6
+Sim response: 
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 25
+Sim response: AT+CIFSR
+25.33.255.140
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: #STA:99002;TM:04/26/2018,05:42:02;C:86;V:0000;AD01:0.000000;AD02:0.742308;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:22.937;AD12:23.062;PU01:9,
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+
+Bytes to read: 184
+Sim response: #STA:99002;TM:04/26/2018,05:42:02;C:86;V:0000;AD01:0.000000;AD02:0.742308;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:22.937;AD12:23.062;PU01:9,
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 39
+Sim response: 
+SEND OK
+@888
+AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 10
+Sim response: AT+CIPSHUT
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 11
+Sim response: 
+SHUT OK
+
+Wrote to sim: AT+CMGD=4
+
+Bytes to read: 15
+Sim response: AT+CMGD=4
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGS="4252681938"""
+Analog Channel 05 set to: 0
+
+Bytes to read: 84
+Sim response: AT+CMGS="4252681938"""Analog Channel 05 set to: 0
++CMS ERROR: invalid input value
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 6
+Sim response: 
+OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 22
+Sim response: AT+CIFSR
+26.51.0.68
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: #STA:99002;TM:04/26/2018,05:43:01;C:86;V:0000;AD01:0.000000;AD02:0.738462;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:22.937;AD12:23.062;PU01:9,
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+
+Bytes to read: 184
+Sim response: #STA:99002;TM:04/26/2018,05:43:01;C:86;V:0000;AD01:0.000000;AD02:0.738462;AD03:0.000000;AD04:0.000000;AD06:0.000000;AD11:22.937;AD12:23.062;PU01:9,
+;PU02:0;PU03:0;DI:333000;DO:0000;#
+

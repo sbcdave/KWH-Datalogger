@@ -244,6 +244,6 @@ for index, item in enumerate(messages):
 
 if DEBUG: print(messNum)
 for message in messNum:
-    p = subprocess.Popen([delPath, int(messNum[message])])
+    p = subprocess.Popen([delPath, messNum[int(message)]])
     if DEBUG: print("Deleting non matching message: "+message)
     

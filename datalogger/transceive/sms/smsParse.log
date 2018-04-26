@@ -1,4 +1,59 @@
-  File "/KWH/datalogger/transceive/sms/smsParse.py", line 247
-    p = subprocess.Popen([delPath, int(messNum[message]]))
-                                                       ^
-SyntaxError: invalid syntax
+The first pass: 
+[['AT+CMGF=1'], ['OK'], ['Call', 'Ready'], ['AT+CMGL="ALL"'], ['ERROR']]
+The 'Parsing' list holds: 
+('Message Numbers: ', [])
+('Phone Numbers: ', [])
+('Messages', [['AT+CMGF=1'], ['OK'], ['Call', 'Ready'], ['AT+CMGL="ALL"']])
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: AT+CMGF=1
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: OK
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: Call Ready
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+fullMessage: AT+CMGL="ALL"
+[]
