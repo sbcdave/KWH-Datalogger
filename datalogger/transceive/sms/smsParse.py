@@ -71,7 +71,7 @@ catchAll = re.compile(\
 r".*")
 
 commandList = [reset, stationId, setInquiryPass, setServerDNS, setServerPort, setupAPN, inquiryGSM,\
- setDigitalInputParams, setPulseCounter, analogIn, tempAnalogIn, inquiryE2, inquiryEE] 
+ setDigitalInputParams, setPulseCounter, analogIn, tempAnalogIn, inquiryE2, inquiryEE, invalid, catchAll] 
 
 def singleConfigChange(option, commandFile):
     if DEBUG: print("Set "+option)    
@@ -170,6 +170,7 @@ if DEBUG: print("Messages", messages)
 #and determine whether the message is valid
 i = 0
 for index, item in enumerate(messages):
+    if DEBUG: print str(index)+" "+str(item)
     fullMessage = ' '.join(item)
     for command in commandList:
         match = command.search(fullMessage) 
@@ -221,11 +222,13 @@ for index, item in enumerate(messages):
 		    p.communicate()	    
 		if i < len(messNum):
                     p = subprocess.Popen([delPath, messNum[i]])
+		    p.communicate()
+                    if DEBUG: print("Deleting non matching message")
+                i = i + 1
+	    elif command == catchAll:
+	        if i < len(messNum):
+                    p = subprocess.Popen([delPath, messNum[i]])
+                    p.communicate()
                     if DEBUG: print("Deleting non matching message")
                 i = i + 1
 
-if DEBUG: print(messNum)
-for message in messNum:
-    p = subprocess.Popen([delPath, messNum[int(message)]])
-    if DEBUG: print("Deleting non matching message: "+message)
-    
