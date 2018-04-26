@@ -8,51 +8,54 @@
 # the hex representation of the data
 import sys 
 startBit, stopBit, parityBit, data = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-
-if int(parityBit) == 4:
-    #buffer = 35
-    buffer = 0
-else:
-    #buffer = 39
-    buffer = 0    
+def convert():
+    if int(parityBit) == 4:
+        #buffer = 35
+        parityBit = 0   #means there is no parity bit
+        buffer = 0
+    else:
+        #buffer = 39
+        parityBit = 1 #means there is a parity bit
+        buffer = 0    
     
-#start_bit = 1 #1 indicate there is a start bit stop_bit = 1 #1 
-#indicates there is a stop bit parity_bit = 0 #0 indicates there is 
-#no parity bit
-def trim(myinput, num): #this function removes the intial buffer
-    myinput = myinput[num::]
-    myinput = myinput[::-1]
-    myinput = myinput[num + int(parityBit)::]
-    myinput = myinput[::-1]
-    return myinput
+    #start_bit = 1 #1 indicate there is a start bit stop_bit = 1 #1 
+    #indicates there is a stop bit parity_bit = 0 #0 indicates there is 
+    #no parity bit
+    def trim(myinput, num): #this function removes the start, stop, and parity
+        myinput = myinput[num::]
+        myinput = myinput[::-1]
+        myinput = myinput[num + int(parityBit)::]
+        myinput = myinput[::-1]
+        return myinput
 
-def parse(myinput, begin, end): #this function removes the startBit, stopBit, and parityBit
-    myinput = myinput[begin:end]
-    myinput = trim(myinput, start_bit)
-    return myinput
+    def parse(myinput, num): #this function removes the inital buffer
+        myinput = myinput[num::]
+        myinput = myinput[::-1]
+        myinput = myinput[num::]
+        myinput = myinput[::-1]
+        return myinput
 
-def split(myinput): #this function converts the binary data to hex
-    hexstr = ""
-    inputA = str(hex(int(myinput[0:4],2)))[2::]
-    inputB = str(hex(int(myinput[4:8],2)))[2::]
-    #print(inputA, inputB)
-    hexstr = inputA + inputB
-    return hexstr
+    def split(myinput): #this function converts the binary data to hex
+        hexstr = ""
+        inputA = str(hex(int(myinput[0:4][::-1],2))[2::])
+        inputB = str(hex(int(myinput[4:8][::-1],2))[2::])
+        hexstr = inputA + inputB
+        return hexstr
 
-def bin2dec2hex(myinput): #converts bin to hex
-    hexstr = ""
-    #print(myinput)
-    modmsg = trim(myinput, buffer)
-    #print(modmsg)
-    length = len(modmsg)
-    #print (length)
-    for i in range (1, length+1):
-        if (i % 10 == 0):
-            part = parse(modmsg, i-10, i)
-            #print (part)
+    def bin2dec2hex(myinput): #converts bin to hex
+        bits = 10 + int(parityBit)
+        hexstr = ""
+        modmsg = parse(myinput, buffer)
+        length = len(modmsg)
+        leng = (length+1)/bits
+        for i in range (1, leng):
+            part = trim(modmsg[i+bits:(i+1)*bits], int(startBit))
             hexstr = hexstr + split(part)
-    print(hexstr)
-    return hexstr
+        #print(hexstr)
+        return hexstr
 
-print(startBit, stopBit, parityBit, data)
-bin2dec2hex(data)
+    #print(startBit, stopBit, parityBit, data)
+    output = bin2dec2hex(data)
+    length = len(output)
+    return output
+print convert()
