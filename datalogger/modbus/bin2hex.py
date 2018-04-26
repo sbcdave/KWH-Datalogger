@@ -6,9 +6,14 @@
 # happens Removes the beginning and ending buffer from the 
 # data(BIN) Parses through the data(BIN) Converts to hex returns 
 # the hex representation of the data
-import sys 
-startBit, stopBit, parityBit, data = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+
 def convert():
+    import sys 
+    startBit = sys.argv[1]
+    stopBit = sys.argv[2]
+    parityBit = sys.argv[3]
+    data = sys.argv[4]
+
     if int(parityBit) == 4:
         #buffer = 35
         parityBit = 0   #means there is no parity bit
@@ -58,4 +63,5 @@ def convert():
     output = bin2dec2hex(data)
     length = len(output)
     return output
+
 print convert()

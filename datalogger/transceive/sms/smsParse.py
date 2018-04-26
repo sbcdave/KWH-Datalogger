@@ -41,51 +41,34 @@ phoneNums = []
 
 reset = re.compile(\
 r"\w*\s*(\d{4})#RESET#\s*\w*")
-#group 1 
 stationId = re.compile(\
-r"\w*\s*(\d{4})#BST:(\d{5})#\s*\w*")
-#group 1 and 2
+r"\w*\s*(\d{4})#BST:(\d{5})()#\s*\w*")
 setInquiryPass = re.compile(\
 r"\w*\s*(\d{4})#BPS:(\d{4}),(\d{4})#\s*\w*")
-#group 1, 2 and 3
 setServerDNS = re.compile(\
-r"\w*\s*(\d{4})#GDN:([A-z\.]*)\!#\s*\w*")
-#changed \d{13} to \w* and escaped the ! that followed
-#group 1 and 2
+r"\w*\s*(\d{4})#GDN:([A-z\.]*)()\!#\s*\w*")
 setServerPort = re.compile(\
-r"\w*\s*(\d{4})#GIP:(\d{1,5})#\s*\w*")
-#group 1 and 2
+r"\w*\s*(\d{4})#GIP:(\d{1,5})()#\s*\w*")
 setupAPN = re.compile(\
-r"\w*\s*(\d{4})#GAN:(\w*)\!#\s*\w*")
-#changed \d{6} to \w* and escaped the ! that followed
-#group 1 and 2
+r"\w*\s*(\d{4})#GAN:(\w*)()\!#\s*\w*")
 inquiryGSM = re.compile(\
 r"\w*\s*(\d{4})#E1#\s*\w*")
-#group 1
 setDigitalInputParams = re.compile(\
 r"\w*\s*(\d{4})#DIN([1-8]):([0-4]),([0-1]{4}),([0-3]{6})#\s*\w*")
-#group 1, 2, 3, 4 and 5
 setPulseCounter = re.compile(\
 r"\w*\s*(\d{4})#DIP([1-8]):(\d{8})#\s*\w*")
-#group 1, 2 and 3
 analogIn = re.compile(\
 r"\w*\s*(\d{4})#ADN(\d*):([0-2]),(\d.\d{3}),(\d.\d{3}),(\d.\d{3}),(\d.\d{3}),(\d.\d{3}),([0,1]{4}),([0-3]{6})#\s*\w*")
-#groups 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 tempAnalogIn = re.compile(\
 r"\w*\s*(\d{4})#ADN(1[1,2]):([0-2]),(\d.\d{3}),(\d.\d{3}),([0-1]{4}),([0-3]{6})#\s*\w*")
-#groups 1, 2, 3, 4, 5, 6, 7
 inquiryE2 = re.compile(\
 r"\w*\s*(\d{4})#E2#\s*\w*")
-#group 1
 inquiryEE = re.compile(\
 r"\w*\s*(\d{4})#EE#\s*\w*")
-#group 1
 invalid = re.compile(\
 r"\w*\s*(\d{4})#\s*\w*")
-#group 1
 catchAll = re.compile(\
 r".*")
-#group 1
 
 commandList = [reset, stationId, setInquiryPass, setServerDNS, setServerPort, setupAPN, inquiryGSM,\
  setDigitalInputParams, setPulseCounter, analogIn, tempAnalogIn, inquiryE2, inquiryEE] 
