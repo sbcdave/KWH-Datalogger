@@ -172,58 +172,57 @@ i = 0
 for index, item in enumerate(messages):
     fullMessage = ' '.join(item)
     for command in commandList:
-        if DEBUG: print("fullMessage: "+fullMessage)
         match = command.search(fullMessage) 
         if match:
             #Execute the appropriate processing file
             if command == reset:
-                i = i + 1
                 if DEBUG: print("reset")
+                i = i + 1
             elif command == stationId:
-                i = i + 1
 		singleConfigChange("Station ID", staPath)
+                i = i + 1
 	    elif command == setInquiryPass:
-                i = i + 1
 		singleConfigChange("Inquiry Password", inqPath)
+                i = i + 1
             elif command == setServerDNS:
-                i = i + 1
 		singleConfigChange("Server Domain", domainPath)
+                i = i + 1
             elif command == setServerPort:
-                i = i + 1
 		singleConfigChange("Server Port", portPath)                
+                i = i + 1
             elif command == setupAPN:
-                i = i + 1
 		singleConfigChange("APN", apnPath)
+                i = i + 1
             elif command == inquiryGSM:
-                i = i + 1
                 if DEBUG: print("inquiry GSM")
+                i = i + 1
             elif command == setDigitalInputParams:
-                i = i + 1
                 if DEBUG: print("set digital input params")
+                i = i + 1
             elif command == setPulseCounter:
-                i = i + 1
                 if DEBUG: print("set pulse counter")
-            elif command == analogIn:
                 i = i + 1
+            elif command == analogIn:
 		singleConfigChange("Analog Channel", analogInPath)
                 if DEBUG: print("analog in")
+                i = i + 1
             elif command == tempAnalogIn:
-                i = i + 1
                 if DEBUG: print("temperature analog in")
+                i = i + 1
             elif command == inquiryE2:
-                i = i + 1
                 if DEBUG: print("inquiry E2")
-            elif command == inquiryEE:
                 i = i + 1
+            elif command == inquiryEE:
                 if DEBUG: print("inquiry EE")
-#            elif command == invalid:
-#                i = i + 1
-#	        if match.group(1) == ADMPW:
-#                    p = subprocess.Popen([sendPath, phoneNums[i], "Command not valid"])
-#		    p.communicate()	    
-#		if i < len(messNum):
-#                    p = subprocess.Popen([delPath, messNum[i]])
-#                    if DEBUG: print("Deleting non matching message")
+                i = i + 1
+            elif command == invalid:
+	        if match.group(1) == ADMPW:
+                    p = subprocess.Popen([sendPath, phoneNums[i], "Command not valid"])
+		    p.communicate()	    
+		if i < len(messNum):
+                    p = subprocess.Popen([delPath, messNum[i]])
+                    if DEBUG: print("Deleting non matching message")
+                i = i + 1
 
 if DEBUG: print(messNum)
 for message in messNum:

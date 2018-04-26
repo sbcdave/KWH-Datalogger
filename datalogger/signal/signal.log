@@ -1,4 +1,6 @@
+
+SHUT OK
 AT+CSQ
-+CSQ: 10,0
++CSQ: 12,0
 
 OK

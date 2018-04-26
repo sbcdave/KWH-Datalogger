@@ -1,65 +1,16 @@
 The first pass: 
-[['AT+CMGF=1'], ['OK'], ['AT+CMGL="ALL"'], ['+CMGL:', '1,"REC', 'READ","+14252681938","","18/04/25,23:05:16-24"'], ['1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#'], ['OK']]
+[['SHUT', 'OK'], ['AT+CMGF=1'], ['OK'], ['AT+CMGL="ALL"'], ['+CMGL:', '1,"REC', 'READ","+14252681938","","18/04/26,00:31:45-24"'], ['1111#ADN02:1,0.000,0.000,0.000,0.000,0.000,0000,000000#'], ['OK']]
 The 'Parsing' list holds: 
 ('Message Numbers: ', ['1'])
 ('Phone Numbers: ', ['4252681938""'])
-('Messages', [['AT+CMGF=1'], ['OK'], ['AT+CMGL="ALL"'], ['1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#']])
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: AT+CMGF=1
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: OK
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: AT+CMGL="ALL"
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
-fullMessage: 1111#ADN04:1,0.000,0.000,0.000,0.000,0.000,0000,000000#
+('Messages', [['SHUT', 'OK'], ['AT+CMGF=1'], ['OK'], ['AT+CMGL="ALL"'], ['1111#ADN02:1,0.000,0.000,0.000,0.000,0.000,0000,000000#']])
 Set Analog Channel
 Password match
-Setting Analog Channel to: 04
+Setting Analog Channel to: 02
 Analog Channel set success
 1
 Traceback (most recent call last):
-  File "/KWH/datalogger/transceive/sms/smsParse.py", line 208, in <module>
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 207, in <module>
     singleConfigChange("Analog Channel", analogInPath)
   File "/KWH/datalogger/transceive/sms/smsParse.py", line 100, in singleConfigChange
     if DEBUG: print("Executing: "+sendPath+" "+phoneNums[i]+" "+option+" set to: "+match.group(2))
