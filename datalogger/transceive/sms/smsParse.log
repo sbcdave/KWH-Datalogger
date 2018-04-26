@@ -1,4 +1,4 @@
-Traceback (most recent call last):
-  File "/KWH/datalogger/transceive/sms/smsParse.py", line 210, in <module>
-    subprocess.Popen([delPath, messNum[i]])
-IndexError: list index out of range
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 247
+    p = subprocess.Popen([delPath, int(messNum[message]]))
+                                                       ^
+SyntaxError: invalid syntax

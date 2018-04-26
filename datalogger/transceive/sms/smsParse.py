@@ -63,22 +63,28 @@ inquiryGSM = re.compile(\
 r"\w*\s*(\d{4})#E1#\s*\w*")
 #group 1
 setDigitalInputParams = re.compile(\
-r"\w*\s*(\d{4})#(DIN[1-6]):([0-4]),([0-1]{4}),([0-3]{6})#\s*\w*")
+r"\w*\s*(\d{4})#DIN([1-8]):([0-4]),([0-1]{4}),([0-3]{6})#\s*\w*")
 #group 1, 2, 3, 4 and 5
 setPulseCounter = re.compile(\
-r"\w*\s*(\d{4})#(DIP[1-6]):(\d{8})#\s*\w*")
+r"\w*\s*(\d{4})#DIP([1-8]):(\d{8})#\s*\w*")
 #group 1, 2 and 3
 analogIn = re.compile(\
-r"\w*\s*(\d{4})#(ADN[0-1])(\d:[0-2]),(\d.\d{3}),(\d.\d\{3}),(\d.\d{3}),(\d.\d{3}),(\d.\d{3}),([0,1]{4}),([0-3]{6})#\s*\w*")
+r"\w*\s*(\d{4})#ADN(\d*):([0-2]),(\d.\d{3}),(\d.\d{3}),(\d.\d{3}),(\d.\d{3}),(\d.\d{3}),([0,1]{4}),([0-3]{6})#\s*\w*")
 #groups 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 tempAnalogIn = re.compile(\
-r"\w*\s*(\d{4})#(ADN1[1,2]):([0-2]),(\d.\d{3}),(\d.\d{3}),([0-1]{4}),([0-3]{6})#\s*\w*")
+r"\w*\s*(\d{4})#ADN(1[1,2]):([0-2]),(\d.\d{3}),(\d.\d{3}),([0-1]{4}),([0-3]{6})#\s*\w*")
 #groups 1, 2, 3, 4, 5, 6, 7
 inquiryE2 = re.compile(\
 r"\w*\s*(\d{4})#E2#\s*\w*")
 #group 1
 inquiryEE = re.compile(\
 r"\w*\s*(\d{4})#EE#\s*\w*")
+#group 1
+invalid = re.compile(\
+r"\w*\s*(\d{4})#\s*\w*")
+#group 1
+catchAll = re.compile(\
+r".*")
 #group 1
 
 commandList = [reset, stationId, setInquiryPass, setServerDNS, setServerPort, setupAPN, inquiryGSM,\
@@ -90,11 +96,33 @@ def singleConfigChange(option, commandFile):
     if match.group(1) == ADMPW:
         if DEBUG: print("Password match")
         if DEBUG: print("Setting "+option+" to: "+match.group(2))
-        p = subprocess.Popen([commandFile, str(match.group(2))])
+	if match.group(3):
+	        p = subprocess.Popen([commandFile, str(match.group(2))+" "+str(match.group(3))])
+	else:
+        	p = subprocess.Popen([commandFile, str(match.group(2))])
         # wait until complete to start delete process
         p.communicate()
         if p.returncode == 0:
             if DEBUG: print(option+" set success")
+#adding this if because messNum[i] keeps going out of bounds for some reason...will fix later
+	    if DEBUG: print i
+	    if i < len(messNum):
+                if DEBUG: print("Deleting sms #"+messNum[i])
+                p = subprocess.Popen([delPath, messNum[i]])
+                p.communicate()
+                if p.returncode == 0:
+                    if DEBUG: print("Delete success")
+                else:
+                    if DEBUG: print("Delete failed")
+            if DEBUG: print("Executing: "+sendPath+" "+phoneNums[i]+" "+option+" set to: "+match.group(2))
+	    if match.group(3):
+                p = subprocess.Popen([sendPath, phoneNums[i], str(option)+" "+str(match.group(2))+" set to: "+str(match.group(3))])
+	    else:
+                p = subprocess.Popen([sendPath, phoneNums[i], str(option)+" set to: "+str(match.group(2))])
+            p.communicate()
+    else:
+        if DEBUG: print("Wrong password")
+	if i < len(messNum):
             if DEBUG: print("Deleting sms #"+messNum[i])
             p = subprocess.Popen([delPath, messNum[i]])
             p.communicate()
@@ -102,18 +130,6 @@ def singleConfigChange(option, commandFile):
                 if DEBUG: print("Delete success")
             else:
                 if DEBUG: print("Delete failed")
-            if DEBUG: print("Executing: "+sendPath+" "+phoneNums[i]+" "+option+" set to: "+match.group(2))
-            p = subprocess.Popen([sendPath, phoneNums[i], str(option+" set to: "+match.group(2))])
-            p.communicate()
-    else:
-        if DEBUG: print("Wrong password")
-        if DEBUG: print("Deleting sms #"+messNum[i])
-        p = subprocess.Popen([delPath, messNum[i]])
-        p.communicate()
-        if p.returncode == 0:
-            if DEBUG: print("Delete success")
-        else:
-            if DEBUG: print("Delete failed")
 
 # Read sms from sim memory into read.log
 p = subprocess.Popen(readPath)
@@ -124,7 +140,7 @@ fileName = open(readLog, "r")
 #Read in line by line
 for line in fileName:
     lineIn = line.split()
-    count  = 0 
+    count = 0 
     for element in lineIn:
         count = count + 1
     if count != 0:
@@ -173,41 +189,61 @@ i = 0
 for index, item in enumerate(messages):
     fullMessage = ' '.join(item)
     for command in commandList:
+        if DEBUG: print("fullMessage: "+fullMessage)
         match = command.search(fullMessage) 
         if match:
             #Execute the appropriate processing file
             if command == reset:
+                i = i + 1
                 if DEBUG: print("reset")
             elif command == stationId:
+                i = i + 1
 		singleConfigChange("Station ID", staPath)
 	    elif command == setInquiryPass:
+                i = i + 1
 		singleConfigChange("Inquiry Password", inqPath)
             elif command == setServerDNS:
+                i = i + 1
 		singleConfigChange("Server Domain", domainPath)
             elif command == setServerPort:
+                i = i + 1
 		singleConfigChange("Server Port", portPath)                
             elif command == setupAPN:
+                i = i + 1
 		singleConfigChange("APN", apnPath)
             elif command == inquiryGSM:
+                i = i + 1
                 if DEBUG: print("inquiry GSM")
             elif command == setDigitalInputParams:
+                i = i + 1
                 if DEBUG: print("set digital input params")
             elif command == setPulseCounter:
+                i = i + 1
                 if DEBUG: print("set pulse counter")
             elif command == analogIn:
+                i = i + 1
+		singleConfigChange("Analog Channel", analogInPath)
                 if DEBUG: print("analog in")
             elif command == tempAnalogIn:
+                i = i + 1
                 if DEBUG: print("temperature analog in")
             elif command == inquiryE2:
+                i = i + 1
                 if DEBUG: print("inquiry E2")
             elif command == inquiryEE:
+                i = i + 1
                 if DEBUG: print("inquiry EE")
-	    i = i + 1
+#            elif command == invalid:
+#                i = i + 1
+#	        if match.group(1) == ADMPW:
+#                    p = subprocess.Popen([sendPath, phoneNums[i], "Command not valid"])
+#		    p.communicate()	    
+#		if i < len(messNum):
+#                    p = subprocess.Popen([delPath, messNum[i]])
+#                    if DEBUG: print("Deleting non matching message")
 
-        else:
-            #Delete it
-            #if !DEBUG: #save odd messages in debug mode
-	    subprocess.Popen([delPath, messNum[i]])
-            if DEBUG: print("Deleting non matching message")
-            
-
+if DEBUG: print(messNum)
+for message in messNum:
+    p = subprocess.Popen([delPath, int(messNum[message])])
+    if DEBUG: print("Deleting non matching message: "+message)
+    
