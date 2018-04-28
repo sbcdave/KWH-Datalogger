@@ -15,13 +15,13 @@ def convert():
     data = sys.argv[4]
 
     if int(parityBit) == 4:
-        #buffer = 35
+        buffer = 35
         parityBit = 0   #means there is no parity bit
-        buffer = 0
+        #buffer = 0
     else:
-        #buffer = 39
+        buffer = 39
         parityBit = 1 #means there is a parity bit
-        buffer = 0    
+        #buffer = 0    
     
     #start_bit = 1 #1 indicate there is a start bit stop_bit = 1 #1 
     #indicates there is a stop bit parity_bit = 0 #0 indicates there is 
@@ -53,8 +53,8 @@ def convert():
         modmsg = parse(myinput, buffer)
         length = len(modmsg)
         leng = (length+1)/bits
-        for i in range (1, leng):
-            part = trim(modmsg[i+bits:(i+1)*bits], int(startBit))
+        for i in range (0, leng):
+            part = trim(modmsg[i*bits:(i+1)*bits], int(startBit))
             hexstr = hexstr + split(part)
         #print(hexstr)
         return hexstr
