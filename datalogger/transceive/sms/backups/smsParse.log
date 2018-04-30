@@ -1,0 +1,4 @@
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 43
+    num = re.compile(\r"[0-9]{10}")
+                                  ^
+SyntaxError: unexpected character after line continuation character

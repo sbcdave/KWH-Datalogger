@@ -1,9 +1,4 @@
-The first pass: 
-[['AT+CMGF=1'], ['OK'], ['AT+CMGL="ALL"'], ['OK']]
-The 'Parsing' list holds: 
-('Message Numbers: ', [])
-('Phone Numbers: ', [])
-('Messages', [['AT+CMGF=1'], ['OK'], ['AT+CMGL="ALL"']])
-0 ['AT+CMGF=1']
-1 ['OK']
-2 ['AT+CMGL="ALL"']
+Traceback (most recent call last):
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 37, in <module>
+    temp.close()
+NameError: name 'temp' is not defined
