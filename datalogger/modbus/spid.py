@@ -4,6 +4,15 @@ import spidev
 import time 
 import sys
 
+# you can execute this in bash with ./spid.py
+# you can execute other things and feed their output as an argument into another program like this
+# ./program1 $(./program2)
+# for our example here's one option:
+# ./spid.py $(./hex2bin.py 1 0 0 01040000000271BC)
+# 01040000000271BC is the request for voltage from modbus with address 1
+# we can try switching this up, and or decoding the output that comes back
+# another potentially useful execution
+# ./bin2hex.py 1 0 0 $(./spid.py $(./hex2bin.py 1 0 0 01040000000271BC))
 #config spi
 spi = spidev.SpiDev()
 spi.open(0, 0)
