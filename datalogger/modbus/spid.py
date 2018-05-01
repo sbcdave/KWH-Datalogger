@@ -26,11 +26,11 @@ sendData = int(sys.argv[1])
 spi.writebytes([sendData])
 
 #receive
+time.sleep(.001)
 io.digitalWrite(TxEnable,io.LOW)
 
-recvData = spi.readbytes(170)
+recvData = spi.readbytes(300)
 #recvData = [0]*166
 #spi.xfer(recvData)
 
-print recvData
-print sendData
+print ''.join('{:02b}'.format(x) for x in recvData)

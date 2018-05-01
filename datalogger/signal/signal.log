@@ -1,14 +1,6 @@
 
 SHUT OK
-
-+CMTI: "SM",1
-
-+CMTI: "SM",2
-
-+CMTI: "SM",3
-
-+CMTI: "SM",4
 AT+CSQ
-+CSQ: 11,0
++CSQ: 14,0
 
 OK

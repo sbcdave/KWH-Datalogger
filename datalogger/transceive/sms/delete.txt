@@ -1,6 +1,4 @@
-
-Call Ready
 AT+CMGF=1
 OK
-AT+CMGD=8
-OK
+AT+CMGD=1
+ERROR
