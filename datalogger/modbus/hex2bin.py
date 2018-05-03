@@ -21,15 +21,15 @@ def convert():
 #    print(bin(int(data,16)))
 
     if int(parityBit) == 4:
-#        begin = "" #28 0 bits
-        begin = "00000000000000000000000000000000000" #35 0 bits
-#        end = "" # 28 0 bits
-        end = "00000000000000000000000000000000000" # 35 0 bits
+        begin = "" #28 0 bits
+#        begin = "00000000000000000000000000000000000" #35 0 bits
+        end = "" # 28 0 bits
+#        end = "00000000000000000000000000000000000" # 35 0 bits
     else:
-#        begin = "" #28 0 bits
-        begin = "000000000000000000000000000000000000000" #39 0 bits
-#        end = "" # 28 0 bits
-        end = "000000000000000000000000000000000000000" # 39 0 bits	
+        begin = "" #28 0 bits
+#        begin = "000000000000000000000000000000000000000" #39 0 bits
+        end = "" # 28 0 bits
+#        end = "000000000000000000000000000000000000000" # 39 0 bits	
     
     def binary(n):
         return '{0:04b}'.format(n) #converts int to bin
