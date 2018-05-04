@@ -37,7 +37,7 @@ bias = 0.000
 # instantiating needed arrays
 value = []
 channel = []
-config = [PU01, PU02, PU03, PU04, PU05, PU06, PU07, PU08]
+config = [AD01, AD02, AD03, AD04, AD05, AD06, AD07, AD08]
 
 # collecting samples in 2-d array: value x channel
 for j in range(8):
