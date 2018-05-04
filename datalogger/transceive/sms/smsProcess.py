@@ -72,7 +72,7 @@ def process(options, commandFile, msg):
     #If password is good call the command file
     if match.group(1) == ADMPW:
         if DEBUG: print("Password match")
-	if match.group(3):
+	if match.group(3) <> '':
                 if DEBUG: print("Setting "+options[0]+" "+match.group(2)+" to: "+match.group(3))
 	        p = subprocess.Popen([commandFile, str(match.group(2))+" "+str(match.group(3))])
 	else:
@@ -90,7 +90,7 @@ def process(options, commandFile, msg):
             else:
                 if DEBUG: print("Delete failed")
             if DEBUG: print("Executing: "+sendPath+" "+msg[1]+" "+options[0]+" set to: "+match.group(2))
-	    if match.group(3):
+	    if match.group(3) <> '':
                 p = subprocess.Popen([sendPath, msg[1], str(options[0])+" "+str(match.group(2))+" set to: "+str(match.group(3))])
 	    else:
                 p = subprocess.Popen([sendPath, msg[1], str(options[0])+" set to: "+str(match.group(2))])
@@ -141,7 +141,7 @@ for msg in msgList:
             elif command == setDigitalInputParams:
                 if DEBUG: print(["set digital input params"])
             elif command == setPulseCounter:
-                process(["Pulse Channel"], pulseCountPath, msg)
+                process(["Pulse Channel"], setPulsePath, msg)
             elif command == analogIn:
 		process(["Analog Channel"], analogInPath, msg)
                 if DEBUG: print(["analog in"])

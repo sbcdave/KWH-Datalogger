@@ -1,4 +1,5 @@
-Traceback (most recent call last):
-  File "/KWH/datalogger/transceive/sms/smsParse.py", line 37, in <module>
-    temp.close()
-NameError: name 'temp' is not defined
+/KWH/datalogger/transceive/sms/commands/setPulsePath.sh: line 4: ${path}: ambiguous redirect
+AT+CMGF=1
+OK
+AT+CMGS="+14252681938"Command not valid
+> 
