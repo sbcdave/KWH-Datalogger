@@ -4,25 +4,28 @@ import sys
 import time
 import pigpio
 
+#
+execfile("/KWH/datalogger/config/pyvars.py")
+
 RX = 9
 TX = 10
 TXRX = 27
 
-MSGLEN = 256
+#MSGLEN = 256
 baud = 2048
-bits = 8
+#bits = 8
 char_time = 10 / float(baud)
 
 # Request for voltage
 # 01  04  00  00  00  02  71  BC
 
-MASK=(1<<bits)-1
-msg = [0] * (MSGLEN)
-for i in range(len(msg)):
-	if i < 10:
-		msg[i] = 0 & MASK
-	else:
-		msg[i] = 170 & MASK
+#MASK=(1<<bits)-1
+#msg = [0] * (MSGLEN)
+#for i in range(len(msg)):
+#	if i < 10:
+#		msg[i] = 0 & MASK
+#	else:
+#		msg[i] = 170 & MASK
 #msg[0] = 1 & MASK
 #msg[1] = 4 & MASK
 #msg[2] = 0 & MASK
@@ -46,9 +49,19 @@ pi.wave_clear()
 # Build wave to send
 #total = pi.wave_add_serial(TX, baud, msg, bb_bits=8, offset=(3.5*char_time), bb_stop=2)
 #pi.wave_add_new(TX, baud, msg, bb_bits=8, bb_stop=2)
-pi.wave_add_new()
-total = pi.wave_add_generic(pigpio.pulse(1<<TX, 1<<TX, 1000000/2048))
-print str(total)+" bits in message...Sending"
+#pi.wave_add_new()
+
+bits = sys.argv[1]
+
+for bit in bits:
+	if bit == "1":
+		if DEBUG: print "1"
+		pi.wave_add_generic(pigpio.pulse(1<<TX, 1<<TX, 500000))
+	else: # using RX to create 0 value pulses on the wave that hits our TX pin
+		if DEBUG: print "0"
+		pi.wave_add_generic(pigpio.pulse(1<<RX, 1<<RX, 500000))		
+
+#print str(total)+" bits in message...Sending"
 #pi.wave_add_serial(TX, baud, msg)
 wid = pi.wave_create()
 
