@@ -1,34 +1,17 @@
 analyze server response and time stamp in a file
 to look for missing time stamps
 
-add csq to simServer and record that and limited bytes of other necessary
-info to analyze whether the lost packet was due to reception or an issue
-with timing communication to the sim
-
 Finish pulse code to launch configured channels on boot - might axe pulse
 code (or at least reduce channels) when modbus is working
 
 Consider schmit trigger, opto-isolators, or other safety hardware
 
-start testing modbus
-
-start testing temp sensors
-
-investigate parsing smsRead and building inital SMS configurability
-
 Add log cycling service to prevent filling the SD card, but still allow
 simple logging via DEBUG config - make log retention configurable
 
-figure out config reload for all code that starts at boot and won't know
-about updated ENV variables from SMS commands
-
 setup SMS request for DEBUG and each log file so we can query logs remotely
 
-*setup simServer to test SIM coms and reset when necessary
-
 Set up transmit to transmit data about used/available memory for graphing
-
-Set up transmit to transmit data about reception strength for graphing
 
 Set up transmit to send data about bytes transmitted, so we can track our
 data usage and associate it to cost.
@@ -43,11 +26,9 @@ graphite/influxdb instance
 
 investigate other_code.txt
 
-Ensure that time setting code is solid
-
 test installer.sh
 
-create logdel alias
+create logdel alias - and sms command to do it remotely.
 
 Figure out server data delay
 
@@ -61,3 +42,7 @@ boot TIME test set the time to 2027 for some reason, still some bugs
 make program to build and interpret modbus commands
 
 make sure pulse code is working for all 8 channels
+
+Fix "command invalid" sms bug
+
+have temp sensors get autosensed and created, bound to a TEMPx config

@@ -17,7 +17,7 @@ sendPath = "/KWH/datalogger/transceive/sms/smsSend.sh"
 resetPath = "/KWH/datalogger/transceive/sms/commands/reset.sh"
 inqGSMPath = "/KWH/datalogger/transceive/sms/commands/inquiryGSM.sh"
 setDigInPath = "/KWH/datalogger/transceive/sms/commands/setDigitalIn.sh"
-setPulsePath = "/KWH/datalogger/transceive/sms/commands/setPulsePath.sh"
+setPulsePath = "/KWH/datalogger/transceive/sms/commands/setPulsePath.py"
 portPath = "/KWH/datalogger/transceive/sms/commands/port.sh"
 staPath = "/KWH/datalogger/transceive/sms/commands/sta.sh"
 setInqPassPath = "/KWH/datalogger/transceive/sms/commands/inq.sh"
@@ -74,7 +74,7 @@ def process(options, commandFile, msg):
         if DEBUG: print("Password match")
 	if match.group(3) <> '':
                 if DEBUG: print("Setting "+options[0]+" "+match.group(2)+" to: "+match.group(3))
-	        p = subprocess.Popen([commandFile, str(match.group(2))+" "+str(match.group(3))])
+	        p = subprocess.Popen([commandFile, str(match.group(2)), str(match.group(3))])
 	else:
                 if DEBUG: print("Setting "+options[0]+" to: "+match.group(2))
         	p = subprocess.Popen([commandFile, str(match.group(2))])
@@ -120,9 +120,11 @@ for msg in messages:
     f.close()
 
 for msg in msgList:
+    found = False
     for command in commandList:
         match = command.search(msg[2]) 
-        if match:
+        if match and not found:
+	    found = True
         #Execute the appropriate processing file
             if command == reset:
                 if DEBUG: print("reset")
