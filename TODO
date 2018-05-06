@@ -46,3 +46,5 @@ make sure pulse code is working for all 8 channels
 Fix "command invalid" sms bug
 
 have temp sensors get autosensed and created, bound to a TEMPx config
+
+add a limit on pulses per second to avoid noise and limit pulses from plugging in a test voltage

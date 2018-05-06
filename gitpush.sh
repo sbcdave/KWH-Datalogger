@@ -3,7 +3,13 @@
 #To push code up
 cd /KWH
 git init
-echo $(expr $(cat /KWH/datalogger/config/VERSION) + 1) > /KWH/datalogger/config/VERSION
+wait
+echo $(expr $(cat /KWH/datalogger/config/gitV2) + 1) > /KWH/datalogger/config/gitV2
+wait
+version="v$(cat /KWH/datalogger/config/gitV1).$(cat /KWH/datalogger/config/gitV2)"
+wait
 git add .
-git commit -m "v$(cat /KWH/datalogger/config/VERSION)" &&
+wait
+git commit -m $version
+wait
 git push -v origin master

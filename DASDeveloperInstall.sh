@@ -19,25 +19,23 @@ echo "Deleting tar.gz"
 rm /KWH/go1.10.2.linux-armv6l.tar.gz
 wait
 echo ""
-echo "Downloading hub into /KWH/datalogger/libs ..."
-cd /KWH/datalogger/libs
+echo "Downloading hub into /usr/local ..."
+cd /usr/local
 wait
-git clone https://github.com/github/hub.git
+sudo git clone https://github.com/github/hub.git
 wait
 echo ""
 echo "Installing hub..."
-/KWH/datalogger/libs/hub/script/build
+cd /usr/local/hub
+./script/build
 wait
 echo ""
 echo "Moving hub binary to a location that is in \$PATH"
-sudo cp /KWH/datalogger/libs/hub/bin/hub /usr/sbin/hub
+sudo cp /usr/local/hub/bin/hub /usr/sbin/hub
+wait
 echo ""
 echo "Aliasing hub as git..."
 echo eval \"\$\(hub alias -s\)\" >> ~/.bashrc
-wait
-echo ""
-echo "Sourcing aliases, functions, and environment variables"
-. ~/.bashrc
 wait
 echo ""
 echo "Setting up git config"
@@ -57,4 +55,5 @@ if [ "$ans" = "y" ]; then
 fi
 echo "Use \"git config\" for help on resetting these values"
 echo ""
-echo "Finished! You may need to reload your .bashrc file with \". ~/.bashrc\""
+echo "Finished! You need to reload your .bashrc file with \". ~/.bashrc\", or reboot"
+echo "with \"sudo shutdown -r now\""
