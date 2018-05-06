@@ -1,8 +1,0 @@
-#!/bin/bash
-echo "test"
-read ans
-if [ $ans -eq "y" ]; then
-	echo "cool"
-else
-	echo "bummer"
-fi
