@@ -1,6 +1,9 @@
 capture: 0
 datetime: 0
 temp: 0
+grep: signal.log: No such file or directory
+
+grep: signal.log: No such file or directory
 signal: 0
 tstring: 0
 tcpSend: 0

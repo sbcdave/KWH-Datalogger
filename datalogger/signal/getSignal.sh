@@ -68,7 +68,7 @@ main() {
 
     echo AT+CSQ | nc localhost $SIM_PORT > /KWH/datalogger/signal/signal.log
     wait
-    grep +CSQ: /KWH/datalogger/signal/signal.log | cut -c 7- | cut -c -2 > /KWH/datalogger/signal/signal
+    echo `grep '\+CSQ:' signal.log | sed -E 's/\+CSQ: ([0-9]*),.*/\1/'` > /KWH/datalogger/signal/signal
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME
