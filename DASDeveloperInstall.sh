@@ -53,7 +53,7 @@ read ans
 if [ "$ans" = "y" ]; then
     git config --global user.name $name
 fi
-echo "Use \"git config\" for help on resetting these values"
+echo "Use \"git config\" for help on resetting these values, or edit the file ~/.gitconfig"
 echo ""
 echo "Finished! You need to reload your .bashrc file with \". ~/.bashrc\", or reboot"
 echo "with \"sudo shutdown -r now\""

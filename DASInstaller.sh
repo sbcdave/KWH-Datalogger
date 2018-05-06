@@ -29,9 +29,7 @@ echo "Ensuring datalogger config is used at boot"
 wait
 sudo ln -n /KWH/datalogger/config/datalogger.conf /etc/default/datalogger.conf
 wait
-# Add datalogger.conf file to /etc/profile and to root and pi's .bashrc
-sudo cp /KWH/moves/profile /etc/profile
-wait
+# Add datalogger.conf file to root and pi's .bashrc
 sudo cp /KWH/moves/.bashrc /root/.bashrc
 wait
 cp /KWH/moves/.bashrc /home/pi/.bashrc
