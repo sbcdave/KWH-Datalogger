@@ -36,17 +36,12 @@ sudo cp /KWH/moves/.bashrc /root/.bashrc
 wait
 cp /KWH/moves/.bashrc /home/pi/.bashrc
 wait
-# Source the datalogger.conf file into environment variables
+# Source the aliases functions and environment variables
 . ~/.bashrc
 wait
-
-# Activate 1 minute transmission via cron
-echo ""
-echo "Enabling cron jobs"
+sudo cp /KWH/moves/autologin@.service /etc/systemd/system/autologin@.service
 wait
-sudo cp /KWH/moves/dcrond /etc/cron.d/dcrond
-wait
-sudo chmod 644 /etc/cron.d/dcrond
+sudo systemctl daemon-reload
 wait
 
 # Setting up SIM communications on ttyAMA0
@@ -82,6 +77,15 @@ wait
 sudo systemctl enable simserver.service
 wait
 sudo systemctl start simserver.service
+wait
+
+# Activate 1 minute transmission via cron
+echo ""
+echo "Enabling cron jobs"
+wait
+sudo cp /KWH/moves/dcrond /etc/cron.d/dcrond
+wait
+sudo chmod 644 /etc/cron.d/dcrond
 wait
 
 # Reboot to finalize
