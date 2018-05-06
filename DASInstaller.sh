@@ -43,6 +43,8 @@ sudo cp /KWH/moves/autologin@.service /etc/systemd/system/autologin@.service
 wait
 sudo systemctl daemon-reload
 wait
+sudo systemctl enable autologin@.service
+wait
 
 # Setting up SIM communications on ttyAMA0
 echo ""
@@ -78,6 +80,11 @@ sudo systemctl enable simserver.service
 wait
 sudo systemctl start simserver.service
 wait
+
+# Switching keyboard layout to US
+echo ""
+echo "Switching keyboard layout to US"
+sudo cp /KWH/moves/keyboard /etc/default/keyboard
 
 # Activate 1 minute transmission via cron
 echo ""
