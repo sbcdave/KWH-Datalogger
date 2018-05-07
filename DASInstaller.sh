@@ -55,7 +55,7 @@ wait
 echo ""
 echo "Updating /boot/config.txt to enable SIM and Temp sensor comms"
 wait
-sudo cp /boot/config.txt /KWH/.
+sudo cp /boot/config.txt /KWH/moves/.
 wait
 sudo chown pi:pi /KWH/config.txt
 wait
@@ -64,9 +64,9 @@ echo "
 dtoverlay=pi3-disable-bt
 enable_uart=1
 force_turbo=1
-dtoverlay=w1-gpio" >> /KWH/config.txt
+dtoverlay=w1-gpio" >> /KWH/moves/config.txt
 wait
-sudo cp /KWH/config.txt /boot/config.txt
+sudo cp /KWH/moves/config.txt /boot/config.txt
 wait
 
 # Enable simserver.service
