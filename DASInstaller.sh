@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # Install git for pulling the code from the repository
-echo "Installing git"
+echo "Verifying/Installing git"
 wait
 sudo apt-get install -y git
+status=$?
 wait
+if [ $status -ne 0 ]; then
+    echo "unable to access git...aborting"
+    echo "contact dave@KiloWattsforHumanity.org for assistance"
+fi
 
 # Move to root and download data logger code from github
 cd /
@@ -12,7 +17,12 @@ echo ""
 echo "Downloading data logger software to the root directory in /KWH"
 wait
 sudo git clone https://github.com/sbcdave/KWH.git
+status=$?
 wait
+if [ $status -ne 0 ]; then
+    echo "GitHub download stalled...rerun DASInstaller.sh"
+    exit
+fi
 
 # Change data logger code root directory owner:group to pi
 echo ""
