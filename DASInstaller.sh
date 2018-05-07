@@ -1,7 +1,29 @@
 #!/bin/bash
 
+# Intro
+echo ""
+echo "================================================================================"
+echo "=   Welcome to the KiloWatts for Humanity (KWH) Data Logger software package   ="
+echo "================================================================================"
+echo ""
+echo "Thank you for your interest, and enjoy! Courtesy of KiloWatts for Humanity (KWH)"
+echo ""
+echo "This installer requires that the RPi be rebooted when complete"
+echo "If you need to save any work, do not answer anything that starts with \"y\""
+echo ""
+echo "Would you like to continue with installation(y/n)?"
+read ans
+if [ "${ans:0:1}" != "y" ]; then
+    echo ""
+    echo "Exiting...Relaunch the DASInstaller.sh when you are ready."
+    echo "Courtesy of KiloWatts for Humanity"
+    echo ""
+    exit
+fi
+
 # Install git for pulling the code from the repository
-echo "Verifying/Installing git"
+echo ""
+echo "Verifying installation of and/or Installing git"
 wait
 sudo apt-get install -y git
 status=$?
@@ -77,17 +99,32 @@ sudo cp /KWH/moves/simserver.service /etc/systemd/system/.
 wait
 sudo systemctl enable simserver.service
 wait
-sudo systemctl start simserver.service
+
+# Enable simserver.service
+echo ""
+echo "Enabling pigpiod service"
+sudo cp /KWH/moves/pigpiod.service /etc/systemd/system/.
+wait
+sudo systemctl enable pigpiod.service
+wait
+
+# Enable simserver.service
+echo ""
+echo "Enabling get time service"
+sudo cp /KWH/moves/gettime.service /etc/systemd/system/.
+wait
+sudo systemctl enable gettime.service
 wait
 
 # Switching keyboard layout to US
 echo ""
-echo "Switching keyboard layout to US"
+echo "Switching keyboard layout to US standard"
+echo "Use \"sudo raspi-config\" if you would like to change it"
 sudo cp /KWH/moves/keyboard /etc/default/keyboard
 
 # Activate 1 minute transmission via cron
 echo ""
-echo "Enabling cron jobs"
+echo "Enabling cron jobs for reading sms, transmitting data, and updating the time"
 wait
 sudo cp /KWH/moves/dcrond /etc/cron.d/dcrond
 wait
@@ -96,14 +133,14 @@ wait
 
 # Reboot to finalize
 echo ""
-echo "Installation complete. Reboot to enable communications with PCB."
-echo "Reboot now(y/n)?"
+echo "Installation complete. We will soon reboot to enable communications with the PCB or other hardware solution."
+echo ""
+echo "If you would like KWH to host your data, please contact dave@kilowattsforhumanity.org"
+echo "You can donate to KiloWatts for Humanity at http://kilowattsforhumanity.org"
+echo "We hope you enjoy!"
+echo ""
+echo "Rebooting now is highly recommended as some communications will be erroring and filling log files"
+echo "However, if you need to stop the reboot, you can use \"ctrl+c\" to kill the program without reboot"
+echo "Press enter to reboot now..."
 read ans
-if [ "$ans" = "y" ]; then
-    echo "Thank you, and enjoy...courtesy of KiloWatts for Humanity"
-    sudo shutdown -r now
-else
-    echo "Several error logs will fill with communications issues until reboot"
-    echo "Thank you, and enjoy...courtesy of KiloWatts for Humanity"
-fi
-
+sudo shutdown -r now

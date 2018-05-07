@@ -1,13 +1,13 @@
 [Unit]
-Description=transmit.sh service
+Description=simServer.py service
 After=sysinit.target
 
 [Service]
 Type=simple
 User=pi
 WorkingDirectory=/KWH
-ExecStart=/KWH/datalogger/boot/cronstart.sh
-Restart=on-aborty
+ExecStart=sudo /KWH/datalogger/lib/pigpiod
+Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target

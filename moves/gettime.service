@@ -6,7 +6,7 @@ After=sysinit.target
 Type=oneshot
 User=pi
 WorkingDirectory=/KWH
-ExecStart=/KWH/datalogger/datetime/getTime.sh
+ExecStart=/KWH/datalogger/boot/stopTXandSetTime.sh
 
 [Install]
 WantedBy=multi-user.target
