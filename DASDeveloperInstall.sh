@@ -19,11 +19,9 @@ if [ ! -d /usr/local/go ]; then
 fi
 wait
 
-if [ ! -d /usr/local/go ]; then
-    echo ""
-    echo "Moving Go binary to a location that is in \$PATH"
-    sudo cp /usr/local/go/bin/go /usr/sbin/go
-fi
+echo ""
+echo "Moving Go binary to a location that is in \$PATH"
+sudo cp /usr/local/go/bin/go /usr/sbin/go
 wait
 
 echo ""
@@ -45,6 +43,11 @@ echo ""
 echo "Installing hub..."
 cd /usr/local/hub
 ./script/build
+wait
+
+echo ""
+echo "Moving hub binary to a location that is in \$PATH"
+sudo cp /usr/local/hub/bin/hub /usr/sbin/hub
 wait
 
 echo ""

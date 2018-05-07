@@ -20,7 +20,9 @@ sudo git clone https://github.com/sbcdave/KWH.git
 status=$?
 wait
 if [ $status -ne 0 ]; then
+    echo ""
     echo "GitHub download stalled...rerun DASInstaller.sh"
+    echo ""
     exit
 fi
 
@@ -35,7 +37,7 @@ wait
 
 # Create symlink from /etc/defaults to datalogger.conf file
 echo ""
-echo "Ensuring datalogger config is used at boot"
+echo "Ensuring datalogger config is used at boot and setting auto-login to console"
 wait
 sudo ln -n /KWH/datalogger/config/datalogger.conf /etc/default/datalogger.conf
 wait
@@ -64,17 +66,6 @@ wait
 # Adjusting /boot/config.txt for SIM and Temp sensors communications
 echo ""
 echo "Updating /boot/config.txt to enable SIM and Temp sensor comms"
-wait
-sudo cp /boot/config.txt /KWH/moves/.
-wait
-sudo chown pi:pi /KWH/config.txt
-wait
-echo "
-#Data Logger
-dtoverlay=pi3-disable-bt
-enable_uart=1
-force_turbo=1
-dtoverlay=w1-gpio" >> /KWH/moves/config.txt
 wait
 sudo cp /KWH/moves/config.txt /boot/config.txt
 wait
@@ -105,13 +96,14 @@ wait
 
 # Reboot to finalize
 echo ""
-echo "Installation complete. Reboot to enable communications with PCB.
-echo "Reboot now\(y/n\)?"
+echo "Installation complete. Reboot to enable communications with PCB."
+echo "Reboot now(y/n)?"
 read ans
 if [ "$ans" = "y" ]; then
     echo "Thank you, and enjoy...courtesy of KiloWatts for Humanity"
     sudo shutdown -r now
 else
-    echo "Error logs will fill with communications issues until reboot"
+    echo "Several error logs will fill with communications issues until reboot"
+    echo "Thank you, and enjoy...courtesy of KiloWatts for Humanity"
 fi
 
