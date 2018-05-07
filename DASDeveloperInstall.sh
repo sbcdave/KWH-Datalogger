@@ -42,7 +42,7 @@ wait
 echo ""
 echo "Installing hub..."
 cd /usr/local/hub
-./script/build
+sudo ./script/build
 wait
 
 echo ""

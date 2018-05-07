@@ -48,6 +48,22 @@ if [ $status -ne 0 ]; then
     exit
 fi
 
+# Download pigpio code from github
+cd /
+echo ""
+echo "Downloading pigpio code to /KWH/datalogger/lib"
+wait
+cd /KWH/datalogger/lib
+git clone https://github.com/joan2937/pigpio.git
+status=$?
+wait
+if [ $status -ne 0 ]; then
+    echo ""
+    echo "GitHub download stalled...rerun DASInstaller.sh"
+    echo ""
+    exit
+fi
+
 # Change data logger code root directory owner:group to pi
 echo ""
 echo "Updating /KWH permissions"
