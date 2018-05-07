@@ -61,14 +61,14 @@ echo "Please enter GitHub email address:"
 read email
 echo "Is this correct: $email (y/n)?"
 read ans
-if [ "$ans" = "y" ]; then
+if [ "${ans:0:1}" = "y" ]; then
     git config --global user.email $email
 fi
 echo "Please enter Name for GitHub commits (no spaces):"
 read name
 echo "Is this correct: $name (y/n)?"
 read ans
-if [ "$ans" = "y" ]; then
+if [ "${ans:0:1}" = "y" ]; then
     git config --global user.name $name
 fi
 echo "Use \"git config\" for help on resetting these values, or edit the file ~/.gitconfig"

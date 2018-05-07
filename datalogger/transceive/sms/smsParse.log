@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 37, in <module>
+    temp.close()
+NameError: name 'temp' is not defined
