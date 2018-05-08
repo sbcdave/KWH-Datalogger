@@ -16807,3 +16807,60 @@ Wrote to sim: AT+CIPSHUT
 
 Bytes to read: 10
 Sim response: AT+CIPSHUT
+Starting SIM Server
+Starting port selection
+SIM_PORT: 9999
+Sleeping 5 for SIM reboot and reconfigure!
+Listening...
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 28
+Sim response: AT+CMEE=2
+OK
+
+SMS Ready
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 16
+Sim response: AT+CGATT=0
+OK
+
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 33
+Sim response: AT+CGATT=1
++CME ERROR: unknown
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+

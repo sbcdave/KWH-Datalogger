@@ -3,4 +3,5 @@ datetime: 0
 temp: 0
 signal: 0
 tstring: 0
+/KWH/datalogger/transceive/tcp/tcpSend.sh: line 86: [: !=: unary operator expected
 tcpSend: 0
