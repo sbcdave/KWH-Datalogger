@@ -12,12 +12,12 @@ echo "This installer is broken into steps to help you relaunch it at a certain p
 echo "in case of failure during the script. To jump to a step, re-execute the"
 echo "installer and pass the step number in as a parameter."
 echo "e.g. ./DASDevInstaller.sh 5"
+if [[ ! "$1" =~ .+ ]]; then
 echo ""
 echo "This installer requires that the RPi be rebooted when complete"
 echo "If you need to save any work, do not answer anything that starts with \"y\""
 echo ""
 echo "Would you like to continue with installation(y/n)?"
-if [[ ! "$1" =~ .+ ]]; then
 read ans
 if [ "${ans:0:1}" != "y" ]; then
     echo ""
@@ -69,21 +69,23 @@ echo "Downloading pigpio code to /usr/local/pigpio"
 echo "Credit: GitHub - joan2937"
 wait
 cd /usr/local
-sudo git clone https://github.com/joan2937/pigpio.git
-status=$?
-wait
-if [ $status -ne 0 ]; then
-    echo ""
-    echo "GitHub download stalled...rerun ./DASDevInstaller.sh 2"
-    echo ""
-    exit
+if [ ! -d pigpio ]; then
+    sudo git clone https://github.com/joan2937/pigpio.git
+    status=$?
+    wait
+    if [ $status -ne 0 ]; then
+        echo ""
+        echo "GitHub download stalled...rerun ./DASDevInstaller.sh 2"
+        echo ""
+        exit
+    fi
 fi
 
 # Change data logger code root directory owner:group to pi
 echo ""
 echo "Updating /KWH permissions"
 wait
-sudo chown -R pi:pi KWH
+sudo chown -R pi:pi /KWH
 wait
 
 # Shut down unnecessary services
@@ -267,3 +269,4 @@ echo "\"ctrl+c\" to kill this process without rebooting"
 echo "Press enter to reboot now..."
 read ans
 sudo shutdown -r now
+fi
