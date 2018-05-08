@@ -3,3 +3,4 @@ datetime: 0
 temp: 0
 signal: 0
 tstring: 0
+tcpSend: 0
