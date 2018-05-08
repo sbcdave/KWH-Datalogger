@@ -1,2 +1,3 @@
 * * * * * pi bash /KWH/datalogger/transceive/tcp/transmit.sh >> /KWH/datalogger/transceive/tcp/transmit.log 2>&1
-*/2 * * * * pi python /KWH/datalogger/transceive/sms/smsParse.py > /KWH/datalogger/transceive/sms/smsParse.log 2>&1
+* * * * * pi python /KWH/datalogger/transceive/sms/smsParse.py > /KWH/datalogger/transceive/sms/smsParse.log 2>&1
+0 0 * * * pi bash /KWH/datalogger/datetime/getTime.sh > /dev/null 2>&1

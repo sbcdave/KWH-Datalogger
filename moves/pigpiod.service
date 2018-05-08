@@ -1,12 +1,12 @@
 [Unit]
-Description=simServer.py service
+Description=pigpiod service
 After=sysinit.target
 
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/KWH
-ExecStart=/KWH/datalogger/transceive/simServer.py
+WorkingDirectory=/usr
+ExecStart=sudo /usr/local/pigpio/util/pigpiod start
 Restart=on-abort
 
 [Install]

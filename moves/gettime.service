@@ -1,12 +1,12 @@
 [Unit]
-Description=getTime.sh service
+Description=get time service
 After=sysinit.target
 
 [Service]
 Type=oneshot
 User=pi
 WorkingDirectory=/KWH
-ExecStart=/KWH/datalogger/datetime/getTime.sh
+ExecStart=/KWH/datalogger/boot/stopTXandSetTime.sh
 
 [Install]
 WantedBy=multi-user.target

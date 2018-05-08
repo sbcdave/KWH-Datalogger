@@ -76,5 +76,9 @@ with open('/KWH/datalogger/config/TEMP3') as config:
 	TEMP3=config.read()
 with open('/KWH/datalogger/config/TX_INTRVL') as config:
 	TX_INTRVL=config.read()
-with open('/KWH/datalogger/config/VERSION') as config:
-	VERSION=config.read()
+with open('/KWH/datalogger/config/TEMP_COUNT') as config:
+	TEMP_COUNT=config.read()
+with open('/KWH/datalogger/config/gitV1') as config:
+	gitV1=config.read()
+with open('/KWH/datalogger/config/gitV2') as config:
+	gitV2=config.read()

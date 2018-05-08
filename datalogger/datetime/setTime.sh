@@ -1,3 +1,6 @@
 #!/bin/bash
-sudo date -s @$(( $(( 2#$( echo $1 | xxd -b | head -c 44 \
-	| tail -c 35 | tr -d [:space:]) )) - 2208988800 ))
+
+# Seconds from Jan 1 1900 (Network Time Protocol epoch) to Jan 1 1970 (Unix epoch)
+timeShift=2208988800
+
+sudo date -s @$(($((0x$(xxd -ps /KWH/datalogger/datetime/nisttime))) - $timeShift))

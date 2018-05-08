@@ -78,13 +78,10 @@ main() {
     echo AT+CIICR | nc localhost $SIM_PORT >> $log
     echo AT+CIFSR | nc localhost $SIM_PORT >> $log
     echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" \
-	| nc localhost $SIM_PORT >> $log
-    echo "" >> $log
-    /KWH/datalogger/datetime/setTime.sh $(grep \
-	-A1 'CONNECT OK' /KWH/datalogger/datetime/datetime.log \
-	| tail -n 1) >> $log
+	| nc localhost $SIM_PORT | tail -c 4 > /KWH/datalogger/datetime/nisttime
     echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
     echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    /KWH/datalogger/datetime/setTime.sh $(tail -c 4 /KWH/datalogger/datetime/nisttime)
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME

@@ -37,8 +37,6 @@ Figure out server only keeping 1 day
 Create email notification of data stopping, with another notification of it
 restarting, and when restarting send X bytes based on data stopped window
 
-boot TIME test set the time to 2027 for some reason, still some bugs
-
 make program to build and interpret modbus commands
 
 make sure pulse code is working for all 8 channels
@@ -46,3 +44,7 @@ make sure pulse code is working for all 8 channels
 Fix "command invalid" sms bug
 
 have temp sensors get autosensed and created, bound to a TEMPx config
+
+add a limit on pulses per second to avoid noise and limit pulses from plugging in a test voltage
+
+adjust DASDeveloperInstall.sh to clone RPiDASEditor instead of KWH
