@@ -52,15 +52,17 @@ pi.wave_clear()
 #pi.wave_add_new()
 
 bits = sys.argv[1]
-
-for bit in bits:
+debug = ""
+for bit in range (0, len(bits)):
 	if bit == "1":
-		if DEBUG: print "1"
-		pi.wave_add_generic(pigpio.pulse(1<<TX, 1<<TX, 500000))
+		if DEBUG: 
+			debug = debug + "1"
+		pi.wave_add_generic([pigpio.pulse(1<<TX, 1<<TX, 500000)])
 	else: # using RX to create 0 value pulses on the wave that hits our TX pin
-		if DEBUG: print "0"
-		pi.wave_add_generic(pigpio.pulse(1<<RX, 1<<RX, 500000))		
-
+		if DEBUG: 
+			debug = debug + "0"
+		pi.wave_add_generic([pigpio.pulse(1<<RX, 1<<RX, 500000)])		
+print ("debug: ", debug)
 #print str(total)+" bits in message...Sending"
 #pi.wave_add_serial(TX, baud, msg)
 wid = pi.wave_create()
@@ -88,7 +90,7 @@ while True:
 	if nonsense > 1000:
 		break
 
-print "TX: "+str(msg)
+print "TX: "+str(text)
 print ''.join('{:02b}'.format(x) for x in text)
 
 pi.wave_delete(wid)
