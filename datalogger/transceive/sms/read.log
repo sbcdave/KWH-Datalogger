@@ -1,6 +1,4 @@
-
-SHUT OK
-AT+CMGF=1
+[  278.693534] Under-voltage detected! (0x00050005)AT+CMGF=1
 OK
 AT+CMGL="ALL"
 OK
