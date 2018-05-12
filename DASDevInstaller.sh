@@ -89,10 +89,10 @@ sudo chown -R pi:pi /KWH
 wait
 
 # Shut down unnecessary services
-echo ""
-echo "Shutting down unnecessary services"
-echo "Apache2..."
-sudo systemctl disable apache2
+#echo ""
+#echo "Shutting down unnecessary services"
+#echo "Apache2..."
+#sudo systemctl disable apache2
 
 # Create symlink from /etc/defaults to datalogger.conf file
 echo ""
@@ -137,21 +137,14 @@ wait
 sudo systemctl enable simserver.service
 wait
 
-# Enable pigpiod.service
+# Enable data logger service
 echo ""
-echo "Enabling pigpiod service"
-sudo cp /KWH/moves/pigpiod.service /etc/systemd/system/.
+echo "Enabling dlogger service for pigpiod, pulse counting, and updating the time at boot"
+sudo cp /KWH/moves/dlogger /etc/init.d/.
 wait
-sudo systemctl enable pigpiod.service
+sudo update-rc.d dlogger defaults
 wait
-
-# Enable gettime.service
-echo ""
-echo "Enabling get time service"
-sudo cp /KWH/moves/gettime.service /etc/systemd/system/.
-wait
-sudo systemctl enable gettime.service
-wait
+sudo systemctl daemon-reload
 
 # Switching keyboard layout to US
 echo ""
@@ -242,8 +235,7 @@ echo "Use \"git config\" for help on resetting these values, or edit the file ~/
 # Set to Seattle Config
 echo ""
 echo "Setting config to Seattle RPi DAS defaults"
-. /KWH/datalogger/config/datalogger.conf
-seattle
+source /KWH/datalogger/config/datalogger.conf; seattle
 
 # Activate cron jobs
 echo ""
@@ -262,9 +254,8 @@ echo ""
 echo "If you would like KWH to host your data, please contact us."
 echo "You can contact us and/or donate to KiloWatts for Humanity at" 
 echo "http://KiloWattsforHumanity.org"
-echo "We hope you enjoy!"
 echo ""
-echo "Rebooting now is highly recommended as some communications will be erroring"
+echo "Rebooting now is highly recommended, as some communications will be erroring"
 echo "and filling log files. However, if you need to stop the reboot, you can use"
 echo "\"ctrl+c\" to kill this process without rebooting"
 echo "Press enter to reboot now..."
