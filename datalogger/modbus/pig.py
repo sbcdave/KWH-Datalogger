@@ -44,6 +44,7 @@ pigpio.exceptions = True
 pi.wave_clear()
 
 # Build wave to send
+msg = sys.argv[1]
 #total = pi.wave_add_serial(TX, baud, msg, bb_bits=8, offset=(3.5*char_time), bb_stop=2)
 total = pi.wave_add_serial(TX, baud, msg, bb_bits=8, bb_stop=2)
 print str(total)+" bits in message...Sending"
