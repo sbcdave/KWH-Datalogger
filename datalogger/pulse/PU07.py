@@ -18,11 +18,18 @@ pi.set_pull_up_down(DIN, pigpio.PUD_DOWN)
 
 pulse_cb = pi.callback(DIN, pigpio.RISING_EDGE)
 
+PU07 = open("/KWH/datalogger/pulse/PU07", 'r')
+previous = int(PU07.read())
+PU07.close()
+
 while True:
 
    time.sleep(5)
 
-   with open("/KWH/datalogger/pulse/PU07", 'w') as PU07:
-      PU07.write(str(pulse_cb.tally()))
+   new = pulse_cb.tally()
+   current = previous + new
+   PU07 = open("/KWH/datalogger/pulse/PU07", 'w')
+   PU07.write(str(current))
+   PU07.close()
 
 pi.stop()
