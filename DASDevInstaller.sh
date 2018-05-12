@@ -242,6 +242,7 @@ echo "Use \"git config\" for help on resetting these values, or edit the file ~/
 # Set to Seattle Config
 echo ""
 echo "Setting config to Seattle RPi DAS defaults"
+. /KWH/datalogger/config/datalogger.conf
 seattle
 
 # Activate cron jobs

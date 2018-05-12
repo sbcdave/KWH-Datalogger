@@ -1,6 +1,6 @@
 
 SHUT OK
-[  318.202983] Under-voltage detected! (0x00050005)[  324.442972] Under-voltage detected! (0x00050005)AT+CMGF=1
+AT+CMGF=1
 OK
-[  339.002826] Under-voltage detected! (0x00050005)AT+CMGL="ALL"
+AT+CMGL="ALL"
 OK
