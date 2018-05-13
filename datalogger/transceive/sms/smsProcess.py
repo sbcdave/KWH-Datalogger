@@ -21,11 +21,11 @@ commandList.append(admpw)
 ################################################################################
 adxxPath = smsPath+"/commands/ADxx.sh" 
 adxx = re.compile(\
-r"(.*?)#ADN(0\d):([0-1])(,\d.\d{3},\d.\d{3},\d.\d{3},\d.\d{3},\d.\d{3},[0,1]{4},[0-3]{6})*?#")
+r"(.*?)#AD(\d\d):([0-1])(,\d.\d{3},\d.\d{3},\d.\d{3},\d.\d{3},\d.\d{3},[0,1]{4},[0-3]{6})*?#")
 commandList.append(adxx)
 ################################################################################
 apnPath = smsPath+"/commands/APN.sh" 
-apn = re.compile(r"(.*?)#GAN:(.*?)()\!#") 
+apn = re.compile(r"(.*?)#APN:(.*?)()\!#") 
 commandList.append(apn)
 ################################################################################
 debugPath = smsPath+"/commands/DEBUG.sh" 
@@ -33,27 +33,27 @@ debug = re.compile(r"(.*?)#DBG:([0-1])()#")
 commandList.append(debug)
 ################################################################################
 domainPath = smsPath+"/commands/DOMAIN.sh" 
-domain = re.compile(r"(.*?)#GDN:([A-z\.]*)()\!#") 
+domain = re.compile(r"(.*?)#DOM:([A-z\.]*)()\!#") 
 commandList.append(domain)
 ################################################################################
-inqE2Path = smsPath+"/commands/inqE2.sh" 
-inqE2 = re.compile(r"(.*?)#E2#") 
-commandList.append(inqE2)
+inqConfPath = smsPath+"/commands/inqConf.sh" 
+inqConf = re.compile(r"(.*?)#CONF#") 
+commandList.append(inqConf)
 ################################################################################
-inqEEPath = smsPath+"/commands/inqEE.sh" 
-inqEE = re.compile(r"(.*?)#EE#") 
-commandList.append(inqEE)
+inqValPath = "/KWH/datalogger/transceive/tcp/tstring.py"
+inqVal = re.compile(r"(.*?)#VAL#") 
+commandList.append(inqVal)
 ################################################################################
 portPath = smsPath+"/commands/PORT.sh" 
-port = re.compile(r"(.*?)#GIP:(\d{1,5})()#") 
+port = re.compile(r"(.*?)#PORT:(\d{1,5})()#") 
 commandList.append(port)
 ################################################################################
 puxxPath = smsPath+"/commands/PUxx.sh" 
-puxx = re.compile(r"(.*?)#DIN([1-8]):([0-4]),[0-1]{4},[0-3]{6}#") 
+puxx = re.compile(r"(.*?)#PU(\d\d):([0-1])(,[0-1]{4},[0-3]{6})*?#") 
 commandList.append(puxx)
 ################################################################################
 puxxValPath = smsPath+"/commands/PUxxVal.sh" 
-puxxVal = re.compile(r"(.*?)#DIP([1-8]):(\d*)#") 
+puxxVal = re.compile(r"(.*?)#PU(\d\d)VAL:(\d*?)#") 
 commandList.append(puxxVal)
 ################################################################################
 resetPath = smsPath+"/commands/RESET.sh" 
@@ -61,7 +61,7 @@ reset = re.compile(r"(.*?)#RESET#")
 commandList.append(reset)
 ################################################################################
 staPath = smsPath+"/commands/STA.sh" 
-sta = re.compile(r"(.*?)#BST:(.*?)()#") 
+sta = re.compile(r"(.*?)#STA:(.*?)()#") 
 commandList.append(sta)
 ################################################################################
 invalid = re.compile(r"(.*?)#")
@@ -81,9 +81,9 @@ def process(options, commandFile, msg):
 
         # Commands with more than two values as part of the update request processed here
 	if match.group(3) <> '':
-                # Special case for Pulse enable response formatting
+                # Special case for Pulse value response formatting
                 if options[0] == "PU0":
-                    if DEBUG: print("Setting "+options[0]+match.group(2)+" to: "+match.group(3))
+                    if DEBUG: print("Setting "+options[0]+match.group(2)+options[1]+match.group(3))
                     p = subprocess.Popen([commandFile, str(match.group(2)), str(match.group(3))])
                 else:
                     if DEBUG: print("Setting "+options[0]+" "+match.group(2)+" to: "+match.group(3))
@@ -108,9 +108,9 @@ def process(options, commandFile, msg):
 
             # Commands with more than two values as part of the update request processed here
 	    if match.group(3) <> '':
-                # Special case for Pulse enable response formatting
+                # Special case for Pulse value response formatting
                 if options[0] == "PU0":
-                    p = subprocess.Popen([sendPath, msg[1], str(options[0])+str(match.group(2))+" set to: "+str(match.group(3))])
+                    p = subprocess.Popen([sendPath, msg[1], str(options[0])+str(match.group(2))+options[1]+str(match.group(3))])
                 else:
                     p = subprocess.Popen([sendPath, msg[1], str(options[0])+" "+str(match.group(2))+" set to: "+str(match.group(3))])
 
@@ -176,17 +176,38 @@ for msg in msgList:
             elif command == apn:
 		process(["APN"], apnPath, msg)
             elif command == puxx:
-		process(["PU0"], puxxPath, msg)
+		process(["Pulse Channel"], puxxPath, msg)
             elif command == puxxVal:
-                process(["Pulse Channel"], puxxValPath, msg)
+                process(["PU0", " value set to: "], puxxValPath, msg)
             elif command == adxx:
 		process(["Analog Channel"], adxxPath, msg)
-            elif command == inqE2:
-		process([""], inqE2Path, msg)
-            elif command == inqEE:
-		process([""], inqEEPath, msg)
+            elif command == inqConf:
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([inqConfPath])
+                    p.communicate()
+                    with open("/KWH/datalogger/transceive/sms/commands/inqConf.log", "r") as conf:
+                        p = subprocess.Popen([sendPath, msg[1], conf.read()])
+                        p.communicate()
+                    p = subprocess.Popen([delPath, msg[0]])
+                    p.communicate()
+                    if DEBUG: print("Message "+msg[0]+" has been deleted")
+                if DEBUG: print("Processed inquiry for config")
+            elif command == inqVal:
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([inqValPath])
+                    p.communicate()
+                    with open("/KWH/datalogger/transceive/tcp/tstring", "r") as vals:
+                        p = subprocess.Popen([sendPath, msg[1], vals.read()])
+                        p.communicate()
+                    p = subprocess.Popen([delPath, msg[0]])
+                    p.communicate()
+                    if DEBUG: print("Message "+msg[0]+" has been deleted")
+                if DEBUG: print("Processed inquiry for values")
             elif command == invalid:
 	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
                     p = subprocess.Popen([sendPath, msg[1], "Command not valid"])
 		    p.communicate()
                     p = subprocess.Popen([delPath, msg[0]])

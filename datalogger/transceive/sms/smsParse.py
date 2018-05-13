@@ -4,6 +4,11 @@ import re
 import subprocess
 import time
 
+# Load environment variables
+execfile("/KWH/datalogger/config/pyvars.py")
+DEBUG = int(DEBUG)
+
+if DEBUG: print("Running smsRead.sh")
 p = subprocess.Popen("/KWH/datalogger/transceive/sms/smsRead.sh")
 # Wait for smsRead to complete
 p.communicate()
@@ -11,6 +16,10 @@ p.communicate()
 getMsgData = re.compile("\+CMGL:.*")
 
 msgNum = 1
+
+# THIS CODE HAS A BUG THAT IT WILL THROW AN EXCEPTION IF THERE IS NO
+# MESSAGE TO READ. IT STILL WORKS, BUT IT WOULD BE NICE TO FIX THAT
+# BUG
 
 # Used to skip the first non relevant lines
 inMsg = False
@@ -20,6 +29,7 @@ tempOpen = False
 
 time.sleep(1)
 
+if DEBUG: print("Building files in msg/")
 log = open("/KWH/datalogger/transceive/sms/read.log", 'r+')
 while True:
     line = log.readline()
@@ -36,8 +46,10 @@ while True:
 log.close()
 temp.close()
 
+if DEBUG: print("Running smsProcess.py")
 p = subprocess.Popen("/KWH/datalogger/transceive/sms/smsProcess.py")
 p.communicate()
 
+if DEBUG: print("Running cleanMsg.sh")
 p = subprocess.Popen("/KWH/datalogger/transceive/sms/cleanMsg.sh")
 p.communicate()

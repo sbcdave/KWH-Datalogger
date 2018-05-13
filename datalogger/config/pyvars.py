@@ -16,26 +16,12 @@ with open('/KWH/datalogger/config/AD07', 'r') as config:
 	AD07=config.read()
 with open('/KWH/datalogger/config/AD08', 'r') as config:
 	AD08=config.read()
-with open('/KWH/datalogger/config/AD09') as config:
-	AD09=config.read()
-with open('/KWH/datalogger/config/AD10') as config:
-	AD10=config.read()
 with open('/KWH/datalogger/config/AD11') as config:
 	AD11=config.read()
 with open('/KWH/datalogger/config/AD12') as config:
 	AD12=config.read()
 with open('/KWH/datalogger/config/AD13') as config:
 	AD13=config.read()
-with open('/KWH/datalogger/config/AD14') as config:
-	AD14=config.read()
-with open('/KWH/datalogger/config/AD15') as config:
-	AD15=config.read()
-with open('/KWH/datalogger/config/AD16') as config:
-	AD16=config.read()
-with open('/KWH/datalogger/config/AD17') as config:
-	AD17=config.read()
-with open('/KWH/datalogger/config/AD18') as config:
-	AD18=config.read()
 with open('/KWH/datalogger/config/ADMPW') as config:
 	ADMPW=config.read()
 with open('/KWH/datalogger/config/APN', 'r') as config:
@@ -44,8 +30,6 @@ with open('/KWH/datalogger/config/DEBUG') as config:
 	DEBUG=config.read()
 with open('/KWH/datalogger/config/DOMAIN', 'r') as config:
 	DOMAIN=config.read()
-with open('/KWH/datalogger/config/INQPW') as config:
-	INQPW=config.read()
 with open('/KWH/datalogger/config/PORT', 'r') as config:
 	PORT=config.read()
 with open('/KWH/datalogger/config/PU01', 'r') as config:
@@ -82,5 +66,3 @@ with open('/KWH/datalogger/config/gitV1') as config:
 	gitV1=config.read()
 with open('/KWH/datalogger/config/gitV2') as config:
 	gitV2=config.read()
-with open('/KWH/datalogger/config/PU4') as config:
-	PU4=config.read()
