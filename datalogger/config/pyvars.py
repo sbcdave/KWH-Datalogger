@@ -82,3 +82,5 @@ with open('/KWH/datalogger/config/gitV1') as config:
 	gitV1=config.read()
 with open('/KWH/datalogger/config/gitV2') as config:
 	gitV2=config.read()
+with open('/KWH/datalogger/config/PU4') as config:
+	PU4=config.read()
