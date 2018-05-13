@@ -1,6 +1,3 @@
-analyze server response and time stamp in a file
-to look for missing time stamps
-
 Finish pulse code to launch configured channels on boot - might axe pulse
 code (or at least reduce channels) when modbus is working
 
@@ -24,27 +21,17 @@ and completely eliminate missed data packets
 Consider rsync for sending the data and storing all data in a local 
 graphite/influxdb instance
 
-investigate other_code.txt
-
-test installer.sh
-
 create logdel alias - and sms command to do it remotely.
 
 Figure out server data delay
 
-Figure out server only keeping 1 day
-
 Create email notification of data stopping, with another notification of it
 restarting, and when restarting send X bytes based on data stopped window
-
-make program to build and interpret modbus commands
-
-make sure pulse code is working for all 8 channels
-
-Fix "command invalid" sms bug
 
 have temp sensors get autosensed and created, bound to a TEMPx config
 
 add a limit on pulses per second to avoid noise and limit pulses from plugging in a test voltage
 
-adjust DASDeveloperInstall.sh to clone RPiDASEditor instead of KWH
+Fix bug in smsParse that throws exception if there is no message to read
+
+Fix pulse channels
