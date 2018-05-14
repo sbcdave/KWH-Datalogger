@@ -13,6 +13,10 @@ p = subprocess.Popen("/KWH/datalogger/transceive/sms/smsRead.sh")
 # Wait for smsRead to complete
 p.communicate()
 
+if DEBUG: print("Running smsDelAll.sh")
+p = subprocess.Popen("/KWH/datalogger/transceive/sms/smsDelAll.sh")
+p.communicate()
+
 getMsgData = re.compile("\+CMGL:.*")
 
 msgNum = 1

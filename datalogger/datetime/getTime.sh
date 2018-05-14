@@ -1,89 +1,42 @@
 #!/bin/bash
 
-readonly PROGNAME=$(basename "$0")
-readonly LOCKFILE_DIR=/tmp
-readonly LOCK_FD=200
+lock_file=/KWH/datalogger/config/SIM_LOCK
 
-lock() {
-    local prefix=$1
-    local fd=${2:-$LOCK_FD}
-    local lock_file=/KWH/datalogger/config/SIM_LOCK
+. /KWH/datalogger/config/datalogger.conf
 
-    # create lock file
-    eval "exec $fd>$lock_file"
+log="/KWH/datalogger/datetime/datetime.log"
+wait
 
-    # acquier the lock
-    flock -n $fd \
-        && return 1 \
-        || return 0
-}
+lockfile -1 -l 120 $lock_file
+wait
 
-ttrap() {
-    local func="$1"; shift
-    for sig in "$@"; do
-        trap "$func $sig" "$sig"
-    done
-}
-
-trap_recurse() {
-    local signal=$1
-
-    # deregister trap for this signal (trap recursion)
-    trap - $signal
-    # kill any child processes in this group, passing on same signal
-    kill -s $signal "-$$"
-}
-
-cleanup() {
-    local prefix=$1
-    local signal=$2
-
-    local lock_file=$LOCKFILE_DIR/$prefix.lock
-
-    # cleanup lock_file
-    rm -f "$lock_file"
-
-    if [[ -n "$signal" ]]; then
-        trap_recurse $signal
-    fi
-}
-
-eexit() {
-    local error_str="$@"
-
-    echo $error_str
-    exit 1
-}
-
-main() {
-    # trap signals
-    ttrap "cleanup $PROGNAME" SIGHUP SIGINT SIGQUIT SIGTERM
-
-    while $(lock $PROGNAME)
-    do
-	sleep 1
-    done
-
-    . /KWH/datalogger/config/datalogger.conf
-
-    log="/KWH/datalogger/datetime/datetime.log"
-
-    echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
-    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
-    echo AT+CGATT=0 | nc localhost $SIM_PORT >> $log
-    echo AT+CGATT=1 | nc localhost $SIM_PORT >> $log
-    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
-    echo AT+CIPMUX=0 | nc localhost $SIM_PORT >> $log
-    echo AT+CSTT=\"wholesale\" | nc localhost $SIM_PORT >> $log
-    echo AT+CIICR | nc localhost $SIM_PORT >> $log
-    echo AT+CIFSR | nc localhost $SIM_PORT >> $log
-    echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" \
+echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
+wait
+echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CGATT=0 | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CGATT=1 | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CIPMUX=0 | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CSTT=\"wholesale\" | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CIICR | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CIFSR | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" \
 	| nc localhost $SIM_PORT | tail -c 4 > /KWH/datalogger/datetime/nisttime
-    echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
-    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
-    /KWH/datalogger/datetime/setTime.sh $(tail -c 4 /KWH/datalogger/datetime/nisttime)
+wait
+echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
+wait
+echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+wait
+/KWH/datalogger/datetime/setTime.sh $(tail -c 4 /KWH/datalogger/datetime/nisttime)
+wait
 
-    # standard cleanup on proper exit so we never leave the lock file around
-    cleanup $PROGNAME
-}
-main $*
+sudo rm -f $lock_file
+wait

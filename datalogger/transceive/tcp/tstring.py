@@ -5,9 +5,10 @@ DPATH = "/KWH/datalogger"
 execfile(DPATH + "/config/pyvars.py")
 
 # setup string(str) in KP format
-str = "#STA:" + STA + ";TM:"
-with open(DPATH + '/datetime/datetime', 'r') as date:
-    str = str + date.read() + ";C:86;V:0000"
+str = ADMPW+"#STA:" + STA 
+#+ ";TM:"
+#with open(DPATH + '/datetime/datetime', 'r') as date:
+#    str = str + date.read() + ";C:86;V:0000"
 
 # analog channels
 if AD01 == "1":
@@ -51,32 +52,30 @@ if AD08 == "1":
         if data <> "":
             str = str + ";AD08:" + data
 
-# need to switch temp sensors to a new code like TP01
-if AD11 == "1":
-    with open(DPATH + '/temperature/' + TEMP1, 'a+') as AD11:
-        data = AD11.read()
+# Temp sensors
+if TM01 == "1":
+    with open(DPATH + '/temperature/' + TEMP1, 'a+') as TM01:
+        data = TM01.read()
         if data <> "":
-            str = str + ";AD11:" + data
-
-if AD12 == "1":
-    with open(DPATH + '/temperature/' + TEMP2, 'a+') as AD12:
-        data = AD12.read()
+            str = str + ";TM01:" + data
+if TM02 == "1":
+    with open(DPATH + '/temperature/' + TEMP2, 'a+') as TM02:
+        data = TM02.read()
         if data <> "":
-            str = str + ";AD12:" + data
+            str = str + ";TM02:" + data
+if TM03 == "1":
+    with open(DPATH + '/temperature/' + TEMP2, 'a+') as TM03:
+        data = TM03.read()
+        if data <> "":
+            str = str + ";TM03:" + data
+#Add more temp sensor channels
 
-
-# digital channels
-#Using PU01 temporarily to send signal until we adjust the server side tcpipapp code
+# Digital channels
 if PU01 == "1":
-    with open(DPATH + '/signal/signal', 'a+') as PU01:
-        data = PU01.read()
+    with open(DPATH + '/pulse/PU01', 'a+') as PU01:
+        data = PU02.read()
         if data <> "":
-            str = str + ";PU01:" + data 
-#if PU01 == "1":
-#    with open(DPATH + '/pulse/PU01', 'a+') as PU01:
-#        data = PU02.read()
-#        if data <> "":
-#            str = str + ";PU01:" + data
+            str = str + ";PU01:" + data
 if PU02 == "1":
     with open(DPATH + '/pulse/PU02', 'a+') as PU02:
         data = PU02.read()
@@ -113,8 +112,16 @@ if PU08 == "1":
         if data <> "":
             str = str + ";PU08:" + data 
 
-# finish string
-str = str + ";DI:333000;DO:0000;#" # need to learn what these are and see if 
-# they should be configurable
+# Signal
+if SQ == "1":
+    with open(DPATH + '/signal/signal', 'a+') as SQ:
+        data = SQ.read()
+        if data <> "":
+            str = str + ";SQ:" + data 
+
+# Finish string
+str = str + ";#" 
+
+# Write to tstring
 with open(DPATH + '/transceive/tcp/tstring', 'w') as tstring:
     tstring.write(str)

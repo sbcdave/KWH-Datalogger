@@ -11,7 +11,6 @@ DEBUG = int(DEBUG)
 smsPath = "/KWH/datalogger/transceive/sms"
 
 # Setup regex and paths to command scripts
-delPath =smsPath+"/smsDel.sh"
 sendPath = smsPath+"/smsSend.sh"
 commandList = []
 ################################################################################
@@ -25,27 +24,27 @@ r"(.*?)#AD(\d\d):([0-1])(,\d.\d{3},\d.\d{3},\d.\d{3},\d.\d{3},\d.\d{3},[0,1]{4},
 commandList.append(adxx)
 ################################################################################
 apnPath = smsPath+"/commands/APN.sh" 
-apn = re.compile(r"(.*?)#APN:(.*?)()\!#") 
+apn = re.compile(r"(.*?)#APN:(.*?)#") 
 commandList.append(apn)
 ################################################################################
 debugPath = smsPath+"/commands/DEBUG.sh" 
-debug = re.compile(r"(.*?)#DBG:([0-1])()#")
+debug = re.compile(r"(.*?)#DBG:([0-1])#")
 commandList.append(debug)
 ################################################################################
 domainPath = smsPath+"/commands/DOMAIN.sh" 
-domain = re.compile(r"(.*?)#DOM:([A-z\.]*)()\!#") 
+domain = re.compile(r"(.*?)#DOM:(.*?)#") 
 commandList.append(domain)
 ################################################################################
 inqConfPath = smsPath+"/commands/inqConf.sh" 
 inqConf = re.compile(r"(.*?)#CONF#") 
 commandList.append(inqConf)
 ################################################################################
-inqValPath = "/KWH/datalogger/transceive/tcp/tstring.py"
+inqValPath = "/KWH/datalogger/transceive/tcp"
 inqVal = re.compile(r"(.*?)#VAL#") 
 commandList.append(inqVal)
 ################################################################################
 portPath = smsPath+"/commands/PORT.sh" 
-port = re.compile(r"(.*?)#PORT:(\d{1,5})()#") 
+port = re.compile(r"(.*?)#PORT:(\d{1,5})#") 
 commandList.append(port)
 ################################################################################
 puxxPath = smsPath+"/commands/PUxx.sh" 
@@ -53,7 +52,7 @@ puxx = re.compile(r"(.*?)#PU(\d\d):([0-1])(,[0-1]{4},[0-3]{6})*?#")
 commandList.append(puxx)
 ################################################################################
 puxxValPath = smsPath+"/commands/PUxxVal.sh" 
-puxxVal = re.compile(r"(.*?)#PU(\d\d)VAL:(\d*?)#") 
+puxxVal = re.compile(r"(.*?)#PU(\d\d)VAL:(\d*)#") 
 commandList.append(puxxVal)
 ################################################################################
 resetPath = smsPath+"/commands/RESET.sh" 
@@ -61,83 +60,25 @@ reset = re.compile(r"(.*?)#RESET#")
 commandList.append(reset)
 ################################################################################
 staPath = smsPath+"/commands/STA.sh" 
-sta = re.compile(r"(.*?)#STA:(.*?)()#") 
+sta = re.compile(r"(.*?)#STA:(.*?)#") 
 commandList.append(sta)
+################################################################################
+tx_intrvlPath = smsPath+"/commands/TX_INTRVL.sh"
+tx_intrvl = re.compile(r"(.*?)#TX:(\d*?)#")
+commandList.append(tx_intrvl)
 ################################################################################
 invalid = re.compile(r"(.*?)#")
 commandList.append(invalid)
 ################################################################################
-catchAll = re.compile(r".*")
-commandList.append(catchAll)
-################################################################################
-
-# NOTE: msg[0] = message number, msg[1] = phone number, msg[2] = the message
-def process(options, commandFile, msg):
-    if DEBUG: print("Set "+options[0])
-
-    # Check password
-    if match.group(1) == ADMPW:
-        if DEBUG: print("Password match")
-
-        # Commands with more than two values as part of the update request processed here
-	if match.group(3) <> '':
-                # Special case for Pulse value response formatting
-                if options[0] == "PU0":
-                    if DEBUG: print("Setting "+options[0]+match.group(2)+options[1]+match.group(3))
-                    p = subprocess.Popen([commandFile, str(match.group(2)), str(match.group(3))])
-                else:
-                    if DEBUG: print("Setting "+options[0]+" "+match.group(2)+" to: "+match.group(3))
-                    p = subprocess.Popen([commandFile, str(match.group(2)), str(match.group(3))])
-        # Commands with a single value processed here
-	else:
-                if DEBUG: print("Setting "+options[0]+" to: "+match.group(2))
-        	p = subprocess.Popen([commandFile, str(match.group(2))])
-
-        # Wait until complete to start delete process
-        p.communicate()
-        if p.returncode == 0:
-            if DEBUG: print(options[0]+" set success")
-            if DEBUG: print("Deleting sms #"+msg[0])
-            p = subprocess.Popen([delPath, msg[0]])
-            p.communicate()
-            if p.returncode == 0:
-                if DEBUG: print("Delete success")
-            else:
-                if DEBUG: print("Delete failed")
-            if DEBUG: print("Executing: "+sendPath+" "+msg[1]+" "+options[0]+" set to: "+match.group(2))
-
-            # Commands with more than two values as part of the update request processed here
-	    if match.group(3) <> '':
-                # Special case for Pulse value response formatting
-                if options[0] == "PU0":
-                    p = subprocess.Popen([sendPath, msg[1], str(options[0])+str(match.group(2))+options[1]+str(match.group(3))])
-                else:
-                    p = subprocess.Popen([sendPath, msg[1], str(options[0])+" "+str(match.group(2))+" set to: "+str(match.group(3))])
-
-            # Commands with a single value processed here
-	    else:
-                p = subprocess.Popen([sendPath, msg[1], str(options[0])+" set to: "+str(match.group(2))])
-
-            p.communicate()
-    else:
-        if DEBUG: print("Wrong password")
-        if DEBUG: print("Deleting sms #"+msg[0])
-        p = subprocess.Popen([delPath, msg[0]])
-        p.communicate()
-        if p.returncode == 0:
-            if DEBUG: print("Delete success")
-        else:
-            if DEBUG: print("Delete failed")
-
 
 
 ##### MAIN #####
-# smsParse.py reads all sms into individual files in smsPath/msg director
+# smsParse.py reads all sms into individual files in smsPath/msg directory
 # This puts them all into an array in message numerical order
 messages = os.listdir(smsPath+"/msg")
 messages.sort()
 # Regex to get message #, phone #, and msg data from each message
-messageData = re.compile(r"\+CMGL: (\d*),.*?,(.*?),.*?,.*?\n(.*)")
+messageData = re.compile(r"\+CMGL: \d*,.*?,(.*?),.*?,.*?\n(.*)")
 # This array will be populated with the msg(s) that each have the 3 regex groups
 msgList = []
 
@@ -149,71 +90,89 @@ for msg in messages:
         f = open(smsPath+"/msg/"+str(msg), 'r+')
         msgData = mmap.mmap(f.fileno(), 0)
         parts = messageData.search(msgData)
-        msgList.append([parts.group(1), parts.group(2).replace('"', ''), parts.group(3)])
+        msgList.append([parts.group(1).replace('"', ''), parts.group(2)])
         if DEBUG: print msgList
         f.close()
 
-
+# NOTE: msg[0] = phone number, msg[1] = the message
 for msg in msgList:
     found = False
     for command in commandList:
-        match = command.search(msg[2]) 
+        match = command.search(msg[1]) 
         if match and not found:
 	    found = True
-            # Execute the appropriate processing file
+            # Execute the corresponding command file and pass it the msg data
             if command == reset:
-                process(["Reset"], resetPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([resetPath, msg[0]])
+                    p.communicate()
             elif command == admpw:
-                process(["Admin Password"], admpwPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([admpwPath, msg[0], match.group(2)])
+                    p.communicate()
             elif command == sta:
-		process(["Station ID"], staPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([staPath, msg[0], match.group(2)])
+                    p.communicate()
             elif command == debug:
-		process(["Debug"], debugPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([debugPath, msg[0], match.group(2)])
+                    p.communicate()
             elif command == domain:
-		process(["Server Domain"], domainPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([domainPath, msg[0], match.group(2)])
+                    p.communicate()
             elif command == port:
-		process(["Server Port"], portPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([portPath, msg[0], match.group(2)])
+                    p.communicate()
             elif command == apn:
-		process(["APN"], apnPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([apnPath, msg[0], match.group(2)])
+                    p.communicate()
             elif command == puxx:
-		process(["Pulse Channel"], puxxPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([puxxPath, msg[0], match.group(2), match.group(3)])
+                    p.communicate()
             elif command == puxxVal:
-                process(["PU0", " value set to: "], puxxValPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([puxxValPath, msg[0], match.group(2), match.group(3)])
+                    p.communicate()
             elif command == adxx:
-		process(["Analog Channel"], adxxPath, msg)
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([adxxPath, msg[0], match.group(2), match.group(3)])
+                    p.communicate()
+            elif command == tx_intrvl:
+	        if match.group(1) == ADMPW:
+                    if DEBUG: print("Password match")
+                    p = subprocess.Popen([tx_intrvlPath, msg[0], match.group(2)])
+                    p.communicate()
             elif command == inqConf:
 	        if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
-                    p = subprocess.Popen([inqConfPath])
+                    p = subprocess.Popen([inqConfPath, msg[0]])
                     p.communicate()
-                    with open("/KWH/datalogger/transceive/sms/commands/inqConf.log", "r") as conf:
-                        p = subprocess.Popen([sendPath, msg[1], conf.read()])
-                        p.communicate()
-                    p = subprocess.Popen([delPath, msg[0]])
-                    p.communicate()
-                    if DEBUG: print("Message "+msg[0]+" has been deleted")
-                if DEBUG: print("Processed inquiry for config")
             elif command == inqVal:
 	        if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
-                    p = subprocess.Popen([inqValPath])
+                    p = subprocess.Popen([inqValPath+"/tstring.py"])
                     p.communicate()
-                    with open("/KWH/datalogger/transceive/tcp/tstring", "r") as vals:
-                        p = subprocess.Popen([sendPath, msg[1], vals.read()])
-                        p.communicate()
-                    p = subprocess.Popen([delPath, msg[0]])
+                    with open(inqValPath+"/tstring", "r") as val:
+			data=val.read().replace(';', ' ')
+                    p = subprocess.Popen([sendPath, msg[0], data])
                     p.communicate()
-                    if DEBUG: print("Message "+msg[0]+" has been deleted")
-                if DEBUG: print("Processed inquiry for values")
             elif command == invalid:
 	        if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
-                    p = subprocess.Popen([sendPath, msg[1], "Command not valid"])
+                    p = subprocess.Popen([sendPath, msg[0], "Command not valid"])
 		    p.communicate()
-                    p = subprocess.Popen([delPath, msg[0]])
-		    p.communicate()
-                    if DEBUG: print("Deleting invalid message with correct password")
-	    elif command == catchAll:
-                p = subprocess.Popen([delPath, msg[0]])
-                p.communicate()
-                if DEBUG: print("Deleting invalid message without correct password")

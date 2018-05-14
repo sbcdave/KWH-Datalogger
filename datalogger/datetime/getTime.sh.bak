@@ -66,10 +66,22 @@ main() {
 
     . /KWH/datalogger/config/datalogger.conf
 
-    echo AT+CMGF=1 | nc localhost $SIM_PORT \
-	> /KWH/datalogger/transceive/sms/delete.txt
-    echo AT+CMGD=$1 | nc localhost $SIM_PORT \
-	>> /KWH/datalogger/transceive/sms/delete.txt
+    log="/KWH/datalogger/datetime/datetime.log"
+
+    echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    echo AT+CGATT=0 | nc localhost $SIM_PORT >> $log
+    echo AT+CGATT=1 | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    echo AT+CIPMUX=0 | nc localhost $SIM_PORT >> $log
+    echo AT+CSTT=\"wholesale\" | nc localhost $SIM_PORT >> $log
+    echo AT+CIICR | nc localhost $SIM_PORT >> $log
+    echo AT+CIFSR | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" \
+	| nc localhost $SIM_PORT | tail -c 4 > /KWH/datalogger/datetime/nisttime
+    echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    /KWH/datalogger/datetime/setTime.sh $(tail -c 4 /KWH/datalogger/datetime/nisttime)
 
     # standard cleanup on proper exit so we never leave the lock file around
     cleanup $PROGNAME

@@ -18,7 +18,7 @@ set -e
 case "$1" in
   start)
 	/KWH/datalogger/pulse/pulseStart.sh &
-        /KHW/datalogger/boot/stopTXandSetTime.sh &
+        /KWH/datalogger/boot/stopTXandSetTime.sh &
 	;;
   stop|reload|restart|force-reload|status)
 	;;

@@ -1,5 +1,6 @@
 #!/bin/bash
-
+sudo rm /KWH/datalogger/config/SIM_LOCK
+wait
 sudo rm /etc/cron.d/dcrond
 wait
 sleep 10

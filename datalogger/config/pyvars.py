@@ -16,12 +16,6 @@ with open('/KWH/datalogger/config/AD07', 'r') as config:
 	AD07=config.read()
 with open('/KWH/datalogger/config/AD08', 'r') as config:
 	AD08=config.read()
-with open('/KWH/datalogger/config/AD11') as config:
-	AD11=config.read()
-with open('/KWH/datalogger/config/AD12') as config:
-	AD12=config.read()
-with open('/KWH/datalogger/config/AD13') as config:
-	AD13=config.read()
 with open('/KWH/datalogger/config/ADMPW') as config:
 	ADMPW=config.read()
 with open('/KWH/datalogger/config/APN', 'r') as config:
@@ -66,3 +60,11 @@ with open('/KWH/datalogger/config/gitV1') as config:
 	gitV1=config.read()
 with open('/KWH/datalogger/config/gitV2') as config:
 	gitV2=config.read()
+with open('/KWH/datalogger/config/SQ') as config:
+	SQ=config.read()
+with open('/KWH/datalogger/config/TM01') as config:
+	TM01=config.read()
+with open('/KWH/datalogger/config/TM02') as config:
+	TM02=config.read()
+with open('/KWH/datalogger/config/TM03') as config:
+	TM03=config.read()

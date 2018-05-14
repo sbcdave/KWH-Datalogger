@@ -1,5 +1,19 @@
 #!/bin/bash
+# Command file for resetting the admin password
 
-path="/KWH/datalogger/pulse/PU0"$1
-echo -n "$2" > $path
-echo "$2 > $path" > /KWH/datalogger/transceive/sms/commands/PUxxVal.log
+. /KWH/datalogger/config/datalogger.conf
+
+log=/KWH/datalogger/transceive/sms/commands/PUxxVal.log
+
+response="$STA - PU$2 value is now: $3"
+
+path="/KWH/datalogger/pulse/PU"$2
+echo -n "$3" > $path
+echo "$3 > $path" > $log
+
+/KWH/datalogger/transceive/sms/smsSend.sh $1 $response
+wait
+
+echo "Response sent to $1: $response" >> $log
+
+echo `date` >> $log

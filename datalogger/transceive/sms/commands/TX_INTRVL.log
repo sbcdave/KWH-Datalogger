@@ -1,0 +1,3 @@
+setconf TX_INTRVL 1
+Response sent to +14252681938: 99002 - TX_INTRVL is now: 1
+Mon May 14 02:32:10 UTC 2018

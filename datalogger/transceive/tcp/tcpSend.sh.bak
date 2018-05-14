@@ -1,0 +1,95 @@
+#!/bin/bash
+
+readonly PROGNAME=$(basename "$0")
+readonly LOCKFILE_DIR=/tmp
+readonly LOCK_FD=200
+
+lock() {
+    local prefix=$1
+    local fd=${2:-$LOCK_FD}
+    local lock_file=/KWH/datalogger/config/SIM_LOCK
+
+    # create lock file
+    eval "exec $fd>$lock_file"
+
+    # acquier the lock
+    flock -n $fd \
+        && return 0 \
+        || return 1
+}
+
+ttrap() {
+    local func="$1"; shift
+    for sig in "$@"; do
+        trap "$func $sig" "$sig"
+    done
+}
+
+trap_recurse() {
+    local signal=$1
+
+    # deregister trap for this signal (trap recursion)
+    trap - $signal
+    # kill any child processes in this group, passing on same signal
+    kill -s $signal "-$$"
+}
+
+cleanup() {
+    local prefix=$1
+    local signal=$2
+
+    local lock_file=$LOCKFILE_DIR/$prefix.lock
+
+    # cleanup lock_file
+    rm -f "$lock_file"
+
+    if [[ -n "$signal" ]]; then
+        trap_recurse $signal
+    fi
+}
+
+eexit() {
+    local error_str="$@"
+
+    echo $error_str
+    exit 1
+}
+
+main() {
+    # trap signals
+    ttrap "cleanup $PROGNAME" SIGHUP SIGINT SIGQUIT SIGTERM
+
+    lock $PROGNAME || eexit "SIM Busy!"
+
+    . /KWH/datalogger/config/datalogger.conf
+
+    log="/KWH/datalogger/transceive/tcp/tcpSend.log"
+
+    echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    echo AT+CGATT=0 | nc localhost $SIM_PORT >> $log
+    echo AT+CGATT=1 | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+    echo AT+CIPMUX=0 | nc localhost $SIM_PORT >> $log
+    echo AT+CSTT=\"wholesale\" | nc localhost $SIM_PORT >> $log
+    echo AT+CIICR | nc localhost $SIM_PORT >> $log
+    echo AT+CIFSR | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSTART=\"TCP\",\"$DOMAIN\",\"$PORT\" \
+	| nc localhost $SIM_PORT >> $log
+    echo AT+CIPSEND | nc localhost $SIM_PORT >> $log
+    cat /KWH/datalogger/transceive/tcp/tstring \
+	| nc localhost $SIM_PORT >> $log
+    sleep 3
+    echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
+
+    success=`tail -c 28 $log | head -c 4`
+    if [ $success != "@888" ]; then
+	tail -c 500 $log >> /KWH/datalogger/tranceive/tcp/fail.log
+    fi
+
+    echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
+
+    # standard cleanup on proper exit so we never leave the lock file around
+    cleanup $PROGNAME
+}
+main $*

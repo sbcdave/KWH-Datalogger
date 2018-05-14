@@ -1,1 +1,3 @@
-setconf DEBUG 0
+setconf DEBUG 1
+Response sent to +14252681938: 99002 - DEBUG value is now: 1
+Mon May 14 02:52:38 UTC 2018
