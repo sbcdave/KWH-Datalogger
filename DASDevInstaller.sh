@@ -37,6 +37,17 @@ if [ $status -ne 0 ]; then
     echo "Unable to install git...aborting"
     echo "contact dave@KiloWattsforHumanity.org for assistance"
 fi
+# Install procmail for lockfile
+echo ""
+echo "Installing procmail for its lockfile program"
+wait
+sudo apt-get install -y procmail
+status=$?
+wait
+if [ $status -ne 0 ]; then
+    echo "Unable to install procmail...aborting"
+    echo "contact dave@KiloWattsforHumanity.org for assistance"
+fi
 fi
 
 # Step (1)
