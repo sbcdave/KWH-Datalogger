@@ -1,5 +1,5 @@
-Traceback (most recent call last):
-  File "/KWH/datalogger/transceive/tcp/tstring.py", line 76, in <module>
-    data = PU02.read()
-AttributeError: 'str' object has no attribute 'read'
+capture: 0
+datetime: 0
+temp: 0
+signal: 0
 tstring: 0
