@@ -35,3 +35,5 @@ add a limit on pulses per second to avoid noise and limit pulses from plugging i
 Fix bug in smsParse that throws exception if there is no message to read
 
 Fix pulse channels
+
+Fix bug in simServer that doesn't show last response until next request
