@@ -44,7 +44,7 @@ def convert():
         hexstr = ""
         inputA = str(hex(int(myinput[0:4][::-1],2))[2::])
         inputB = str(hex(int(myinput[4:8][::-1],2))[2::])
-        hexstr = inputA + inputB
+        hexstr = inputB + inputA
         return hexstr
 
     def bin2dec2hex(myinput): #converts bin to hex
