@@ -79,12 +79,12 @@ def convert():
                 parity_bit = parity_func(binary(hexint1) + binary(hexint2), parityBit)
                 if(parityBit == "4"):
                     #startBit+8_bit_msg+stopBit 
-                    #msg = startBit + binary(hexint1) + binary(hexint2) + stopBit
-                    msg = startBit + binary(hexint1)[::-1] + binary(hexint2)[::-1] + stopBit
+                    #msg = startBit + binary(hexint2) + binary(hexint1) + stopBit
+                    msg = startBit + binary(hexint2)[::-1] + binary(hexint1)[::-1] + stopBit
                 else:
                     #startBit+8_bit_msg+parityBit+stopBit 
-                    #msg = startBit + binary(hexint1) +binary(hexint2) + parityBit + stopBit
-                    msg = startBit + binary(hexint1)[::-1] + binary(hexint2)[::-1] + parity_bit + stopBit
+                    #msg = startBit + binary(hexint2) +binary(hexint1) + parity_bit + stopBit
+                    msg = startBit + binary(hexint2)[::-1] + binary(hexint1)[::-1] + parity_bit + stopBit
                 
                 #creates the modbus message
                 modbusMsg = modbusMsg + msg
