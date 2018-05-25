@@ -1872,3 +1872,2553 @@ Bytes to read: 17
 Sim response: AT+CMGD=1,4
 OK
 
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 24
+Sim response: AT+CIFSR
+25.32.144.92
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.500;TM03:23.500;PU01:946;PU02:6;PU04:36408;PU05:1602132;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.500;TM03:23.500;PU01:946;PU02:6;PU04:36408;PU05:1602132;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 26
+Sim response: AT+CSQ
++CSQ: 11,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 23
+Sim response: AT+CIFSR
+25.32.3.127
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1606127;PU06:153;PU07:6;PU08:17385906;SQ:11;#
+
+Bytes to read: 249
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1606127;PU06:153;PU07:6;PU08:17385906;SQ:11;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+100.149.13.172
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1610077;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1610077;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 25
+Sim response: AT+CIFSR
+172.51.23.106
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.002564;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1614071;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.002564;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1614071;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 26
+Sim response: AT+CSQ
++CSQ: 10,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+100.149.255.31
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:23.000;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1618065;PU06:153;PU07:6;PU08:17385906;SQ:10;#
+
+Bytes to read: 249
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:23.000;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1618065;PU06:153;PU07:6;PU08:17385906;SQ:10;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 8,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 24
+Sim response: AT+CIFSR
+25.33.130.23
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1622054;PU06:153;PU07:6;PU08:17385906;SQ:8;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1622054;PU06:153;PU07:6;PU08:17385906;SQ:8;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+25.234.108.147
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1626010;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1626010;PU06:153;PU07:6;PU08:17385906;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 26
+Sim response: AT+CSQ
++CSQ: 11,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 25
+Sim response: AT+CIFSR
+172.50.13.199
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:23.000;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1629656;PU06:153;PU07:6;PU08:17385906;SQ:11;#
+
+Bytes to read: 249
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.733333;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:23.000;TM02:23.437;TM03:23.437;PU01:946;PU02:6;PU04:36408;PU05:1629656;PU06:153;PU07:6;PU08:17385906;SQ:11;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 26
+Sim response: AT+CSQ
++CSQ: 11,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 25
+Sim response: AT+CIFSR
+100.149.13.49
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:23.000;TM02:23.375;TM03:23.375;PU01:946;PU02:6;PU04:36408;PU05:1633647;PU06:153;PU07:6;PU08:17385906;SQ:11;#
+
+Bytes to read: 249
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:23.000;TM02:23.375;TM03:23.375;PU01:946;PU02:6;PU04:36408;PU05:1633647;PU06:153;PU07:6;PU08:17385906;SQ:11;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 26
+Sim response: AT+CSQ
++CSQ: 11,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+172.51.191.158
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1637571;PU06:154;PU07:6;PU08:17385907;SQ:11;#
+
+Bytes to read: 249
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.001282;AD04:0.734615;AD05:0.001282;AD06:0.001282;AD07:0.001282;AD08:0.001282;TM01:22.937;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1637571;PU06:154;PU07:6;PU08:17385907;SQ:11;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+100.151.70.202
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.937;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1640875;PU06:154;PU07:6;PU08:17385909;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.937;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1640875;PU06:154;PU07:6;PU08:17385909;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+25.235.247.130
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.937;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1644195;PU06:154;PU07:6;PU08:17385913;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.937;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1644195;PU06:154;PU07:6;PU08:17385913;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+100.151.50.185
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1647428;PU06:155;PU07:6;PU08:17385928;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1647428;PU06:155;PU07:6;PU08:17385928;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 27
+Sim response: AT+CIFSR
+100.148.139.196
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1650686;PU06:157;PU07:6;PU08:17385951;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.001282;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1650686;PU06:157;PU07:6;PU08:17385951;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 6
+Sim response: 
+OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 24
+Sim response: AT+CIFSR
+25.234.40.99
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.937;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1653882;PU06:157;PU07:6;PU08:17385954;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.937;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1653882;PU06:157;PU07:6;PU08:17385954;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 8,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 23
+Sim response: AT+CIFSR
+25.33.58.45
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1657139;PU06:159;PU07:6;PU08:17385993;SQ:8;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.733333;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.375;TM03:23.375;PU01:947;PU02:6;PU04:36408;PU05:1657139;PU06:159;PU07:6;PU08:17385993;SQ:8;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 25
+Sim response: AT+CIFSR
+26.50.237.238
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1660414;PU06:159;PU07:6;PU08:17385995;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:23.000;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1660414;PU06:159;PU07:6;PU08:17385995;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 26
+Sim response: AT+CSQ
++CSQ: 10,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 23
+Sim response: AT+CIFSR
+25.33.39.97
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1663714;PU06:159;PU07:6;PU08:17385995;SQ:10;#
+
+Bytes to read: 249
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1663714;PU06:159;PU07:6;PU08:17385995;SQ:10;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+100.151.89.217
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.005128;AD03:0.002564;AD04:0.735897;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1666935;PU06:159;PU07:6;PU08:17386039;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.005128;AD03:0.002564;AD04:0.735897;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.312;TM03:23.312;PU01:947;PU02:6;PU04:36408;PU05:1666935;PU06:159;PU07:6;PU08:17386039;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 25
+Sim response: AT+CIFSR
+25.234.91.223
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.250;TM03:23.250;PU01:947;PU02:6;PU04:36408;PU05:1670273;PU06:160;PU07:6;PU08:17386117;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.003846;AD03:0.002564;AD04:0.732051;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.250;TM03:23.250;PU01:947;PU02:6;PU04:36408;PU05:1670273;PU06:160;PU07:6;PU08:17386117;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 22
+Sim response: 
+OK
+AT+CGATT=1
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 26
+Sim response: AT+CIFSR
+100.151.218.94
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.005128;AD03:0.002564;AD04:0.735897;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.250;TM03:23.250;PU01:947;PU02:6;PU04:36408;PU05:1673326;PU06:161;PU07:6;PU08:17386160;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.005128;AD03:0.002564;AD04:0.735897;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.875;TM02:23.250;TM03:23.250;PU01:947;PU02:6;PU04:36408;PU05:1673326;PU06:161;PU07:6;PU08:17386160;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+
+Wrote to sim: AT+CSQ
+
+Bytes to read: 25
+Sim response: AT+CSQ
++CSQ: 9,0
+
+OK
+
+Wrote to sim: AT+CMEE=2
+
+Bytes to read: 15
+Sim response: AT+CMEE=2
+OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CGATT=0
+
+Bytes to read: 10
+Sim response: AT+CGATT=0
+Wrote to sim: AT+CGATT=1
+
+Bytes to read: 16
+Sim response: 
+OK
+AT+CGATT=1
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 27
+Sim response: 
+OK
+AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CIPMUX=0
+
+Bytes to read: 17
+Sim response: AT+CIPMUX=0
+OK
+
+Wrote to sim: AT+CSTT="wholesale"
+
+Bytes to read: 25
+Sim response: AT+CSTT="wholesale"
+OK
+
+Wrote to sim: AT+CIICR
+
+Bytes to read: 14
+Sim response: AT+CIICR
+OK
+
+Wrote to sim: AT+CIFSR
+
+Bytes to read: 25
+Sim response: AT+CIFSR
+25.33.241.198
+
+Wrote to sim: AT+CIPSTART="TCP","kwhstg.org","11002"
+
+Bytes to read: 58
+Sim response: AT+CIPSTART="TCP","kwhstg.org","11002"
+OK
+
+CONNECT OK
+
+Wrote to sim: AT+CIPSEND
+
+Bytes to read: 14
+Sim response: AT+CIPSEND
+> 
+Wrote to sim: davePass#STA:DenverPi;AD01:0.002564;AD02:0.005128;AD03:0.002564;AD04:0.735897;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.812;TM02:23.187;TM03:23.187;PU01:947;PU02:6;PU04:36408;PU05:1676619;PU06:161;PU07:6;PU08:17386200;SQ:9;#
+
+Bytes to read: 248
+Sim response: davePass#STA:DenverPi;AD01:0.002564;AD02:0.005128;AD03:0.002564;AD04:0.735897;AD05:0.002564;AD06:0.002564;AD07:0.002564;AD08:0.002564;TM01:22.812;TM02:23.187;TM03:23.187;PU01:947;PU02:6;PU04:36408;PU05:1676619;PU06:161;PU07:6;PU08:17386200;SQ:9;#
+
+Wrote to sim: AT+CIPCLOSE
+
+Bytes to read: 23
+Sim response: AT+CIPCLOSE
+CLOSE OK
+
+Wrote to sim: AT+CIPSHUT
+
+Bytes to read: 21
+Sim response: AT+CIPSHUT
+SHUT OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGL="ALL"
+
+Bytes to read: 19
+Sim response: AT+CMGL="ALL"
+OK
+
+Wrote to sim: AT+CMGF=1
+
+Bytes to read: 15
+Sim response: AT+CMGF=1
+OK
+
+Wrote to sim: AT+CMGD=1,4
+
+Bytes to read: 17
+Sim response: AT+CMGD=1,4
+OK
+

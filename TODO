@@ -37,3 +37,8 @@ Fix bug in smsParse that throws exception if there is no message to read
 Fix pulse channels
 
 Fix bug in simServer that doesn't show last response until next request
+
+add code to modbus server to cycle through USB0-1-2-3 until it's able to communicate
+
+add modbus server code to take serial parameters...parity, baud, etc...
+

@@ -1,0 +1,147 @@
+EXCEPTION: Write FailedEXCEPTION: Write FailedEXCEPTION: Write FailedEXCEPTION: Write FailedEXCEPTION: Write FailedEXCEPTION: Write FailedSIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+EXCEPTION: Write FailedSIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+EXCEPTION: Write FailedStarting ModBus Server
+Starting port selection
+Port 19999 in use
+MODBUS_PORT: 20000
+Listening...
+SIGINT received...Closing ModBus Server
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Configuration variables reloaded
+Received: 0 2 2
+
+EXCEPTION: Write FailedConfiguration variables reloaded
+Client connection closed
+Configuration variables reloaded
+Received: 0 2 2
+
+EXCEPTION: Write FailedConfiguration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Configuration variables reloaded
+Received: 0 2 2
+
+EXCEPTION: Write FailedConfiguration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+ConnectedConfiguration variables reloaded
+Received: 0 2 2
+
+EXCEPTION: Write FailedConfiguration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+ConnectedConfiguration variables reloaded
+Received: 0 2 2
+
+EXCEPTION: Write FailedConfiguration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Connected
+Configuration variables reloaded
+Received: 0 2 2
+
+Requested 2 registers, starting at address 0, from slave 2
+EXCEPTION: Write FailedConfiguration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Connected
+Configuration variables reloaded
+Received: 0 2 2
+
+Requested 2 registers, starting at address 0, from slave 2
+EXCEPTION: Write FailedConfiguration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Connected
+Configuration variables reloaded
+Received: 0 2 2
+
+Requested 2 registers, starting at address 0, from slave 2
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Connected
+Configuration variables reloaded
+Received: 0 2 2
+
+Requested 2 registers, starting at address 0, from slave 2
+'ReadInputRegistersResponse' object does not support indexing
+Configuration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Connected
+Configuration variables reloaded
+Received: 0 2 2
+
+Requested 2 registers, starting at address 0, from slave 2
+Reponse: 17251 59017Response sent to: ('127.0.0.1', 54098)
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Connected
+Configuration variables reloaded
+Received: 0 2 2
+
+Requested 2 registers, starting at address 0, from slave 2
+Reponse: 17251 58505
+Response sent to: ('127.0.0.1', 54178)
+Client connection closed
+SIGINT received...Closing ModBus Server
+Starting ModBus Server
+Starting port selection
+MODBUS_PORT: 19999
+Listening...
+Connected
+Configuration variables reloaded
+Received: 0 2 2
+
+Requested 2 registers, starting at address 0, from slave 2
+Reponse: 17251 59310
+must be string or buffer, not list
+Configuration variables reloaded
+Client connection closed
+SIGINT received...Closing ModBus Server

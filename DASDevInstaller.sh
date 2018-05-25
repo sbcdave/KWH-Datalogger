@@ -48,6 +48,17 @@ if [ $status -ne 0 ]; then
     echo "Unable to install procmail...aborting"
     echo "contact dave@KiloWattsforHumanity.org for assistance"
 fi
+# Install pymodbus for modbus
+echo ""
+echo "Installing pymodbus for its modbus server"
+wait
+sudo pip install -U pymodbus
+status=$?
+wait
+if [ $status -ne 0 ]; then
+    echo "Unable to install pymodbus...aborting"
+    echo "contact dave@KiloWattsforHumanity.org for assistance"
+fi
 fi
 
 # Step (1)
