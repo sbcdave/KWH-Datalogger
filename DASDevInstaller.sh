@@ -159,6 +159,14 @@ wait
 sudo systemctl enable simserver.service
 wait
 
+# Enable modbusserver.service
+echo ""
+echo "Enabling ModBus Server service"
+sudo cp /KWH/moves/modbusserver.service /etc/systemd/system/.
+wait
+sudo systemctl enable modbusserver.service
+wait
+
 # Enable data logger service
 echo ""
 echo "Enabling dlogger service for pigpiod, pulse counting, and updating the time at boot"
