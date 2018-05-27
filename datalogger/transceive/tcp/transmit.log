@@ -1,7 +1,7 @@
-Traceback (most recent call last):
-  File "/KWH/datalogger/transceive/sms/smsParse.py", line 8, in <module>
-    execfile("/KWH/datalogger/config/pyvars.py")
-  File "/KWH/datalogger/config/pyvars.py", line 25, in <module>
-    with open('/KWH/datalogger/config/DOMAIN', 'r') as config:
-IOError: [Errno 2] No such file or directory: '/KWH/datalogger/config/DOMAIN'
-smsParse: 0
+capture: 0
+datetime: 0
+temp: 0
+signal: 0
+modbus: 0
+tstring: 0
+tcpSend: 0
