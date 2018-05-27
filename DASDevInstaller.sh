@@ -48,15 +48,15 @@ if [ $status -ne 0 ]; then
     echo "Unable to install procmail...aborting"
     echo "contact dave@KiloWattsforHumanity.org for assistance"
 fi
-# Install pymodbus for modbus
+# Install minimalmodbus for modbus
 echo ""
-echo "Installing pymodbus for its modbus server"
+echo "Installing minimalmodbus"
 wait
-sudo pip install -U pymodbus
+sudo pip install -U minimalmodbus
 status=$?
 wait
 if [ $status -ne 0 ]; then
-    echo "Unable to install pymodbus...aborting"
+    echo "Unable to install minimalmodbus...aborting"
     echo "contact dave@KiloWattsforHumanity.org for assistance"
 fi
 fi
@@ -70,7 +70,7 @@ echo "Step (1)"
 echo "Downloading data logger software to the root directory in /KWH"
 echo "Credit: KWH DAS Team and Seattle University Senior Design Team ECE 18.5"
 wait
-sudo git clone https://github.com/rpidaseditor/KWH.git
+sudo git clone https://github.com/sbcdave/KWH.git
 status=$?
 wait
 if [ $status -ne 0 ]; then
@@ -157,14 +157,6 @@ echo "Enabling sim server service"
 sudo cp /KWH/moves/simserver.service /etc/systemd/system/.
 wait
 sudo systemctl enable simserver.service
-wait
-
-# Enable modbusserver.service
-echo ""
-echo "Enabling ModBus Server service"
-sudo cp /KWH/moves/modbusserver.service /etc/systemd/system/.
-wait
-sudo systemctl enable modbusserver.service
 wait
 
 # Enable data logger service

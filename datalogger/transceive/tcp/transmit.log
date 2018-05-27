@@ -1,6 +1,5 @@
-capture: 0
-datetime: 0
-temp: 0
-signal: 0
-modbus: 0
-tstring: 0
+Traceback (most recent call last):
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 51, in <module>
+    temp.close()
+NameError: name 'temp' is not defined
+smsParse: 0
