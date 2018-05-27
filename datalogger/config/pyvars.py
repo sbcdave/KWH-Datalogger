@@ -68,3 +68,31 @@ with open('/KWH/datalogger/config/TM02') as config:
 	TM02=config.read()
 with open('/KWH/datalogger/config/TM03') as config:
 	TM03=config.read()
+with open('/KWH/datalogger/config/M1VOLTAGE') as config:
+	M1VOLTAGE=config.read()
+with open('/KWH/datalogger/config/M1ACTIVE_POWER') as config:
+	M1ACTIVE_POWER=config.read()
+with open('/KWH/datalogger/config/M1CURRENT') as config:
+	M1CURRENT=config.read()
+with open('/KWH/datalogger/config/M1APPARENT_POWER') as config:
+	M1APPARENT_POWER=config.read()
+with open('/KWH/datalogger/config/M1EXPORT_ACTIVE_ENERGY') as config:
+	M1EXPORT_ACTIVE_ENERGY=config.read()
+with open('/KWH/datalogger/config/M1EXPORT_REACTIVE_ENERGY') as config:
+	M1EXPORT_REACTIVE_ENERGY=config.read()
+with open('/KWH/datalogger/config/M1FREQUENCY') as config:
+	M1FREQUENCY=config.read()
+with open('/KWH/datalogger/config/M1IMPORT_ACTIVE_ENERGY') as config:
+	M1IMPORT_ACTIVE_ENERGY=config.read()
+with open('/KWH/datalogger/config/M1IMPORT_REACTIVE_ENERGY') as config:
+	M1IMPORT_REACTIVE_ENERGY=config.read()
+with open('/KWH/datalogger/config/M1PHASE_ANGLE') as config:
+	M1PHASE_ANGLE=config.read()
+with open('/KWH/datalogger/config/M1POWER_FACTOR') as config:
+	M1POWER_FACTOR=config.read()
+with open('/KWH/datalogger/config/M1REACTIVE_POWER') as config:
+	M1REACTIVE_POWER=config.read()
+with open('/KWH/datalogger/config/M1TOTAL_ACTIVE_ENERGY') as config:
+	M1TOTAL_ACTIVE_ENERGY=config.read()
+with open('/KWH/datalogger/config/M1TOTAL_REACTIVE_ENERGY') as config:
+	M1TOTAL_REACTIVE_ENERGY=config.read()

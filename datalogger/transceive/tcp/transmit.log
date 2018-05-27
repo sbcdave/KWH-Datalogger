@@ -2,4 +2,5 @@ capture: 0
 datetime: 0
 temp: 0
 signal: 0
+modbus: 0
 tstring: 0

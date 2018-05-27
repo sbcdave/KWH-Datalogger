@@ -112,6 +112,92 @@ if PU08 == "1":
         if data <> "":
             str = str + ";PU08:" + data 
 
+# ModBus
+if M1VOLTAGE == "1":
+    with open(DPATH + '/modbus/values/m1Voltage', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1VOL:" + data 
+
+if M1CURRENT == "1":
+    with open(DPATH + '/modbus/values/m1Current', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1CUR:" + data 
+
+if M1FREQUENCY == "1":
+    with open(DPATH + '/modbus/values/m1Frequency', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1FRQ:" + data 
+
+if M1ACTIVE_POWER == "1":
+    with open(DPATH + '/modbus/values/m1ActivePower', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1ACP:" + data 
+
+if M1APPARENT_POWER == "1":
+    with open(DPATH + '/modbus/values/m1ApparentPower', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1APP:" + data 
+
+if M1REACTIVE_POWER == "1":
+    with open(DPATH + '/modbus/values/m1ReactivePower', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1RCP:" + data 
+
+if M1POWER_FACTOR == "1":
+    with open(DPATH + '/modbus/values/m1PowerFactor', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1PFC:" + data
+
+if M1PHASE_ANGLE == "1":
+    with open(DPATH + '/modbus/values/m1PhaseAngle', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1ANG:" + data
+
+if M1EXPORT_ACTIVE_ENERGY == "1":
+    with open(DPATH + '/modbus/values/m1ExportActiveEnergy', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1EAE:" + data
+
+if M1EXPORT_REACTIVE_ENERGY == "1":
+    with open(DPATH + '/modbus/values/m1ExportReactiveEnergy', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1ERE:" + data
+
+if M1IMPORT_ACTIVE_ENERGY == "1":
+    with open(DPATH + '/modbus/values/m1ImportActiveEnergy', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1IAE:" + data
+
+if M1IMPORT_REACTIVE_ENERGY == "1":
+    with open(DPATH + '/modbus/values/m1ImportReactiveEnergy', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1IRE:" + data
+
+if M1TOTAL_ACTIVE_ENERGY == "1":
+    with open(DPATH + '/modbus/values/m1TotalActiveEnergy', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1TAE:" + data
+
+if M1TOTAL_REACTIVE_ENERGY == "1":
+    with open(DPATH + '/modbus/values/m1TotalReactiveEnergy', 'a+') as input:
+        data = input.read()
+        if data <> "":
+            str = str + ";M1TRE:" + data
+
+
 # Signal
 if SQ == "1":
     with open(DPATH + '/signal/signal', 'a+') as input:

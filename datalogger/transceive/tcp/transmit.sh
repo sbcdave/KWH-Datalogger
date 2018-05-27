@@ -19,13 +19,15 @@ echo "datetime: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 wait
 echo "temp: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 
-#/KWH/datalogger/modbus/modbus....
-#echo "modbus: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
-#wait
 # Signal Quality
 /KWH/datalogger/signal/getSignal.sh
 wait
 echo "signal: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
+
+# ModBus
+/KWH/datalogger/modbus/queryAll.py 1
+echo "modbus: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
+wait
 
 ###################################
 # Build transmitable ASCII string #
@@ -49,6 +51,6 @@ echo "tcpSend: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 # Check for new SMS messages to process #
 #########################################
 
-/KWH/datalogger/transceive/sms/smsParse.py > /KWH/datalogger/transceive/sms/smsParse.log
+/KWH/datalogger/transceive/sms/smsParse.py >> /KWH/datalogger/transceive/sms/smsParse.log
 wait
 echo "smsParse: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
