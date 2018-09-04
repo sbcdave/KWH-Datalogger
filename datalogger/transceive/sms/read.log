@@ -1,0 +1,4 @@
+AT+CMGF=1
+OK
+AT+CMGL="ALL"
+OK

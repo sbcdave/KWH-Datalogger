@@ -1,7 +1,15 @@
-capture: 0
-datetime: 0
-temp: 0
-signal: 0
-modbus: 0
-tstring: 0
-tcpSend: 0
+Traceback (most recent call last):
+  File "/KWH/datalogger/modbus/queryAll.py", line 30, in <module>
+    mb=minimalmodbus.Instrument('/dev/ttyUSB0', int(sys.argv[1]), mode='rtu')
+  File "/usr/local/lib/python2.7/dist-packages/MinimalModbus-0.7-py2.7.egg/minimalmodbus.py", line 103, in __init__
+    self.serial = _SERIALPORTS[port] = serial.Serial(port=port, baudrate=BAUDRATE, parity=PARITY, bytesize=BYTESIZE, stopbits=STOPBITS, timeout=TIMEOUT)
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialutil.py", line 240, in __init__
+    self.open()
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialposix.py", line 268, in open
+    raise SerialException(msg.errno, "could not open port {}: {}".format(self._port, msg))
+serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+Traceback (most recent call last):
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 51, in <module>
+    temp.close()
+NameError: name 'temp' is not defined
+smsParse: 0
