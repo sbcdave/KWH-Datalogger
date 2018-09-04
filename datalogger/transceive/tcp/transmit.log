@@ -8,8 +8,5 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/serial/serialposix.py", line 268, in open
     raise SerialException(msg.errno, "could not open port {}: {}".format(self._port, msg))
 serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
-Traceback (most recent call last):
-  File "/KWH/datalogger/transceive/sms/smsParse.py", line 51, in <module>
-    temp.close()
-NameError: name 'temp' is not defined
-smsParse: 0
+modbus: 1
+tstring: 0

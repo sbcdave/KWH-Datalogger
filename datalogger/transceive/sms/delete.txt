@@ -1,4 +1,4 @@
 AT+CMGF=1
-OK
++CME ERROR: SIM not inserted
 AT+CMGD=1,4
-OK
++CME ERROR: SIM not inserted
