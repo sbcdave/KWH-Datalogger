@@ -15,3 +15,7 @@
 
 #ignore temperature values
 **/temperature/*
+
+#ignore time values
+**/datetime/datetime
+**/datetime/nisttime
