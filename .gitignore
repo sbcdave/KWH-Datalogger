@@ -15,13 +15,13 @@
 **/pulse/PU08
 
 #ignore signal value
-**/signal/*
+**/signal/signal
 
 #ignore modbus values
 **/modbus/values/*
 
 #ignore temperature values
-**/temperature/*
+**/temperature/2*
 
 #ignore time values
 **/datetime/datetime
