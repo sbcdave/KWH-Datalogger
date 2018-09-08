@@ -48,3 +48,5 @@ export M1POWER_FACTOR=`cat /KWH/datalogger/config/M1POWER_FACTOR`
 export M1REACTIVE_POWER=`cat /KWH/datalogger/config/M1REACTIVE_POWER`
 export M1TOTAL_ACTIVE_ENERGY=`cat /KWH/datalogger/config/M1TOTAL_ACTIVE_ENERGY`
 export M1TOTAL_REACTIVE_ENERGY=`cat /KWH/datalogger/config/M1TOTAL_REACTIVE_ENERGY`
+export DOMAIN=`cat /KWH/datalogger/config/DOMAIN`
+export PORT=`cat /KWH/datalogger/config/PORT`
