@@ -96,7 +96,3 @@ with open('/KWH/datalogger/config/M1TOTAL_ACTIVE_ENERGY') as config:
 	M1TOTAL_ACTIVE_ENERGY=config.read()
 with open('/KWH/datalogger/config/M1TOTAL_REACTIVE_ENERGY') as config:
 	M1TOTAL_REACTIVE_ENERGY=config.read()
-with open('/KWH/datalogger/config/DOMAIN') as config:
-	DOMAIN=config.read()
-with open('/KWH/datalogger/config/PORT') as config:
-	PORT=config.read()
