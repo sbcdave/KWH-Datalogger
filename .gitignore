@@ -1,2 +1,17 @@
-datalogger/config/DOMAIN
-datalogger/config/PORT
+#ignore all log files
+*.log
+
+#ignore adc values
+**/adc/AD*
+
+#ignore pulse values
+**/pulse/PU*
+
+#ignore signal value
+**/signal/*
+
+#ignore modbus values
+**/modbus/*
+
+#ignore temperature values
+**/temperature/*
