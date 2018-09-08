@@ -5,13 +5,20 @@
 **/adc/AD*
 
 #ignore pulse values
-**/pulse/PU*
+**/pulse/PU01
+**/pulse/PU02
+**/pulse/PU03
+**/pulse/PU04
+**/pulse/PU05
+**/pulse/PU06
+**/pulse/PU07
+**/pulse/PU08
 
 #ignore signal value
 **/signal/*
 
 #ignore modbus values
-**/modbus/*
+**/modbus/values/*
 
 #ignore temperature values
 **/temperature/*
