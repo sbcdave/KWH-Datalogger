@@ -1,12 +1,36 @@
+capture: 0
 Traceback (most recent call last):
-  File "/KWH/datalogger/modbus/queryAll.py", line 30, in <module>
-    mb=minimalmodbus.Instrument('/dev/ttyUSB0', int(sys.argv[1]), mode='rtu')
-  File "/usr/local/lib/python2.7/dist-packages/MinimalModbus-0.7-py2.7.egg/minimalmodbus.py", line 103, in __init__
-    self.serial = _SERIALPORTS[port] = serial.Serial(port=port, baudrate=BAUDRATE, parity=PARITY, bytesize=BYTESIZE, stopbits=STOPBITS, timeout=TIMEOUT)
-  File "/usr/local/lib/python2.7/dist-packages/serial/serialutil.py", line 240, in __init__
-    self.open()
-  File "/usr/local/lib/python2.7/dist-packages/serial/serialposix.py", line 268, in open
-    raise SerialException(msg.errno, "could not open port {}: {}".format(self._port, msg))
-serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+  File "/KWH/datalogger/datetime/datetime.py", line 3, in <module>
+    execfile("/KWH/datalogger/config/pyvars.py")
+  File "/KWH/datalogger/config/pyvars.py", line 25, in <module>
+    with open('/KWH/datalogger/config/DOMAIN', 'r') as config:
+IOError: [Errno 2] No such file or directory: '/KWH/datalogger/config/DOMAIN'
+datetime: 0
+temp: 0
+cat: /KWH/datalogger/config/DOMAIN: No such file or directory
+cat: /KWH/datalogger/config/PORT: No such file or directory
+signal: 0
+Traceback (most recent call last):
+  File "/KWH/datalogger/modbus/queryAll.py", line 7, in <module>
+    execfile("/KWH/datalogger/config/pyvars.py")
+  File "/KWH/datalogger/config/pyvars.py", line 25, in <module>
+    with open('/KWH/datalogger/config/DOMAIN', 'r') as config:
+IOError: [Errno 2] No such file or directory: '/KWH/datalogger/config/DOMAIN'
 modbus: 1
+Traceback (most recent call last):
+  File "/KWH/datalogger/transceive/tcp/tstring.py", line 5, in <module>
+    execfile(DPATH + "/config/pyvars.py")
+  File "/KWH/datalogger/config/pyvars.py", line 25, in <module>
+    with open('/KWH/datalogger/config/DOMAIN', 'r') as config:
+IOError: [Errno 2] No such file or directory: '/KWH/datalogger/config/DOMAIN'
 tstring: 0
+cat: /KWH/datalogger/config/DOMAIN: No such file or directory
+cat: /KWH/datalogger/config/PORT: No such file or directory
+tcpSend: 0
+Traceback (most recent call last):
+  File "/KWH/datalogger/transceive/sms/smsParse.py", line 8, in <module>
+    execfile("/KWH/datalogger/config/pyvars.py")
+  File "/KWH/datalogger/config/pyvars.py", line 25, in <module>
+    with open('/KWH/datalogger/config/DOMAIN', 'r') as config:
+IOError: [Errno 2] No such file or directory: '/KWH/datalogger/config/DOMAIN'
+smsParse: 0
