@@ -4,6 +4,12 @@
 #ignore transmit string
 **/tcp/tstring
 
+#ignore config that varies with version and boot
+**/config/SIM_LOCK
+**/config/SIM_PORT
+**/config/gitV1
+**/config/gitV2
+
 #ignore adc values
 **/adc/AD*
 
