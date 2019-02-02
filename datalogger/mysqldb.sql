@@ -1,11 +1,11 @@
 CREATE DATABASE IF NOT EXISTS datalogger;
 
-CREATE USER IF NOT EXISTS 'pi'@'localhost' IDENTIFIED BY '';
-GRANT ALL PRIVILEGES ON `datalogger`.* TO 'pi'@'localhost';
-FLUSH PRIVILEGES;
+#CREATE USER IF NOT EXISTS 'pi'@'localhost' IDENTIFIED BY '';
+#GRANT ALL PRIVILEGES ON `datalogger`.* TO 'pi'@'localhost';
+#FLUSH PRIVILEGES;
 USE datalogger;
 
-CREATE TABLE config(`key` VARCHAR(20) NOT NULL, 
+CREATE TABLE config(`key` VARCHAR(30) NOT NULL, 
                 `value` VARCHAR(30) NOT NULL, 
                 `time_created` DATETIME NOT NULL, 
                 `time_changed` DATETIME DEFAULT NULL, 
@@ -25,7 +25,7 @@ CONSTRAINT DATA_PK PRIMARY KEY(`time_created`,
 DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
-CREATE TABLE tstring_table(`tstring` TEXT NOT NULL, 
+CREATE TABLE tstring(`tstring` TEXT NOT NULL, 
                 `received` TINYINT NOT NULL,
 CONSTRAINT CONFIG_PK PRIMARY KEY (`received`)
 )ENGINE=InnoDB
