@@ -37,17 +37,18 @@ bias = 0.000
 # instantiating needed arrays
 value = []
 channel = []
-config = [AD01, AD02, AD03, AD04, AD05, AD06, AD07, AD08]
+#config = [AD01, AD02, AD03, AD04, AD05, AD06, AD07, AD08]
 
 # collecting samples in 2-d array: value x channel
-for j in range(8):
-    if config[j] == '1':
+for j in configVars.keys():
+	adcNum = j[-1:] #grab last character of the string
+    if configVars[j] == '1':
 	for i in range(samples):
 		# using this because unable to append 1st element
 		if i == 0:
-			value = [bitbang.readadc(j)]
+			value = [bitbang.readadc(adcNum)]
 		else:
-			value.append(bitbang.readadc(j))
+			value.append(bitbang.readadc(adcNum))
 	# using this because unable to append 1st element
 	if j == 0:
 		channel = [sorted(value)]
@@ -56,15 +57,16 @@ for j in range(8):
 
 # computing responses and storing in values[]
 values = [0]*8
-for i in range(8):
-    if config[i] == '1':
-	values[i] = (channel[i][len(channel[i])/2-2] + \
-		    channel[i][len(channel[i])/2-1] + \
-		    channel[i][len(channel[i])/2] + \
-		    channel[i][len(channel[i])/2+1] + \
-		    channel[i][len(channel[i])/2+2]) / 5
+for i in configVars.keys():
+	adcNum = i[-1:]
+    if configVars[i] == '1':
+	values[adcNum] = (channel[adcNum][len(channel[adcNum])/2-2] + \
+		    channel[adcNum][len(channel[adcNum])/2-1] + \
+		    channel[adcNum][len(channel[adcNum])/2] + \
+		    channel[adcNum][len(channel[adcNum])/2+1] + \
+		    channel[adcNum][len(channel[adcNum])/2+2]) / 5
     else:
-	values[i] = 0.0
+	values[adcNum] = 0.0
 
 # write channel values to files
 with open(DPATH + '/adc/AD01', 'w') as a1:
