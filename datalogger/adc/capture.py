@@ -33,10 +33,10 @@ import mysql.connector
 from mysql.connector import Error
 """ Connect to MySQL database """
 try:
-        conn = mysql.connector.connect(host='localhost',
+        conn = mysql.connector.connect(host = 'localhost',
                                         database = 'datalogger',
                                         user = 'pi',
-                                        password='')
+                                        password = '')
         if conn.is_connected():
                 print('Connected to MySQL datalogger database')
         cursor = conn.cursor()
@@ -60,12 +60,6 @@ try:
 
 except Error as e:
         print(e)
-finally:
-        if conn.is_connected():
-                cursor.close()
-                conn.close()
-                print('Connection to MySQL datalogger database is closed')
-
 
 samples = 31
 cmpr_voltage = 5.25
@@ -76,7 +70,6 @@ bias = 0.000
 value = []
 channel = []
 config = [AD01, AD02, AD03, AD04, AD05, AD06, AD07, AD08]
-print(config)
 
 # collecting samples in 2-d array: value x channel
 for j in range(8):
@@ -95,6 +88,7 @@ for j in range(8):
 		channel.append(sorted(value))
 
 # computing responses and storing in values[]
+#grabbing the middle third of the data to ignore outliers
 values = [0]*8
 for i in range(8):
     if config[i] == '1':
@@ -105,6 +99,30 @@ for i in range(8):
 		    channel[i][len(channel[i])/2+2]) / 5
     else:
 	values[i] = 0.0
+
+#compute the values
+for i in range(8):
+	values[i] = (values[0]/4095.0)*cmpr_voltage*skewing_percentage-bias
+
+# read the datetime from datetime
+with open(DPATH + '/datetime/datetime', 'r') as dt:
+        datetime = dt.read()
+
+# insert into data table
+sql_insert_query = """ INSERT INTO `data` values (%s, %s, %06f) """
+try:
+	cursor.execute("INSERT INTO `data` values (datetime, config[0], values[0])")
+	connection.commit()
+
+except Error as e:
+        print(e)
+
+finally:
+        if conn.is_connected():
+                cursor.close()
+                conn.close()
+                print('Connection to MySQL datalogger database is closed')
+
 
 # write channel values to files
 with open(DPATH + '/adc/AD01', 'w') as a1:
