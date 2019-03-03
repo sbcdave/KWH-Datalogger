@@ -3,7 +3,7 @@ import bitbang
 
 # load datalogger environment variables from config
 DPATH = "/KWH/datalogger"
-execfile(DPATH + "/config/pyvars.py")
+#execfile(DPATH + "/config/pyvars.py")
 
 ################################################################################
 # 1. The RPi GPIO pins for the ADC are hard coded into bitbang.py
@@ -29,6 +29,44 @@ execfile(DPATH + "/config/pyvars.py")
 # The logic then uses the equation from (2.) to report the voltage...~1.25 V
 ################################################################################
 
+import mysql.connector
+from mysql.connector import Error
+""" Connect to MySQL database """
+try:
+        conn = mysql.connector.connect(host='localhost',
+                                        database = 'datalogger',
+                                        user = 'pi',
+                                        password='')
+        if conn.is_connected():
+                print('Connected to MySQL datalogger database')
+        cursor = conn.cursor()
+	
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD01' AND `active` = 1")
+        AD01 = cursor.fetchone()[0]
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD02' AND `active` = 1")
+        AD02 = cursor.fetchone()[0]
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD03' AND `active` = 1")
+        AD03 = cursor.fetchone()[0]
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD04' AND `active` = 1")
+        AD04 = cursor.fetchone()[0]
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD05' AND `active` = 1")
+        AD05 = cursor.fetchone()[0]
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD06' AND `active` = 1")
+        AD06 = cursor.fetchone()[0]
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD07' AND `active` = 1")
+        AD07 = cursor.fetchone()[0]
+	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD08' AND `active` = 1")
+        AD08 = cursor.fetchone()[0]
+
+except Error as e:
+        print(e)
+finally:
+        if conn.is_connected():
+                cursor.close()
+                conn.close()
+                print('Connection to MySQL datalogger database is closed')
+
+
 samples = 31
 cmpr_voltage = 5.25
 skewing_percentage = 1.0
@@ -38,10 +76,12 @@ bias = 0.000
 value = []
 channel = []
 config = [AD01, AD02, AD03, AD04, AD05, AD06, AD07, AD08]
+print(config)
 
 # collecting samples in 2-d array: value x channel
 for j in range(8):
     if config[j] == '1':
+	print config[j]
 	for i in range(samples):
 		# using this because unable to append 1st element
 		if i == 0:
