@@ -34,7 +34,7 @@ wait
 ###################################
 
 /KWH/datalogger/transceive/tcp/tstring.py
-echo $'\cZ' >> /KWH/datalogger/transceive/tcp/tstring
+#echo $'\cZ' >> /KWH/datalogger/transceive/tcp/tstring
 wait
 echo "tstring: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 
@@ -42,15 +42,17 @@ echo "tstring: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 # Initiate TCP transmission #
 #############################
 
-. /KWH/datalogger/transceive/tcp/tcpSend.sh >> \
-/KWH/datalogger/transceive/tcp/transmit.log 2>&1
-wait
-echo "tcpSend: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
+#. /KWH/datalogger/transceive/tcp/tcpSend.sh >> \
+#/KWH/datalogger/transceive/tcp/transmit.log 2>&1
+#wait
+#echo "tcpSend: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
 
 #########################################
 # Check for new SMS messages to process #
 #########################################
 
-/KWH/datalogger/transceive/sms/smsParse.py >> /KWH/datalogger/transceive/sms/smsParse.log
-wait
-echo "smsParse: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
+#/KWH/datalogger/transceive/sms/smsParse.py >> /KWH/datalogger/transceive/sms/smsParse.log
+#wait
+#echo "smsParse: $?" >> /KWH/datalogger/transceive/tcp/transmit.log
+
+nc kwhstg.org 11001 < /KWH/datalogger/transceive/tcp/tstring

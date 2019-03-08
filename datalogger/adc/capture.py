@@ -37,8 +37,6 @@ try:
                                         database = 'datalogger',
                                         user = 'pi',
                                         password = '')
-        if conn.is_connected():
-                print('Connected to MySQL datalogger database')
         cursor = conn.cursor()
 	
 	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD01' AND `active` = 1")
@@ -74,7 +72,6 @@ config = [AD01, AD02, AD03, AD04, AD05, AD06, AD07, AD08]
 # collecting samples in 2-d array: value x channel
 for j in range(8):
     if config[j] == '1':
-	print config[j]
 	for i in range(samples):
 		# using this because unable to append 1st element
 		if i == 0:
@@ -100,51 +97,22 @@ for i in range(8):
     else:
 	values[i] = 0.0
 
-#compute the values
-for i in range(8):
-	values[i] = (values[0]/4095.0)*cmpr_voltage*skewing_percentage-bias
-
 # read the datetime from datetime
 with open(DPATH + '/datetime/datetime', 'r') as dt:
         datetime = dt.read()
 
-# insert into data table
-sql_insert_query = """ INSERT INTO `data` values (%s, %s, %06f) """
-try:
-	cursor.execute("INSERT INTO `data` values (datetime, config[0], values[0])")
-	connection.commit()
-
-except Error as e:
-        print(e)
-
-finally:
-        if conn.is_connected():
-                cursor.close()
-                conn.close()
-                print('Connection to MySQL datalogger database is closed')
-
-
-# write channel values to files
-with open(DPATH + '/adc/AD01', 'w') as a1:
-	a1.write("%06f" % ((values[0]/4095.0)*cmpr_voltage*skewing_percentage-bias))
-
-with open(DPATH + '/adc/AD02', 'w') as a2:
-	a2.write("%06f" % ((values[1]/4095.0)*cmpr_voltage*skewing_percentage-bias))
-
-with open(DPATH + '/adc/AD03', 'w') as a3:
-	a3.write("%06f" % ((values[2]/4095.0)*cmpr_voltage*skewing_percentage-bias))
-
-with open(DPATH + '/adc/AD04', 'w') as a4:
-	a4.write("%06f" % ((values[3]/4095.0)*cmpr_voltage*skewing_percentage-bias))
-
-with open(DPATH + '/adc/AD05', 'w') as a5:
-	a5.write("%06f" % ((values[4]/4095.0)*cmpr_voltage*skewing_percentage-bias))
-
-with open(DPATH + '/adc/AD06', 'w') as a6:
-	a6.write("%06f" % ((values[5]/4095.0)*cmpr_voltage*skewing_percentage-bias))
-
-with open(DPATH + '/adc/AD07', 'w') as a7:
-	a7.write("%06f" % ((values[6]/4095.0)*cmpr_voltage*skewing_percentage-bias))
-
-with open(DPATH + '/adc/AD08', 'w') as a8:
-	a8.write("%06f" % ((values[7]/4095.0)*cmpr_voltage*skewing_percentage-bias))
+# compute the values
+for i in range(8):
+    if config[i] == '1':
+	values[i] = (values[i]/4095.0)*cmpr_voltage*skewing_percentage-bias
+        # insert into data table
+        sql_insert = "INSERT INTO `data` VALUES ('"+datetime+"', 'A"+str(i+1)+"', "+str(values[i])+");"
+        print(sql_insert)
+        try:
+            cursor.execute(sql_insert)
+            conn.commit()
+        except Error as e:
+            print(e)
+if conn.is_connected():
+    cursor.close()
+    conn.close()
