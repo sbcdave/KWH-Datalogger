@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 import bitbang
+import sys
+sys.path.append('/KWH/datalogger/database')
+import Data_Logger_MySQL
 
 # load datalogger environment variables from config
 DPATH = "/KWH/datalogger"
@@ -37,8 +40,8 @@ bias = 0.000
 # instantiating needed arrays
 value = []
 channel = []
-config = [
-configVars['AD01'], configVars['AD02'], configVars['AD03'], configVars['AD04'], configVars['AD05'], configVars['AD06'], configVars['AD07'], configVars['AD08']]
+DB = Data_Logger_MySQL.Data_Logger_MySQL()
+config = [config['AD01'], config['AD02'], config['AD03'], config['AD04'], config['AD05'], config['AD06'], config['AD07'], config['AD08']]
 
 # collecting samples in 2-d array: value x channel
 for j in range(8):
