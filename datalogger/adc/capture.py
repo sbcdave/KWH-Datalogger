@@ -32,7 +32,7 @@ execfile(DPATH + "/config/pyvars.py")
 # The logic then uses the equation from (2.) to report the voltage...~1.25 V
 ################################################################################
 
-samples = 31
+samples = 21
 cmpr_voltage = 5.25 #update to 5.0 with Rev.2 PCB thanks to Voltage reference chip
 skewing_percentage = 1.0
 bias = 0.000
@@ -40,10 +40,16 @@ bias = 0.000
 # instantiating needed arrays
 value = []
 channel = []
-DB = Data_Logger_MySQL.Data_Logger_MySQL()
-config = [config['AD01'], config['AD02'], config['AD03'], config['AD04'], config['AD05'], config['AD06'], config['AD07'], config['AD08']]
+config = [config_var['AD01'],
+          config_var['AD02'],
+          config_var['AD03'],
+          config_var['AD04'],
+          config_var['AD05'],
+          config_var['AD06'],
+          config_var['AD07'],
+          config_var['AD08']]
 
-# collecting samples in 2-d array: value x channel
+# collecting samples in channel array where each element is a value array for that channel
 for j in range(8):
     if config[j] == '1':
 	for i in range(samples):
@@ -75,18 +81,13 @@ for i in range(8):
 with open(DPATH + '/datetime/datetime', 'r') as dt:
         datetime = dt.read()
 
-# compute the values
+# compute the values and insert into data table
+DB = Data_Logger_MySQL.Data_Logger_MySQL()
+
 for i in range(8):
     if config[i] == '1':
-	values[i] = (values[i]/4095.0)*cmpr_voltage*skewing_percentage-bias
-        # insert into data table
+	values[i] = (values[i]/4095.0) * cmpr_voltage * skewing_percentage - bias
         sql_insert = "INSERT INTO `data` VALUES ('"+datetime+"', 'A"+str(i+1)+"', "+str(values[i])+");"
         print(sql_insert)
-        try:
-            cursor.execute(sql_insert)
-            conn.commit()
-        except Error as e:
-            print(e)
-if conn.is_connected():
-    cursor.close()
-    conn.close()
+        result = DB.INSERT(sql_insert)
+        print(result)

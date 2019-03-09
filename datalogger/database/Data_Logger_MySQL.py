@@ -1,23 +1,43 @@
 class Data_Logger_MySQL(object):
     def __init__(self):
+        True
+
+    def SELECT(self, sql):
         import mysql.connector
         from mysql.connector import Error
-        """ Connect to MySQL database """
+
         try:
-	    conn = mysql.connector.connect(host='localhost',database = 'datalogger',user = 'pi',password='')
+            conn = mysql.connector.connect(host='localhost',database = 'datalogger',user = 'pi',password='')
             cursor = conn.cursor()
-            #cursor.execute("SELECT COUNT(*) FROM config WHERE active=1")
+            cursor.execute(sql)
+            result = cursor.fetchall()
 
-        except Error as e:
-            print(e)
+        except mysql.connector.Error as error:
+            connection.rollback()
+            return error
 
-# We may eventually need something like this in a desctructor if the MySQL connections aren't handled by garbage collection
-#        finally:
-#            if conn.is_connected():
-#                cursor.close()
-#                conn.close()
-#                print('Connection to MySQL datalogger database is closed')
+        if conn.is_connected():
+            cursor.close()
+            conn.close()
 
-    def Execute_SQL(self, sql, records):
-        cursor.execute(sql)
-        records = cursor.fetchall()
+        return result
+
+    def INSERT(self, sql):
+        import mysql.connector
+        from mysql.connector import Error
+
+        try:
+            conn = mysql.connector.connect(host='localhost',database = 'datalogger',user = 'pi',password='')
+            cursor = conn.cursor()
+            result = cursor.execute(sql)
+            conn.commit()
+            
+        except mysql.connector.Error as error:
+            conn.rollback()
+            return error
+
+        if conn.is_connected():
+            cursor.close()
+            conn.close()
+
+        return result
