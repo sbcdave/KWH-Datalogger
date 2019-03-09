@@ -5,7 +5,7 @@ import sys
 
 # Load environment variables
 execfile("/KWH/datalogger/config/pyvars.py")
-DEBUG = int(DEBUG)
+DEBUG = int(config_var['DEBUG'])
 
 def signal_handler(signal, frame):
     if DEBUG > 0: log('SIGINT received...Closing ModBus Server\n')
@@ -21,12 +21,13 @@ def log(logText):
 	log.write(logText)
 
 minimalmodbus.PARITY='E'
-minimalmodbus.BAUDRATE=1200
+minimalmodbus.BAUDRATE=9600
 minimalmodbus.STOPBITS=1
 minimalmodbus.BYTESIZE=8
 minimalmodbus.TIMEOUT=1
 minimalmodbus.CLOSE_PORT_AFTER_EACH_CALL=True
 
+for i in range(2,248)
 mb=minimalmodbus.Instrument('/dev/ttyUSB0', int(sys.argv[1]), mode='rtu')
 
 with open('/KWH/datalogger/modbus/values/m'+sys.argv[1]+'Voltage', 'w') as f:
