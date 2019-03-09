@@ -5,13 +5,15 @@ DPATH = "/KWH/datalogger"
 execfile(DPATH + "/config/pyvars.py")
 
 # setup string(str) in KP format
-str = ADMPW+"#STA:" + STA 
-#+ ";TM:"
-#with open(DPATH + '/datetime/datetime', 'r') as input:
-#    str = str + input.read() + ";C:86;V:0000"
+str = configVars['ADMPW']+"#STA:" + configVars['STA']
++ ";TM:"
+with open(DPATH + '/datetime/datetime', 'r') as input:
+    str = str + input.read()
 
 # analog channels
-if AD01 == "1":
+if configVars['AD01'] == "1":
+    # need to remove all of these and read newest data points from data table
+    # instead. Config will control what data points get written to data table.
     with open(DPATH + '/adc/AD01', 'a+') as input:
         data = input.read()
         if data <> "":

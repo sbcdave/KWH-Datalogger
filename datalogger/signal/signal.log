@@ -1,6 +1,4 @@
-
-+CME ERROR: SIM not inserted
 AT+CSQ
-+CSQ: 16,0
++CSQ: 13,0
 
 OK

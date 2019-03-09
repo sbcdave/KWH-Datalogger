@@ -24,7 +24,6 @@ try:
 	configVars = {} #dictionary for config vars
 	for row in records:
 		configVars[row[0]] = row[1]
-	print(configVars['AD01'])
 
 except Error as e:
 	print(e)

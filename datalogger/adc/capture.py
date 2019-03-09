@@ -3,7 +3,7 @@ import bitbang
 
 # load datalogger environment variables from config
 DPATH = "/KWH/datalogger"
-#execfile(DPATH + "/config/pyvars.py")
+execfile(DPATH + "/config/pyvars.py")
 
 ################################################################################
 # 1. The RPi GPIO pins for the ADC are hard coded into bitbang.py
@@ -29,45 +29,16 @@ DPATH = "/KWH/datalogger"
 # The logic then uses the equation from (2.) to report the voltage...~1.25 V
 ################################################################################
 
-import mysql.connector
-from mysql.connector import Error
-""" Connect to MySQL database """
-try:
-        conn = mysql.connector.connect(host = 'localhost',
-                                        database = 'datalogger',
-                                        user = 'pi',
-                                        password = '')
-        cursor = conn.cursor()
-	
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD01' AND `active` = 1")
-        AD01 = cursor.fetchone()[0]
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD02' AND `active` = 1")
-        AD02 = cursor.fetchone()[0]
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD03' AND `active` = 1")
-        AD03 = cursor.fetchone()[0]
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD04' AND `active` = 1")
-        AD04 = cursor.fetchone()[0]
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD05' AND `active` = 1")
-        AD05 = cursor.fetchone()[0]
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD06' AND `active` = 1")
-        AD06 = cursor.fetchone()[0]
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD07' AND `active` = 1")
-        AD07 = cursor.fetchone()[0]
-	cursor.execute("SELECT `value` FROM `config` WHERE `key` = 'AD08' AND `active` = 1")
-        AD08 = cursor.fetchone()[0]
-
-except Error as e:
-        print(e)
-
 samples = 31
-cmpr_voltage = 5.25
+cmpr_voltage = 5.25 #update to 5.0 with Rev.2 PCB thanks to Voltage reference chip
 skewing_percentage = 1.0
 bias = 0.000
 
 # instantiating needed arrays
 value = []
 channel = []
-config = [AD01, AD02, AD03, AD04, AD05, AD06, AD07, AD08]
+config = [
+configVars['AD01'], configVars['AD02'], configVars['AD03'], configVars['AD04'], configVars['AD05'], configVars['AD06'], configVars['AD07'], configVars['AD08']]
 
 # collecting samples in 2-d array: value x channel
 for j in range(8):

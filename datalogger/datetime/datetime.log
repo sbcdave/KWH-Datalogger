@@ -1,21 +1,23 @@
 AT+CMEE=2
 OK
 AT+CIPSHUT
-SHUT OK
++CME ERROR: SIM not inserted
 AT+CGATT=0
-OK
++CME ERROR: SIM not inserted
 AT+CGATT=1
-OK
++CME ERROR: SIM not inserted
 AT+CIPSHUT
-SHUT OK
++CME ERROR: SIM not inserted
 AT+CIPMUX=0
-OK
++CME ERROR: SIM not inserted
 AT+CSTT="wholesale"
-OK
++CME ERROR: SIM not inserted
 AT+CIICR
-OK
++CME ERROR: SIM not inserted
 AT+CIFSR
-172.52.27.81
++CME ERROR: SIM not inserted
 AT+CIPCLOSE
-CLOSE OK
-AT+CIPSHUTTue Sep  4 00:00:20 UTC 2018
++CME ERROR: SIM not inserted
+AT+CIPSHUT
++CME ERROR: SIM not inserted
+Fri Nov 27 03:29:14 UTC 1953
