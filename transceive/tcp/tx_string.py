@@ -17,9 +17,9 @@ data = DB.SELECT("SELECT `key`, value FROM data WHERE time_created = \""+timesta
 
 # modify timestamp for tx_string (removing all non-numbers for later parsing)
 timestamp = timestamp[:4]+timestamp[5:7]+timestamp[8:10]+timestamp[11:13]+timestamp[14:16]+timestamp[17:19]
-tx_string += timestamp + ";"
+tx_string += timestamp
 for pair in data:
-    tx_string += str(pair[0]) + ":" + str(pair[1]) + ";"
+    tx_string += ";" + str(pair[0]) + ":" + str(pair[1])
 
 # Finish string
 tx_string += "#" 

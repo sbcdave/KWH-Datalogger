@@ -27,8 +27,18 @@ echo "capture: $?" > /kwh/log/collect_data.log
 wait
 echo "one-wire: $?" >> /kwh/log/collect_data.log
 
+# RPi Processor Temp
+/kwh/data_collectors/rpi_temp.sh $dtm
+wait
+echo "rpi temp: $?" >> /kwh/log/collect_data.log
+
+# RPi Disk Use
+/kwh/data_collectors/disk_space.sh $dtm
+wait
+echo "rpi disk: $?" >> /kwh/log/collect_data.log
+
 # Signal Quality
-/kwh/data_collectors/signal.sh $dtm
+/kwh/data_collectors/signal_strength.sh $dtm
 wait
 echo "signal: $?" >> /kwh/log/collect_data.log
 
