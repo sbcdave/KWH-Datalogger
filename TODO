@@ -11,7 +11,7 @@ setup SMS request for DEBUG and each log file so we can query logs remotely
 Set up transmit to transmit data about used/available memory for graphing
 
 Set up transmit to send data about bytes transmitted, so we can track our
-data usage and associate it to cost.
+data usage and associate it to cost. DO THIS ON SERVER SIDE
 
 Devise new server side TCPIP app so we can take advantage of a compressed
 transmission instead of sending KP format ASCII and wasting data

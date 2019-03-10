@@ -1,0 +1,13 @@
+[Unit]
+Description=simServer.py service
+After=sysinit.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/KWH
+ExecStart=/KWH/transceive/simServer.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

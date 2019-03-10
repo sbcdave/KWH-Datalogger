@@ -6,7 +6,8 @@
 
  This software is designed to use a PCB (Raspberry Pi 3B Shield) that was
  engineered by KWH volunteers and students at Seattle University. The PCB 
- layout and schematic are available in the other_files folder.
+ layout and schematic are available in the other_files folder, as well as
+ the Bill of Materials and other helpful documentation.
 
  This is open-source software with no license, and no liability by KWH or
  Seattle University
@@ -16,11 +17,43 @@
  GitHub - SBCDave
 
 ================================================================================
+= CREDITS & THANK YOU(s):                                                      =
+================================================================================
+ Google
 
-CREDITS/(Thank you)s:
-pigpio - GitHub: joan2937
-Google
-Hub    - GitHub: github
-minimalmodbus - GitHub: pyhys
-Seattle University ECE Team 18.
-Find guy that wrote temp code and add him
+ GitHub
+
+ pigpio - GitHub: joan2937
+
+ Hub    - GitHub: github
+
+ minimalmodbus - GitHub: pyhys
+
+ Seattle University Electrical and Computer Engineering Department
+ -ECE Team 16.3
+ --Dave Goldsmith
+ --Sergey Russu
+ --Keiko Schleicher
+ --Natalie Swope
+ -ECE Team 17.4
+ --Braden Anderson
+ --Linda Karout
+ --Abdul-Rasul Kassamali
+ --Rianne Spath
+ -ECE Team 18.5
+ --Kevin Dao
+ --Mahekdeep Sign
+ --Carrie Smith
+ --Hong Tran
+ -ECE Team 19.4
+ --Dominic Burgi
+ --Chau Huynh
+ --Josh Ohara
+
+ KiloWatts for Humanity Data Acquisition Team
+ -Matthieu Bach
+ -John Chaffee
+ -Dave Goldsmith
+ -Gina Hixx
+ -Alex Kvenvolden
+ -Carrie Smith
