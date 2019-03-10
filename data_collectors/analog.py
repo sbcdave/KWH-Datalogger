@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 import sys
-sys.path.append('/KWH/lib')
-import Data_Logger_MySQL
+sys.path.append('/kwh/lib')
+import KWH_MySQL
 import Bit_Bang_ADC
 
-# load datalogger environment variables from config
-DPATH = "/KWH"
-execfile(DPATH + "/config/pyvars.py")
+# load kwh environment variables from config
+DPATH = "/kwh"
+execfile(DPATH + "/config/load_config.py")
 timestamp = sys.argv[1]+" "+sys.argv[2]
 
 ################################################################################
@@ -79,7 +79,7 @@ for i in range(8):
 	values[i] = 0.0
 
 # compute the values and insert into data table
-DB = Data_Logger_MySQL.Data_Logger_MySQL()
+DB = KWH_MySQL.KWH_MySQL()
 
 for i in range(8):
     if config[i] == '1':

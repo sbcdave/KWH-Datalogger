@@ -1,4 +1,4 @@
-class Data_Logger_MySQL(object):
+class KWH_MySQL(object):
     def __init__(self):
         True
 
@@ -7,7 +7,7 @@ class Data_Logger_MySQL(object):
         from mysql.connector import Error
 
         try:
-            conn = mysql.connector.connect(host='localhost',database = 'datalogger',user = 'pi',password='')
+            conn = mysql.connector.connect(host='localhost',database = 'kwh',user = 'pi',password='')
             cursor = conn.cursor()
             cursor.execute(sql)
             result = cursor.fetchall()
@@ -26,7 +26,7 @@ class Data_Logger_MySQL(object):
         from mysql.connector import Error
 
         try:
-            conn = mysql.connector.connect(host='localhost',database = 'datalogger',user = 'pi',password='')
+            conn = mysql.connector.connect(host='localhost',database = 'kwh',user = 'pi',password='')
             cursor = conn.cursor()
             result = cursor.execute(sql)
             conn.commit()

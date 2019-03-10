@@ -3,10 +3,10 @@
 # Intro
 echo ""
 echo "================================================================================"
-echo "=   Welcome to the KiloWatts for Humanity (KWH) Data Logger software package   ="
+echo "=   Welcome to the KiloWatts for Humanity (kwh) Data Logger software package   ="
 echo "================================================================================"
 echo ""
-echo "Thank you for your interest, and enjoy! Courtesy of KiloWatts for Humanity (KWH)"
+echo "Thank you for your interest, and enjoy! Courtesy of KiloWatts for Humanity (kwh)"
 echo ""
 echo "This installer requires that the RPi be rebooted when complete"
 echo "If you need to save any work, do not answer anything that starts with \"y\""
@@ -36,9 +36,9 @@ fi
 # Move to root and download data logger code from github
 cd /
 echo ""
-echo "Downloading data logger software to the root directory in /KWH"
+echo "Downloading data logger software to the root directory in /kwh"
 wait
-sudo git clone https://github.com/sbcdave/KWH.git
+sudo git clone https://github.com/sbcdave/kwh.git
 status=$?
 wait
 if [ $status -ne 0 ]; then
@@ -51,9 +51,9 @@ fi
 # Download pigpio code from github
 cd /
 echo ""
-echo "Downloading pigpio code to /KWH/lib"
+echo "Downloading pigpio code to /kwh/lib"
 wait
-cd /KWH/lib
+cd /kwh/lib
 git clone https://github.com/joan2937/pigpio.git
 status=$?
 wait
@@ -66,28 +66,28 @@ fi
 
 # Change data logger code root directory owner:group to pi
 echo ""
-echo "Updating /KWH permissions"
+echo "Updating /kwh permissions"
 wait
-sudo chown -R pi:pi KWH
+sudo chown -R pi:pi kwh
 wait
 
 #investigate shutting down uneccesary services
 
-# Create symlink from /etc/defaults to datalogger.conf file
+# Create symlink from /etc/defaults to kwh.conf file
 echo ""
 echo "Ensuring datalogger config is used at boot and setting auto-login to console"
 wait
-sudo ln -n /KWH/config.conf /etc/default.conf
+sudo ln -n /kwh/config.conf /etc/default.conf
 wait
-# Add datalogger.conf file to root and pi's .bashrc
-sudo cp /KWH/moves/.bashrc /root/.bashrc
+# Add kwh.conf file to root and pi's .bashrc
+sudo cp /kwh/moves/.bashrc /root/.bashrc
 wait
-cp /KWH/moves/.bashrc /home/pi/.bashrc
+cp /kwh/moves/.bashrc /home/pi/.bashrc
 wait
 # Source the aliases functions and environment variables
 . ~/.bashrc
 wait
-sudo cp /KWH/moves/autologin@.service /etc/systemd/system/autologin@.service
+sudo cp /kwh/moves/autologin@.service /etc/systemd/system/autologin@.service
 wait
 sudo systemctl daemon-reload
 wait
@@ -105,13 +105,13 @@ wait
 echo ""
 echo "Updating /boot/config.txt to enable SIM and Temp sensor comms"
 wait
-sudo cp /KWH/moves/config.txt /boot/config.txt
+sudo cp /kwh/moves/config.txt /boot/config.txt
 wait
 
 # Enable simserver.service
 echo ""
 echo "Enabling sim server service"
-sudo cp /KWH/moves/simserver.service /etc/systemd/system/.
+sudo cp /kwh/moves/simserver.service /etc/systemd/system/.
 wait
 sudo systemctl enable simserver.service
 wait
@@ -119,7 +119,7 @@ wait
 # Enable simserver.service
 echo ""
 echo "Enabling pigpiod service"
-sudo cp /KWH/moves/pigpiod.service /etc/systemd/system/.
+sudo cp /kwh/moves/pigpiod.service /etc/systemd/system/.
 wait
 sudo systemctl enable pigpiod.service
 wait
@@ -127,7 +127,7 @@ wait
 # Enable simserver.service
 echo ""
 echo "Enabling get time service"
-sudo cp /KWH/moves/gettime.service /etc/systemd/system/.
+sudo cp /kwh/moves/gettime.service /etc/systemd/system/.
 wait
 sudo systemctl enable gettime.service
 wait
@@ -136,13 +136,13 @@ wait
 echo ""
 echo "Switching keyboard layout to US standard"
 echo "Use \"sudo raspi-config\" if you would like to change it"
-sudo cp /KWH/moves/keyboard /etc/default/keyboard
+sudo cp /kwh/moves/keyboard /etc/default/keyboard
 
 # Activate 1 minute transmission via cron
 echo ""
 echo "Enabling cron jobs for reading sms, transmitting data, and updating the time"
 wait
-sudo cp /KWH/moves/dcrond /etc/cron.d/dcrond
+sudo cp /kwh/moves/dcrond /etc/cron.d/dcrond
 wait
 sudo chmod 644 /etc/cron.d/dcrond
 wait
@@ -151,7 +151,7 @@ wait
 echo ""
 echo "Installation complete. We will soon reboot to enable communications with the PCB or other hardware solution."
 echo ""
-echo "If you would like KWH to host your data, please contact dave@kilowattsforhumanity.org"
+echo "If you would like kwh to host your data, please contact dave@kilowattsforhumanity.org"
 echo "You can donate to KiloWatts for Humanity at http://kilowattsforhumanity.org"
 echo "We hope you enjoy!"
 echo ""

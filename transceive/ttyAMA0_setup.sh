@@ -1,2 +1,2 @@
 #!/bin/bash
-stty -F /dev/ttyAMA0 `cat /KWH/config/sttySettings.tty`
+stty -F /dev/ttyAMA0 `cat /kwh/config/sttySettings.tty`

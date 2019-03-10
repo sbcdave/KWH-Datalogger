@@ -2,14 +2,14 @@
 =      Welcome to the KiloWatts for Humanity Data Logger software package      =
 ================================================================================
 
- Courtesy of KiloWatts for Humanity (KWH)
+ Courtesy of KiloWatts for Humanity (kwh)
 
  This software is designed to use a PCB (Raspberry Pi 3B Shield) that was
- engineered by KWH volunteers and students at Seattle University. The PCB 
+ engineered by kwh volunteers and students at Seattle University. The PCB 
  layout and schematic are available in the other_files folder, as well as
  the Bill of Materials and other helpful documentation.
 
- This is open-source software with no license, and no liability by KWH or
+ This is open-source software with no license, and no liability by kwh or
  Seattle University
 
  For any questions contact: 

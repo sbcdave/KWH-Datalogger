@@ -1,3 +1,19 @@
+CIPSEND error might be due to needing a TCP header to get 
+into America. investigate AT+CIPHEAD
+To set PDP use the following instead of setting APN
+AT+CGDCONT=1,"IP","wholesale"
+
+AT+CREG takes arguments:
+Possible values for access technology are,
+0 GSM
+1 GSM Compact
+2 UTRAN
+3 GSM w/EGPRS
+4 UTRAN w/HSDPA
+5 UTRAN w/HSUPA
+6 UTRAN w/HSDPA and HSUPA
+7 E-UTRAN
+
 Finish pulse code to launch configured channels on boot - might axe pulse
 code (or at least reduce channels) when modbus is working
 

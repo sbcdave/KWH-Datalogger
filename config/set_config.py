@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
-sys.path.append('/KWH/database')
-import Data_Logger_MySQL
+sys.path.append('/kwh/lib')
+import KWH_MySQL
 
 try:
     key = sys.argv[1]
@@ -10,7 +10,7 @@ except:
     print("Usage: setconf <key> <value>")
     exit(1)
 
-DB = Data_Logger_MySQL.Data_Logger_MySQL()
+DB = KWH_MySQL.KWH_MySQL()
 
 sql="INSERT INTO config VALUES (\""+key+"\",\""+value+"\",now(),\"\",1);"
 

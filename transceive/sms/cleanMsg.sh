@@ -1,2 +1,2 @@
 #!/bin/bash
-rm /KWH/transceive/sms/msg/*
+rm /kwh/transceive/sms/msg/*

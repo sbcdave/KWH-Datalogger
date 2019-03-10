@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 import sys
-sys.path.append('/KWH/lib')
-import Data_Logger_MySQL
+sys.path.append('/kwh/lib')
+import KWH_MySQL
 
-# load datalogger environment variables from config
-DPATH = "/KWH"
-execfile(DPATH + "/config/pyvars.py")
+# load kwh environment variables from config
+DPATH = "/kwh"
+execfile(DPATH + "/config/load_config.py")
 timestamp = sys.argv[1]+" "+sys.argv[2]
 
 # build database object
-DB = Data_Logger_MySQL.Data_Logger_MySQL()
+DB = KWH_MySQL.KWH_MySQL()
 
 # setup the transmission string (tx_string)
 tx_string = config_var['ADMPW']+"#STA:" + config_var['STA'] + ";TM:"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lock_file=/KWH/config/SIM_LOCK
+lock_file=/kwh/config/SIM_LOCK
 
 # Explain usage
 if [ -z "$1" ] || [ -z "$2" ]; then
@@ -8,9 +8,9 @@ if [ -z "$1" ] || [ -z "$2" ]; then
     exit 0;
 fi
 
-. /KWH/config.conf
+. /kwh/config.conf
 
-log="/KWH/transceive/sms/smsSend.log"
+log="/kwh/transceive/sms/smsSend.log"
 wait
 
 # Wait for lock

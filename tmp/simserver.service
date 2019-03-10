@@ -5,8 +5,8 @@ After=sysinit.target
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/KWH
-ExecStart=/KWH/transceive/simServer.py
+WorkingDirectory=/kwh
+ExecStart=/kwh/transceive/sim_server.py
 Restart=on-abort
 
 [Install]

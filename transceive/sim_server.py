@@ -4,10 +4,13 @@ import time
 import signal
 import serial
 import subprocess
+import sys
+sys.path.append('/kwh/lib')
+import KWH_MySQL
 
 # Load environment variables
-execfile("/KWH/config/pyvars.py")
-DEBUG = int(DEBUG)
+execfile("/kwh/config/load_config.py")
+DEBUG = int(config_var['DEBUG'])
 
 # Global variables
 RESET_LIMIT = 3
@@ -22,12 +25,12 @@ signal.signal(signal.SIGINT, signal_handler)
 
 # Log function
 def log(logText):
-    with open("/KWH/log/sim_server.log", "a") as log:
+    with open("/kwh/log/sim_server.log", "a") as log:
 	log.write(logText)
 
 # Reset the SIM card
 def reset():
-    execfile("/KWH/transceive/reset_sim.py")
+    execfile("/kwh/transceive/reset_sim.py")
     if DEBUG > 0: log("Sleeping 5 for SIM reboot and reconfigure!\n")
     time.sleep(4)
 
@@ -51,27 +54,21 @@ while not port_chosen:
 	port = port + 1
 
 # Update the env variables with the chosen active SIM_PORT
-with open("/KWH/config/SIM_PORT", "w") as SIM_PORT:
-    SIM_PORT.write(str(port))
-
+DB = KWH_MySQL.KWH_MySQL()
+subprocess.call(["/kwh/config/set_config.py", "SIM_PORT", str(port)])
 if DEBUG > 0: log("SIM_PORT: "+str(port)+"\n")
 
-reset()
 # Configure block
-execfile("/KWH/config/pyvars.py")
-DEBUG = int(DEBUG)
-if DEBUG > 1: log("Configuration variables reloaded\n")    
-subprocess.Popen("/KWH/transceive/ttyAMA0_setup.sh")
+reset()
+subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
 if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
 time.sleep(1)
-
-if DEBUG > 0: log("Listening...\n")
-
 
 s.listen(1)
 sim = serial.Serial('/dev/ttyAMA0', 115200, timeout=5)
 sim.flushInput()
 sim.flushOutput()
+if DEBUG > 0: log("Listening...\n")
 
 # Daemon listen on SIM_PORT for SIM commands
 while True:
@@ -79,14 +76,14 @@ while True:
     cs,addr = s.accept()
 
     # Configure block
-    execfile("/KWH/config/pyvars.py")
-    DEBUG = int(DEBUG)
+    execfile("/kwh/config/load_config.py")
+    DEBUG = int(config_var['DEBUG'])
     if DEBUG > 1: log("Configuration variables reloaded\n")    
-    subprocess.Popen("/KWH/transceive/ttyAMA0_setup.sh")
+    subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
     if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
 
     # Beginning to process received command
-    cmd = cs.recv(1024)
+    cmd = cs.recv(300000)
     if DEBUG > 1: log("Received: "+cmd+"\n")
 
     # Send command to SIM
@@ -100,7 +97,7 @@ while True:
             or cmd == "AT+CIFSR\n" \
             or cmd[0] == "\#":
             time.sleep(3)
-        elif cmd == "AT+CIPSTART=\"TCP\",\""+DOMAIN+"\",\""+PORT+"\"\n" \
+        elif cmd == "AT+CIPSTART=\"TCP\",\""+config_var['DOMAIN']+"\",\""+config_var['PORT']+"\"\n" \
             or cmd == "AT+CIICR\n" \
             or cmd == "AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\"\n":
             time.sleep(4)
@@ -121,10 +118,10 @@ while True:
             if DEBUG > 0: log(str(fromSIM)+" bytes from SIM. Resetting SIM!\n")
             # No luck! Reset
             reset()
-	    execfile("/KWH/config/pyvars.py")
-	    DEBUG = int(DEBUG)
+	    execfile("/kwh/config/load_config.py")
+	    DEBUG = int(config_var['DEBUG'])
 	    if DEBUG > 1: log("Configuration variables reloaded\n")    
-	    subprocess.Popen("/KWH/transceive/ttyAMA0_setup.sh")
+	    subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
 	    if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
 	    time.sleep(1)
 
@@ -133,7 +130,7 @@ while True:
             try:
                 sim.write(cmd)
 	    except:
-	        log("EXCEPTION: Write Failed")
+	        log("EXCEPTION: Write Failed\n")
             if DEBUG > 0: log("Wrote to sim: "+cmd+"\n")
             time.sleep(0.5)
             fromSIM = sim.inWaiting()
@@ -163,12 +160,12 @@ while True:
         time.sleep(.5)
         cs.close()
     except:
-        log("EXCEPTION: Write Failed")
+        log("EXCEPTION: Write Failed\n")
         reset()
-	execfile("/KWH/config/pyvars.py")
-        DEBUG = int(DEBUG)
+	execfile("/kwh/config/load_config.py")
+        DEBUG = int(config_var['DEBUG'])
 	if DEBUG > 1: log("Configuration variables reloaded\n")    
-        subprocess.Popen("/KWH/transceive/ttyAMA0_setup.sh")
+        subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
         if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
         time.sleep(1)
 

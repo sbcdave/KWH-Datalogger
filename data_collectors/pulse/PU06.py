@@ -18,7 +18,7 @@ pi.set_pull_up_down(DIN, pigpio.PUD_DOWN)
 
 pulse_cb = pi.callback(DIN, pigpio.RISING_EDGE)
 
-PU06 = open("/KWH/pulse/PU06", 'r')
+PU06 = open("/kwh/pulse/PU06", 'r')
 previous = int(PU06.read())
 PU06.close()
 
@@ -28,7 +28,7 @@ while True:
 
    new = pulse_cb.tally()
    current = previous + new
-   PU06 = open("/KWH/pulse/PU06", 'w')
+   PU06 = open("/kwh/pulse/PU06", 'w')
    PU06.write(str(current))
    PU06.close()
 

@@ -6,7 +6,7 @@ from requests import get
 from re import match
 
 # load datalogger environment variables from config
-execfile("/config/pyvars.py")
+execfile("/config/load_config.py")
 
 def signal_handler(signal, frame):
         print('...closing PU01')

@@ -1,3 +1,3 @@
 #!/bin/bash
-find /KWH/* ! -path '/KWH/lib*' -a ! -path '/KWH/other*' -a ! -path '/KWH/UNLIC*' -a ! -path "*.log" -name '*' ! -path "/KWH/helpful_pdfs/*" | xargs wc -l
+find /kwh/* ! -path '/kwh/lib*' -a ! -path '/kwh/other*' -a ! -path '/kwh/UNLIC*' -a ! -path "*.log" -name '*' ! -path "/kwh/helpful_pdfs/*" | xargs wc -l
 

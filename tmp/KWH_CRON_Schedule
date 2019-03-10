@@ -1,2 +1,2 @@
-* * * * * pi bash /KWH/transceive/tcp/transmit.sh > /KWH/transceive/tcp/transmit.log 2>&1
-0 0 * * * pi bash /KWH/datetime/getTime.sh > /dev/null 2>&1
+* * * * * pi bash /kwh/transceive/tcp/transmit.sh > /kwh/transceive/tcp/transmit.log 2>&1
+0 0 * * * pi bash /kwh/datetime/getTime.sh > /dev/null 2>&1

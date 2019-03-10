@@ -1,13 +1,12 @@
 # If database doesn't already exist create it
-CREATE DATABASE IF NOT EXISTS datalogger;
+CREATE DATABASE IF NOT EXISTS kwh;
 
-# Grant all privileges on datalogger database to pi user
-#GRANT ALL PRIVILEGES ON `datalogger`.* TO 'pi'@'localhost' IDENTIFIED BY '';
-#GRANT ALL PRIVILEGES ON `datalogger`.* TO pi IDENTIFIED BY '';
-#FLUSH PRIVILEGES;
+# Grant all privileges on kwh database to pi user
+GRANT ALL PRIVILEGES ON `kwh`.* TO 'pi'@'localhost' IDENTIFIED BY '';
+FLUSH PRIVILEGES;
 
-# Switch to datalogger database for table creation and inserts
-USE datalogger;
+# Switch to kwh database for table creation and inserts
+USE kwh;
 
 # If config table doesn't already exist create it and insert mandatory config values
 CREATE TABLE IF NOT EXISTS `config`(`key` VARCHAR(30) NOT NULL, 
@@ -19,16 +18,6 @@ CONSTRAINT CONFIG_PK PRIMARY KEY (`active`,
                `key`)
 )ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4;
-COMMIT;
-
-INSERT INTO `config` VALUES ('AD01', 1, NOW(), '', 1);
-INSERT INTO `config` VALUES ('AD02', 1, NOW(), '', 1);
-INSERT INTO `config` VALUES ('AD03', 1, NOW(), '', 1);
-INSERT INTO `config` VALUES ('AD04', 1, NOW(), '', 1);
-INSERT INTO `config` VALUES ('AD05', 0, NOW(), '', 1);
-INSERT INTO `config` VALUES ('AD06', 0, NOW(), '', 1);
-INSERT INTO `config` VALUES ('AD07', 0, NOW(), '', 1);
-INSERT INTO `config` VALUES ('AD08', 0, NOW(), '', 1);
 COMMIT;
 
 # If data tables doesn't already exist create it

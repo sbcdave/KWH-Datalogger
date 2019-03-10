@@ -2,7 +2,7 @@
 
 # Source the aliases, functions, and environment variables
 
-. /KWH/config.conf
+. /kwh/config/kwh.conf
 
 W1DIR="/sys/bus/w1/devices"
 
@@ -56,7 +56,7 @@ then
 	        fi
 	    fi
 
-            sql="INSERT INTO datalogger.data VALUES (\"$@\", \"$DEVICE\",\"$INTEGER.$FRAC\");"
+            sql="INSERT INTO kwh.data VALUES (\"$@\", \"$DEVICE\",\"$INTEGER.$FRAC\");"
 	    echo $sql | mysql -u pi
 
         else

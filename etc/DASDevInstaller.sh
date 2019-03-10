@@ -3,10 +3,10 @@
 # Intro
 echo ""
 echo "================================================================================"
-echo "=   Welcome to the KiloWatts for Humanity (KWH) Data Logger software package   ="
+echo "=   Welcome to the KiloWatts for Humanity (kwh) Data Logger software package   ="
 echo "================================================================================"
 echo ""
-echo "Thank you for being a part of the KWH DAS team!"
+echo "Thank you for being a part of the kwh DAS team!"
 echo ""
 echo "This installer is broken into steps to help you relaunch it at a certain point"
 echo "in case of failure during the script. To jump to a step, re-execute the"
@@ -67,10 +67,10 @@ if [[ ! "$1" =~ .+ ]] || [ "$1" = "1" ]; then
 cd /
 echo ""
 echo "Step (1)"
-echo "Downloading data logger software to the root directory in /KWH"
-echo "Credit: KWH DAS Team and Seattle University Senior Design Team ECE 18.5"
+echo "Downloading data logger software to the root directory in /kwh"
+echo "Credit: kwh DAS Team and Seattle University Senior Design Team ECE 18.5"
 wait
-sudo git clone https://github.com/sbcdave/KWH.git
+sudo git clone https://github.com/sbcdave/kwh.git
 status=$?
 wait
 if [ $status -ne 0 ]; then
@@ -105,9 +105,9 @@ fi
 
 # Change data logger code root directory owner:group to pi
 echo ""
-echo "Updating /KWH permissions"
+echo "Updating /kwh permissions"
 wait
-sudo chown -R pi:pi /KWH
+sudo chown -R pi:pi /kwh
 wait
 
 # Shut down unnecessary services
@@ -116,21 +116,21 @@ wait
 #echo "Apache2..."
 #sudo systemctl disable apache2
 
-# Create symlink from /etc/defaults to datalogger.conf file
+# Create symlink from /etc/defaults to kwh.conf file
 echo ""
 echo "Ensuring data logger config is used at boot and setting auto-login"
 wait
-sudo ln -n /KWH/config.conf /etc/default.conf
+sudo ln -n /kwh/config.conf /etc/default.conf
 wait
-# Add datalogger.conf file to root and pi's .bashrc
-sudo cp /KWH/moves/.bashrc /root/.bashrc
+# Add kwh.conf file to root and pi's .bashrc
+sudo cp /kwh/moves/.bashrc /root/.bashrc
 wait
-cp /KWH/moves/.bashrc /home/pi/.bashrc
+cp /kwh/moves/.bashrc /home/pi/.bashrc
 wait
 # Source the aliases, functions, and environment variables
 . ~/.bashrc
 wait
-sudo cp /KWH/moves/autologin@.service /etc/systemd/system/autologin@.service
+sudo cp /kwh/moves/autologin@.service /etc/systemd/system/autologin@.service
 wait
 sudo systemctl daemon-reload
 wait
@@ -148,13 +148,13 @@ wait
 echo ""
 echo "Updating /boot/config.txt to enable SIM and Temp sensor comms"
 wait
-sudo cp /KWH/moves/config.txt /boot/config.txt
+sudo cp /kwh/moves/config.txt /boot/config.txt
 wait
 
 # Enable simserver.service
 echo ""
 echo "Enabling sim server service"
-sudo cp /KWH/moves/simserver.service /etc/systemd/system/.
+sudo cp /kwh/moves/simserver.service /etc/systemd/system/.
 wait
 sudo systemctl enable simserver.service
 wait
@@ -162,7 +162,7 @@ wait
 # Enable data logger service
 echo ""
 echo "Enabling dlogger service for pigpiod, pulse counting, and updating the time at boot"
-sudo cp /KWH/moves/dlogger /etc/init.d/.
+sudo cp /kwh/moves/dlogger /etc/init.d/.
 wait
 sudo update-rc.d dlogger defaults
 wait
@@ -173,7 +173,7 @@ echo ""
 echo "Switching keyboard layout to US standard"
 echo "Use \"sudo raspi-config\" or edit /etc/default/keyboard"
 echo "if you would like to change it"
-sudo cp /KWH/moves/keyboard /etc/default/keyboard
+sudo cp /kwh/moves/keyboard /etc/default/keyboard
 fi
 
 # Step (3)
@@ -182,7 +182,7 @@ echo ""
 echo "Installing hub to simplify DAS development via GitHub"
 echo "Credit: https://github.com/github/hub.git"
 
-cd /KWH
+cd /kwh
 
 if [ ! -f go1.10.2.linux-armv6l.tar.gz ] && [ ! -d /usr/local/go ]; then
     echo ""
@@ -194,15 +194,15 @@ if [ ! -f go1.10.2.linux-armv6l.tar.gz ] && [ ! -d /usr/local/go ]; then
 fi
 wait
 if [ $status -ne 0 ]; then
-    echo "GoLang download stalled...if there is a partial download file in /KWH"
-    echo "(e.g. /KWH/go1.10.2.linux-armv6l.*) delete it with rm"
+    echo "GoLang download stalled...if there is a partial download file in /kwh"
+    echo "(e.g. /kwh/go1.10.2.linux-armv6l.*) delete it with rm"
     echo "Then rerun ./DASDevInstaller.sh 3"
     exit
 fi
 
 if [ ! -d /usr/local/go ]; then
     echo "Unpacking Go to /usr/local/go...";
-    sudo tar -C /usr/local -xzf /KWH/go1.10.2.linux-armv6l.tar.gz;
+    sudo tar -C /usr/local -xzf /kwh/go1.10.2.linux-armv6l.tar.gz;
 fi
 wait
 
@@ -213,7 +213,7 @@ wait
 
 echo ""
 echo "Deleting Go tar.gz"
-rm /KWH/go1.10.2.linux-armv6l.tar.gz
+rm /kwh/go1.10.2.linux-armv6l.tar.gz
 wait
 fi
 
@@ -257,13 +257,13 @@ echo "Use \"git config\" for help on resetting these values, or edit the file ~/
 # Set to Seattle Config
 echo ""
 echo "Setting config to Seattle RPi DAS defaults"
-source /KWH/config.conf; seattle
+source /kwh/config.conf; seattle
 
 # Activate cron jobs
 echo ""
 echo "Enabling cron jobs for reading sms, transmitting data, and updating the time"
 wait
-sudo cp /KWH/moves/dcrond /etc/cron.d/dcrond
+sudo cp /kwh/moves/dcrond /etc/cron.d/dcrond
 wait
 sudo chmod 644 /etc/cron.d/dcrond
 wait
@@ -273,7 +273,7 @@ echo ""
 echo "Installation complete. A reboot is necessary to enable communications with the"
 echo "PCB or other hardware solution."
 echo ""
-echo "If you would like KWH to host your data, please contact us."
+echo "If you would like kwh to host your data, please contact us."
 echo "You can contact us and/or donate to KiloWatts for Humanity at" 
 echo "http://KiloWattsforHumanity.org"
 echo ""

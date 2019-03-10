@@ -6,9 +6,9 @@ import os
 import mmap
 
 # Load environment variables
-execfile("/KWH/config/pyvars.py")
+execfile("/kwh/config/load_config.py")
 DEBUG = int(DEBUG)
-smsPath = "/KWH/transceive/sms"
+smsPath = "/kwh/transceive/sms"
 
 # Setup regex and paths to command scripts
 sendPath = smsPath+"/smsSend.sh"
@@ -39,7 +39,7 @@ inqConfPath = smsPath+"/commands/inqConf.sh"
 inqConf = re.compile(r"(.*?)#CONF#") 
 commandList.append(inqConf)
 ################################################################################
-inqValPath = "/KWH/transceive/tcp"
+inqValPath = "/kwh/transceive/tcp"
 inqVal = re.compile(r"(.*?)#VAL#") 
 commandList.append(inqVal)
 ################################################################################

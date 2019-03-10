@@ -2,11 +2,11 @@
 import signal
 import minimalmodbus
 import sys
-sys.path.append('/KWH/lib')
-import Data_Logger_MySQL
+sys.path.append('/kwh/lib')
+import KWH_MySQL
 
 # Load environment variables
-execfile("/KWH/config/pyvars.py")
+execfile("/kwh/config/load_config.py")
 DEBUG = int(config_var['DEBUG'])
 timestamp=sys.argv[1]+" "+sys.argv[2]
 
@@ -17,7 +17,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 # Log function
 def log(logText):
-    with open("/KWH/log/modbus.log", "a") as log:
+    with open("/kwh/log/modbus.log", "a") as log:
 	log.write(logText)
 
 minimalmodbus.PARITY='E'
@@ -27,7 +27,7 @@ minimalmodbus.BYTESIZE=8
 minimalmodbus.TIMEOUT=1
 minimalmodbus.CLOSE_PORT_AFTER_EACH_CALL=True
 
-DB = Data_Logger_MySQL.Data_Logger_MySQL()
+DB = KWH_MySQL.KWH_MySQL()
 
 for i in range(2,int(config_var['MAX_MODBUS_COUNT'])+2):
     try:
@@ -103,4 +103,4 @@ for i in range(2,int(config_var['MAX_MODBUS_COUNT'])+2):
             DB.INSERT(sql)
 
     except:
-        print("error")
+        log("No response from address "+str(i))

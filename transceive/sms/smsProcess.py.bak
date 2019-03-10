@@ -6,9 +6,9 @@ import os
 import mmap
 
 # Load environment variables
-execfile("/KWH/config/pyvars.py")
+execfile("/kwh/config/load_config.py")
 DEBUG = int(DEBUG)
-smsPath = "/KWH/transceive/sms"
+smsPath = "/kwh/transceive/sms"
 
 # Setup regex and paths to command scripts
 delPath =smsPath+"/smsDel.sh"
@@ -40,7 +40,7 @@ inqConfPath = smsPath+"/commands/inqConf.sh"
 inqConf = re.compile(r"(.*?)#CONF#") 
 commandList.append(inqConf)
 ################################################################################
-inqValPath = "/KWH/transceive/tcp/tstring.py"
+inqValPath = "/kwh/transceive/tcp/tstring.py"
 inqVal = re.compile(r"(.*?)#VAL#") 
 commandList.append(inqVal)
 ################################################################################
@@ -186,7 +186,7 @@ for msg in msgList:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([inqConfPath])
                     p.communicate()
-                    with open("/KWH/transceive/sms/commands/inqConf.log", "r") as conf:
+                    with open("/kwh/transceive/sms/commands/inqConf.log", "r") as conf:
                         p = subprocess.Popen([sendPath, msg[1], conf.read()])
                         p.communicate()
                     p = subprocess.Popen([delPath, msg[0]])
@@ -198,7 +198,7 @@ for msg in msgList:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([inqValPath])
                     p.communicate()
-                    with open("/KWH/transceive/tcp/tstring", "r") as vals:
+                    with open("/kwh/transceive/tcp/tstring", "r") as vals:
                         p = subprocess.Popen([sendPath, msg[1], vals.read()])
                         p.communicate()
                     p = subprocess.Popen([delPath, msg[0]])

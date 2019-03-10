@@ -1,10 +1,10 @@
 #!/bin/bash
 
-lock_file=/KWH/config/SIM_LOCK
+lock_file=/kwh/config/SIM_LOCK
 
-. /KWH/config.conf
+. /kwh/config.conf
 
-log="/KWH/datetime/datetime.log"
+log="/kwh/datetime/datetime.log"
 wait
 
 lockfile -1 -l 120 $lock_file
@@ -29,13 +29,13 @@ wait
 echo AT+CIFSR | nc localhost $SIM_PORT >> $log
 wait
 echo AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\" \
-	| nc localhost $SIM_PORT | tail -c 4 > /KWH/datetime/nisttime
+	| nc localhost $SIM_PORT | tail -c 4 > /kwh/datetime/nisttime
 wait
 echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
 wait
 echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log
 wait
-/KWH/datetime/setTime.sh $(tail -c 4 /KWH/datetime/nisttime)
+/kwh/datetime/setTime.sh $(tail -c 4 /kwh/datetime/nisttime)
 wait
 
 sudo rm -f $lock_file

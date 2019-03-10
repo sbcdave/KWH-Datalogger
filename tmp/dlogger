@@ -17,8 +17,8 @@ set -e
 
 case "$1" in
   start)
-	/KWH/pulse/pulseStart.sh &
-        /KWH/boot/stopTXandSetTime.sh &
+	/kwh/pulse/pulseStart.sh &
+        /kwh/boot/stopTXandSetTime.sh &
 	;;
   stop|reload|restart|force-reload|status)
 	;;

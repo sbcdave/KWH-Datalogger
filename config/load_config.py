@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# DO NOT MODIFY THIS FILE - USE setconf alias or /KWH/config/setConf.sh
+# DO NOT MODIFY THIS FILE - USE setconf alias or /kwh/config/setConf.sh
 
 #pip install MySQL-python
 #pip install mysql-connector-python
@@ -10,7 +10,7 @@ import mysql.connector
 from mysql.connector import Error
 try:
 	conn = mysql.connector.connect(host='localhost',
-					database = 'datalogger',
+					database = 'kwh',
 					user = 'pi',
 					password='')
 	cursor = conn.cursor()

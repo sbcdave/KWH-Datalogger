@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
-sys.path.append('/KWH/database')
-import Data_Logger_MySQL
+sys.path.append('/kwh/lib')
+import KWH_MySQL
 
 try:
     key = sys.argv[1]
@@ -16,7 +16,7 @@ if len(sys.argv) > 2:
     if value == "1":
         kill_history = True
 
-DB = Data_Logger_MySQL.Data_Logger_MySQL()
+DB = KWH_MySQL.KWH_MySQL()
 
 if kill_history:
     sql="DELETE FROM config WHERE `key` = \"" + key + "\";"
