@@ -19,15 +19,17 @@ code (or at least reduce channels) when modbus is working
 
 Consider schmit trigger, opto-isolators, or other safety hardware
 
+Setup bi-directional rsync for remote access back door
+
 Add log cycling service to prevent filling the SD card, but still allow
 simple logging via DEBUG config - make log retention configurable
 
 setup SMS request for DEBUG and each log file so we can query logs remotely
 
-Set up transmit to transmit data about used/available memory for graphing
+DONE:Set up transmit to transmit data about used/available memory for graphing
 
-Set up transmit to send data about bytes transmitted, so we can track our
-data usage and associate it to cost. DO THIS ON SERVER SIDE
+DO THIS SERVER SIDE:Set up transmit to send data about bytes transmitted, so we can track our
+data usage and associate it to cost.
 
 Devise new server side TCPIP app so we can take advantage of a compressed
 transmission instead of sending KP format ASCII and wasting data
@@ -44,17 +46,8 @@ Figure out server data delay
 Create email notification of data stopping, with another notification of it
 restarting, and when restarting send X bytes based on data stopped window
 
-have temp sensors get autosensed and created, bound to a TEMPx config
-
-add a limit on pulses per second to avoid noise and limit pulses from plugging in a test voltage
+DONE:have temp sensors get autosensed and created, bound to a TEMPx config
 
 Fix bug in smsParse that throws exception if there is no message to read
 
-Fix pulse channels
-
 Fix bug in simServer that doesn't show last response until next request
-
-add code to modbus server to cycle through USB0-1-2-3 until it's able to communicate
-
-add modbus server code to take serial parameters...parity, baud, etc...
-
