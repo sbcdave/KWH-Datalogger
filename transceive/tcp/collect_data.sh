@@ -12,15 +12,14 @@ echo "truncate kwh.data" | mysql -u pi
 # Start with timestamp to ensure all data points are linked in the 
 # database via the minute they were collected
 # Datetime stamp
-/kwh/datetime/datetime.py
+dtm=`date +%s`
 wait
 echo "datetime: $?" >> /kwh/log/collect_data.log
-dtm=`cat /kwh/datetime/datetime`
 
 # Analog inputs
 /kwh/data_collectors/analog.py $dtm
 wait
-echo "capture: $?" > /kwh/log/collect_data.log
+echo "capture: $?" >> /kwh/log/collect_data.log
 
 # One-Wire Temp sensors
 /kwh/data_collectors/one-wire_bus.sh $dtm
@@ -67,7 +66,7 @@ echo "tx_string: $?" >> /kwh/log/collect_data.log
 #wait
 #echo "tcpSend: $?" >> /kwh/transceive/tcp/collect_data.log
 
-nc kwhstg.org 11001 < /kwh/transceive/tcp/tstring
+#nc kwhstg.org 11001 < /kwh/transceive/tcp/tstring
 
 #########################################
 # Check for new SMS messages to process #

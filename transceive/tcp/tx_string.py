@@ -6,28 +6,30 @@ import KWH_MySQL
 # load kwh environment variables from config
 DPATH = "/kwh"
 execfile(DPATH + "/config/load_config.py")
-timestamp = sys.argv[1]+" "+sys.argv[2]
+timestamp = sys.argv[1]
 
 # build database object
 DB = KWH_MySQL.KWH_MySQL()
 
 # setup the transmission string (tx_string)
-tx_string = config_var['ADMPW']+"#STA:" + config_var['STA'] + ";TM:"
-data = DB.SELECT("SELECT `key`, value FROM data WHERE time_created = \""+timestamp+"\";")
+tx_string = config_var['ADMPW']+"#STA:" + config_var['STA'] + ";TM:"+timestamp
+data = DB.SELECT("SELECT `key`, value FROM data WHERE timestamp = "+timestamp+";")
 
-# modify timestamp for tx_string (removing all non-numbers for later parsing)
-timestamp = timestamp[:4]+timestamp[5:7]+timestamp[8:10]+timestamp[11:13]+timestamp[14:16]+timestamp[17:19]
-tx_string += timestamp
 for pair in data:
-    tx_string += ";" + str(pair[0]) + ":" + str(pair[1])
+    tx_string += ";" + str(pair[0]) + ":" + str(pair[1]).rstrip("0")
 
 # Finish string
 tx_string += "#" 
 
-# Write to tstring
-with open(DPATH + '/transceive/tcp/tstring', 'w') as tstring:
-    tstring.write(tx_string)
-
 # Write to tx_string table
-sql = "INSERT INTO tx_string VALUES (\"" + timestamp + "\",\"" + tx_string + "\", 0)"
+if config_var['COMPRESS'] == "1":
+    import zlib
+    tx_string = zlib.compress(tx_string, 6)
+
+with open("/kwh/transceive/tcp/txstring", "w") as file:
+    file.write(tx_string)
+
+# Escape any " in the compressed string to faciliate the insert
+tx_string = tx_string.replace('"', '\\"')
+sql = "INSERT INTO tx_string VALUES (" + timestamp + ",\"" + tx_string + "\");"
 results = DB.INSERT(sql)
