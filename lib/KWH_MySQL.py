@@ -3,42 +3,39 @@ class KWH_MySQL(object):
         True
 
     def SELECT(self, sql):
-        import mysql.connector
-        from mysql.connector import Error
+        import MySQLdb
+        from MySQLdb import Error
 
         try:
-            conn = mysql.connector.connect(host='localhost',database = 'kwh',user = 'pi',password='')
-            cursor = conn.cursor()
+            db = MySQLdb.connect('localhost','pi','','kwh')
+            cursor = db.cursor()
             cursor.execute(sql)
             result = cursor.fetchall()
 
-        except mysql.connector.Error as error:
+        except MySQLdb.Error as error:
             return [1, error]
 
-        if conn.is_connected():
-            cursor.close()
-            conn.close()
+        cursor.close()
+        db.close()
 
         return result
 
     def INSERT(self, sql):
-        import mysql.connector
-        from mysql.connector import Error
+        import MySQLdb
+        from MySQLdb import Error
 
         try:
-            conn = mysql.connector.connect(host='localhost',database = 'kwh',user = 'pi',password='')
-            cursor = conn.cursor()
+            db = MySQLdb.connect('localhost','pi','','kwh')
+            cursor = db.cursor()
             result = cursor.execute(sql)
-            conn.commit()
-            if conn.is_connected():
-                cursor.close()
-                conn.close()
+            db.commit()
+            cursor.close()
+            db.close()
             
-        except mysql.connector.Error as error:
-            conn.rollback()
-            if conn.is_connected():
-                cursor.close()
-                conn.close()
+        except MySQLdb.Error as error:
+            db.rollback()
+            cursor.close()
+            db.close()
             return [1, error]
 
         return [0]

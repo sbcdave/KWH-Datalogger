@@ -1,31 +1,15 @@
-#!/usr/bin/env python
-# DO NOT MODIFY THIS FILE - USE setconf alias or /kwh/config/setConf.sh
+#!/usr/bin/env python3
+import sys
+sys.path.append('/kwh/lib')
+import KWH_MySQL
 
-#pip install MySQL-python
-#pip install mysql-connector-python
-#pip install pymysql
+DB = KWH_MySQL.KWH_MySQL()
 
-#new edits
-import mysql.connector
-from mysql.connector import Error
-try:
-	conn = mysql.connector.connect(host='localhost',
-					database = 'kwh',
-					user = 'pi',
-					password='')
-	cursor = conn.cursor()
-	cursor.execute("SELECT `key`, `value` FROM `config` WHERE `active`=1")
-	records = cursor.fetchall()
+sql = "SELECT `key`, `value` FROM `config` WHERE `active`=1"
 
-	config_var = {} #dictionary for config vars
-	for row in records:
-		config_var[row[0]] = row[1]
+records = DB.SELECT(sql)
 
-except Error as e:
-	print(e)
-finally:
-	if conn.is_connected():
-		cursor.close()
-		conn.close()
-
-#end of new edits
+# dictionary of key:value from kwh.config table
+config_var = {} 
+for row in records:
+    config_var[row[0]] = row[1]

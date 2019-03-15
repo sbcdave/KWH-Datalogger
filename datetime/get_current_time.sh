@@ -2,9 +2,9 @@
 
 lock_file=/kwh/config/SIM_LOCK
 
-. /kwh/config.conf
+. /kwh/config/kwh.conf
 
-log="/kwh/datetime/datetime.log"
+log="/kwh/log/time.log"
 wait
 
 lockfile -1 -l 120 $lock_file

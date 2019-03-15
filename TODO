@@ -1,3 +1,7 @@
+Need to stop using cron for transmit so we can implement TX_INTERVAL,
+but more importantly so we can ensure getTime.sh runs before we start
+collecting data
+
 CIPSEND error might be due to needing a TCP header to get 
 into America. investigate AT+CIPHEAD
 To set PDP use the following instead of setting APN
@@ -13,6 +17,8 @@ Possible values for access technology are,
 5 UTRAN w/HSUPA
 6 UTRAN w/HSDPA and HSUPA
 7 E-UTRAN
+
+Setup config option to togle log level permanent vs log overwrite >> vs >
 
 Finish pulse code to launch configured channels on boot - might axe pulse
 code (or at least reduce channels) when modbus is working

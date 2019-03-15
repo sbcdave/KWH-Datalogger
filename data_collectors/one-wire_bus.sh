@@ -56,7 +56,7 @@ then
 	        fi
 	    fi
 
-            sql="INSERT INTO kwh.data VALUES (\"$@\", \"$DEVICE\",\"$INTEGER.$FRAC\");"
+            sql="INSERT INTO kwh.data VALUES ($@, \"$DEVICE\",\"$INTEGER.$FRAC\");"
 	    echo $sql | mysql -u pi
 
         else

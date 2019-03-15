@@ -1,11 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys
 sys.path.append('/kwh/lib')
 import KWH_MySQL
 
 # load kwh environment variables from config
-DPATH = "/kwh"
-execfile(DPATH + "/config/load_config.py")
+exec(open("/kwh/config/load_config.py").read())
 timestamp = sys.argv[1]
 
 # build database object
@@ -22,14 +21,5 @@ for pair in data:
 tx_string += "#" 
 
 # Write to tx_string table
-if config_var['COMPRESS'] == "1":
-    import zlib
-    tx_string = zlib.compress(tx_string, 6)
-
-with open("/kwh/transceive/tcp/txstring", "w") as file:
-    file.write(tx_string)
-
-# Escape any " in the compressed string to faciliate the insert
-tx_string = tx_string.replace('"', '\\"')
 sql = "INSERT INTO tx_string VALUES (" + timestamp + ",\"" + tx_string + "\");"
-results = DB.INSERT(sql)
+DB.INSERT(sql)

@@ -21,20 +21,19 @@ DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 # If data tables doesn't already exist create it
-CREATE TABLE IF NOT EXISTS `data`(`time_created` DATETIME NOT NULL, 
+CREATE TABLE IF NOT EXISTS `data`(`timestamp` INT NOT NULL, 
                 `key` VARCHAR(30) NOT NULL, 
                 `value` DECIMAL(15,6) NOT NULL,
-CONSTRAINT DATA_PK PRIMARY KEY(`time_created`, 
+CONSTRAINT DATA_PK PRIMARY KEY(`timestamp`, 
                `key`)
 )ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 # If tstring tables doesn't already exist create it
-CREATE TABLE IF NOT EXISTS `tx_string`(`timestamp` DATETIME NOT NULL, 
-                `tx_string` TEXT NOT NULL, 
-                `received` TINYINT NOT NULL,
-CONSTRAINT CONFIG_PK PRIMARY KEY (`received`, `timestamp`)
+CREATE TABLE IF NOT EXISTS `tx_string`(`timestamp` INT NOT NULL, 
+                `tx_string` LONGBLOB NOT NULL, 
+CONSTRAINT CONFIG_PK PRIMARY KEY (`timestamp`)
 )ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4 ;
 COMMIT;

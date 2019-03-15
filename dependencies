@@ -1,0 +1,6 @@
+apt-get:
+libmysqlclient-dev
+
+pip3:
+mysqlclient
+minimalmodbus

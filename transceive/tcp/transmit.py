@@ -1,63 +1,28 @@
-#!/usr/bin/env python
-import mysql.connector
-from mysql.connector import Error
-#from _thread import *
-#import threading
-import time
+#!/usr/bin/env python3
 import socket
 import sys
 sys.path.append('/kwh/lib')
 import KWH_MySQL
+import zlib
 
-# load kwh environment variables from config
-DPATH = "/kwh"
-execfile(DPATH + "/config/load_config.py")
+# load config variables from kwh.config table
+exec(open("/kwh/config/load_config.py").read())
 
-# sends tx_string and delete from tx_string if the server responds
-#def sender_thread(row):
-#    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#    server.connect((config_var['DOMAIN'], int(config_var['PORT'])))
-#    server.send(row[1])
-#    rcv = s.recv(1024)
-#    if rcv == row[0]:
-#        DB = KWH_MySQL.KWH_MySQL()
-#        sql = "DELETE FROM kwh.tx_string WHERE timestamp = " + row[0]
-#        result = DB.INSERT(sql)
+# Grab up to 100 tx_strings and tx them
+DB = KWH_MySQL.KWH_MySQL()
+records = DB.SELECT("SELECT * FROM tx_string LIMIT 100;")
 
-#    s.close()
-
-
-# MAIN #
-# Grab up to 100 tx_strings and pass them to sender_threads
-try:
-    conn = mysql.connector.connect(host='localhost',
-                                   database = 'kwh',
-                                   user = 'pi',
-                                   password='')
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM tx_string LIMIT 100;")
-    records = cursor.fetchall()
+for row in records:
+    if config_var['COMPRESS'] == "1":
+        bytedata = bytearray()
+        bytedata = zlib.compress(row[1], 6)
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.connect((config_var['DOMAIN'], int(config_var['PORT'])))
-    time.sleep(0.1)
-    for row in records:
-#        start_new_thread(sender_thread, (row,))
-        server.send(row[1])
-        time.sleep(0.1)
-        rcv = server.recv(1024)
-        print(rcv)
-        print(row[0])
-        if rcv == row[0]:
-            DB = KWH_MySQL.KWH_MySQL()
-            sql = "DELETE FROM kwh.tx_string WHERE timestamp = " + row[0]
-            result = DB.INSERT(sql)
-            print(result)
+    server.send(bytedata)
+    rcv = server.recv(1024)
     server.close()
-
-except Error as e:
-    print(e)
-finally:
-    if conn.is_connected():
-        cursor.close()
-        conn.close()
+    if int(rcv) == row[0]:
+        DB = KWH_MySQL.KWH_MySQL()
+        sql = "DELETE FROM kwh.tx_string WHERE timestamp = " + str(row[0])
+        result = DB.INSERT(sql)
