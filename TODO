@@ -1,3 +1,5 @@
+Add MODBUS serial communication settings to the config
+
 Update installer and add a line in it to create the log directory (it's empty because .log is in gitignore)
 
 Need to stop using cron for transmit so we can implement TX_INTERVAL,

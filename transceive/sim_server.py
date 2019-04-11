@@ -84,22 +84,22 @@ while True:
 
     # Beginning to process received command
     cmd = cs.recv(300000)
-    if DEBUG > 1: log("Received: "+cmd+"\n")
+    if DEBUG > 1: log("Received: "+cmd.decode('UTF-8')+"\n")
 
     # Send command to SIM
     try:
         sim.write(cmd)
 
-        if DEBUG > 0: log("Wrote to sim: "+cmd+"\n")
+        if DEBUG > 0: log("Wrote to sim: "+cmd.decode('UTF-8')+"\n")
 
 	# Command specific delays
-        if cmd == "AT+CGATT=1\n" \
-            or cmd == "AT+CIFSR\n" \
-            or cmd[0] == "\#":
+        if cmd.decode('UTF-8') == "AT+CGATT=1\n" \
+            or cmd.decode('UTF-8') == "AT+CIFSR\n" \
+            or cmd.decode('UTF-8')[0] == "\#":
             time.sleep(3)
-        elif cmd == "AT+CIPSTART=\"TCP\",\""+config_var['DOMAIN']+"\",\""+config_var['PORT']+"\"\n" \
-            or cmd == "AT+CIICR\n" \
-            or cmd == "AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\"\n":
+        elif cmd.decode('UTF-8') == "AT+CIPSTART=\"TCP\",\""+config_var['DOMAIN']+"\",\""+config_var['PORT']+"\"\n" \
+            or cmd.decode('UTF-8') == "AT+CIICR\n" \
+            or cmd.decode('UTF-8') == "AT+CIPSTART=\"TCP\",\"time.nist.gov\",\"37\"\n":
             time.sleep(4)
         else:
             time.sleep(.3)
@@ -131,17 +131,17 @@ while True:
                 sim.write(cmd)
             except:
                 log("EXCEPTION: Write Failed\n")
-            if DEBUG > 0: log("Wrote to sim: "+cmd+"\n")
+            if DEBUG > 0: log("Wrote to sim: "+cmd.decode('UTF-8')+"\n")
             time.sleep(0.5)
             fromSIM = sim.inWaiting()
 
         # Get SIM response
         if DEBUG > 0: log("Bytes to read: "+str(fromSIM)+"\n")
         resp = sim.read(fromSIM)
-        if DEBUG > 0: log("Sim response: "+resp+"\n")
+        if DEBUG > 0: log("Sim response: "+resp.decode('UTF-8')+"\n")
         # Tell the client if there was "No response" failure
-        if resp == "":
-            resp = "No response"
+        if resp.decode('UTF-8') == "":
+            resp = bytes("No response", 'UTF-8')
         cs.send(resp)
         if DEBUG > 1: log("Response sent to: "+str(addr)+"\n")
 
@@ -150,7 +150,7 @@ while True:
         if fromSIM > 0:
             if DEBUG > 0: log("Bytes to read: "+str(fromSIM)+"\n")
             resp = sim.read(fromSIM)
-            if DEBUG > 0: log("Sim response: "+resp+"\n")
+            if DEBUG > 0: log("Sim response: "+resp.decode('UTF-8')+"\n")
             cs.send(resp)
             if DEBUG > 1: log("Response sent to: "+str(addr)+"\n")
 
