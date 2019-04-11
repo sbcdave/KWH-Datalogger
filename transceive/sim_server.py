@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import socket
 import time
 import signal
@@ -9,7 +9,7 @@ sys.path.append('/kwh/lib')
 import KWH_MySQL
 
 # Load environment variables
-execfile("/kwh/config/get_config.py")
+exec(open("/kwh/config/get_config.py").read())
 DEBUG = int(config_var['DEBUG'])
 
 # Global variables
@@ -26,11 +26,11 @@ signal.signal(signal.SIGINT, signal_handler)
 # Log function
 def log(logText):
     with open("/kwh/log/sim_server.log", "a") as log:
-	log.write(str(int(time.time())) +": "+ logText)
+        log.write(str(int(time.time())) +": "+ logText)
 
 # Reset the SIM card
 def reset():
-    execfile("/kwh/transceive/reset_sim.py")
+    exec(open("/kwh/transceive/reset_sim.py").read())
     if DEBUG > 0: log("Sleeping 5 for SIM reboot and reconfigure!\n")
     time.sleep(4)
 
@@ -47,11 +47,11 @@ if DEBUG > 0: log("Starting port selection\n")
 # Find an open port for the service
 while not port_chosen:
     try:
-	s.bind((host, port))
+        s.bind((host, port))
         port_chosen = True
     except:
-	if DEBUG > 0: log("Port "+str(port)+" in use\n")
-	port = port + 1
+        if DEBUG > 0: log("Port "+str(port)+" in use\n")
+        port = port + 1
 
 # Update the env variables with the chosen active SIM_PORT
 DB = KWH_MySQL.KWH_MySQL()
@@ -76,7 +76,7 @@ while True:
     cs,addr = s.accept()
 
     # Configure block
-    execfile("/kwh/config/get_config.py")
+    exec(open("/kwh/config/get_config.py").read())
     DEBUG = int(config_var['DEBUG'])
     if DEBUG > 1: log("Configuration variables reloaded\n")    
     subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
@@ -88,7 +88,7 @@ while True:
 
     # Send command to SIM
     try:
-	sim.write(cmd)
+        sim.write(cmd)
 
         if DEBUG > 0: log("Wrote to sim: "+cmd+"\n")
 
@@ -110,7 +110,7 @@ while True:
         # If no response, restart SIM, reset config, and retry
         count = 0
         while fromSIM < 1 and count < RESET_LIMIT:
-	    # Check one more time before resetting
+            # Check one more time before resetting
             time.sleep(1)
             fromSIM = sim.inWaiting()
             if fromSIM > 0:
@@ -118,19 +118,19 @@ while True:
             if DEBUG > 0: log(str(fromSIM)+" bytes from SIM. Resetting SIM!\n")
             # No luck! Reset
             reset()
-	    execfile("/kwh/config/get_config.py")
-	    DEBUG = int(config_var['DEBUG'])
-	    if DEBUG > 1: log("Configuration variables reloaded\n")    
-	    subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
-	    if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
-	    time.sleep(1)
+            exec(open("/kwh/config/get_config.py").read())
+            DEBUG = int(config_var['DEBUG'])
+            if DEBUG > 1: log("Configuration variables reloaded\n")    
+            subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
+            if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
+            time.sleep(1)
 
             count += 1
-	    # Resend command and check again for response
+            # Resend command and check again for response
             try:
                 sim.write(cmd)
-	    except:
-	        log("EXCEPTION: Write Failed\n")
+            except:
+                log("EXCEPTION: Write Failed\n")
             if DEBUG > 0: log("Wrote to sim: "+cmd+"\n")
             time.sleep(0.5)
             fromSIM = sim.inWaiting()
@@ -139,7 +139,7 @@ while True:
         if DEBUG > 0: log("Bytes to read: "+str(fromSIM)+"\n")
         resp = sim.read(fromSIM)
         if DEBUG > 0: log("Sim response: "+resp+"\n")
-	# Tell the client if there was "No response" failure
+        # Tell the client if there was "No response" failure
         if resp == "":
             resp = "No response"
         cs.send(resp)
@@ -162,9 +162,9 @@ while True:
     except:
         log("EXCEPTION: Write Failed\n")
         reset()
-	execfile("/kwh/config/get_config.py")
+        exec(open("/kwh/config/get_config.py").read())
         DEBUG = int(config_var['DEBUG'])
-	if DEBUG > 1: log("Configuration variables reloaded\n")    
+        if DEBUG > 1: log("Configuration variables reloaded\n")    
         subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
         if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
         time.sleep(1)
