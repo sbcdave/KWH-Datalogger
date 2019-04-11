@@ -4,7 +4,7 @@ sys.path.append('/kwh/lib')
 import KWH_MySQL
 
 # load kwh environment variables from config
-exec(open("/kwh/config/load_config.py").read())
+exec(open("/kwh/config/get_config.py").read())
 timestamp = sys.argv[1]
 
 # build database object

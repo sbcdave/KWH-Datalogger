@@ -6,7 +6,7 @@ sys.path.append('/kwh/lib')
 import KWH_MySQL
 
 # Load environment variables
-exec(open("/kwh/config/load_config.py").read())
+exec(open("/kwh/config/get_config.py").read())
 DEBUG = int(config_var['DEBUG'])
 timestamp=sys.argv[1]
 

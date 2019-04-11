@@ -5,7 +5,7 @@ import KWH_MySQL
 import Bit_Bang_ADC
 
 # load kwh environment variables from config
-exec(open("/kwh/config/load_config.py").read())
+exec(open("/kwh/config/get_config.py").read())
 timestamp = sys.argv[1]
 
 ################################################################################

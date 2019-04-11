@@ -8,7 +8,7 @@ if [ -z "$1" ] || [ -z "$2" ]; then
     exit 0;
 fi
 
-. /kwh/config.conf
+. /kwh/config/kwh.conf
 
 log="/kwh/transceive/sms/smsSend.log"
 wait

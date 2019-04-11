@@ -9,7 +9,7 @@ sys.path.append('/kwh/lib')
 import KWH_MySQL
 
 # Load environment variables
-execfile("/kwh/config/load_config.py")
+execfile("/kwh/config/get_config.py")
 DEBUG = int(config_var['DEBUG'])
 
 # Global variables
@@ -26,7 +26,7 @@ signal.signal(signal.SIGINT, signal_handler)
 # Log function
 def log(logText):
     with open("/kwh/log/sim_server.log", "a") as log:
-	log.write(logText)
+	log.write(str(int(time.time())) +": "+ logText)
 
 # Reset the SIM card
 def reset():
@@ -76,7 +76,7 @@ while True:
     cs,addr = s.accept()
 
     # Configure block
-    execfile("/kwh/config/load_config.py")
+    execfile("/kwh/config/get_config.py")
     DEBUG = int(config_var['DEBUG'])
     if DEBUG > 1: log("Configuration variables reloaded\n")    
     subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
@@ -118,7 +118,7 @@ while True:
             if DEBUG > 0: log(str(fromSIM)+" bytes from SIM. Resetting SIM!\n")
             # No luck! Reset
             reset()
-	    execfile("/kwh/config/load_config.py")
+	    execfile("/kwh/config/get_config.py")
 	    DEBUG = int(config_var['DEBUG'])
 	    if DEBUG > 1: log("Configuration variables reloaded\n")    
 	    subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")
@@ -162,7 +162,7 @@ while True:
     except:
         log("EXCEPTION: Write Failed\n")
         reset()
-	execfile("/kwh/config/load_config.py")
+	execfile("/kwh/config/get_config.py")
         DEBUG = int(config_var['DEBUG'])
 	if DEBUG > 1: log("Configuration variables reloaded\n")    
         subprocess.Popen("/kwh/transceive/ttyAMA0_setup.sh")

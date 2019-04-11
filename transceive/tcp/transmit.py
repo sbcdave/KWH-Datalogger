@@ -6,7 +6,7 @@ import KWH_MySQL
 import zlib
 
 # load config variables from kwh.config table
-exec(open("/kwh/config/load_config.py").read())
+exec(open("/kwh/config/get_config.py").read())
 
 # Grab up to 100 tx_strings and tx them
 DB = KWH_MySQL.KWH_MySQL()
