@@ -19,7 +19,7 @@ signal.signal(signal.SIGINT, signal_handler)
 # Log function
 def log(logText):
     with open("/kwh/log/modbus.log", "a+") as log:
-        log.write(str(int(time.time())) + ": " + logText)
+        log.write(str(int(time.time())) + ": " + logText +"\n")
 
 minimalmodbus.PARITY='E'
 minimalmodbus.BAUDRATE=9600
