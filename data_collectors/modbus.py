@@ -17,7 +17,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 # Log function
 def log(logText):
-    with open("/kwh/log/modbus.log", "w") as log:
+    with open("/kwh/log/modbus.log", "a+") as log:
         log.write(logText)
 
 minimalmodbus.PARITY='E'
