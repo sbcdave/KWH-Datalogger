@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import signal
 import minimalmodbus
+import time
 import sys
 sys.path.append('/kwh/lib')
 import KWH_MySQL
@@ -18,7 +19,7 @@ signal.signal(signal.SIGINT, signal_handler)
 # Log function
 def log(logText):
     with open("/kwh/log/modbus.log", "a+") as log:
-        log.write(logText)
+        log.write(str(int(time.time())) + ": " + logText)
 
 minimalmodbus.PARITY='E'
 minimalmodbus.BAUDRATE=9600
