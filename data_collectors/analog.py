@@ -33,7 +33,7 @@ timestamp = sys.argv[1]
 ################################################################################
 
 samples = 21
-cmpr_voltage = 5.25 #update to 5.0 with Rev.2 PCB thanks to Voltage reference chip
+cmpr_voltage = 5.0 #update to 5.0 with Rev.2 PCB thanks to Voltage reference chip
 skewing_percentage = 1.0
 bias = 0.000
 
