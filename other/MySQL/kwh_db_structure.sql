@@ -1,8 +1,10 @@
 # If database doesn't already exist create it
 CREATE DATABASE IF NOT EXISTS kwh;
 
+# Create MySQL user "pi"
+CREATE USER 'pi'@'localhost' IDENTIFIED BY '';
 # Grant all privileges on kwh database to pi user
-GRANT ALL PRIVILEGES ON `kwh`.* TO 'pi'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON `kwh`.* TO 'pi'@'localhost'
 FLUSH PRIVILEGES;
 
 # Switch to kwh database for table creation and inserts

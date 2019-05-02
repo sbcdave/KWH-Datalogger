@@ -125,4 +125,4 @@ sudo modprobe w1-therm
 
 # shutdown wifi to save power
 #sudo ifconfig wlan0 down
-eval "$(hub alias -s)"
+#eval "$(hub alias -s)"
