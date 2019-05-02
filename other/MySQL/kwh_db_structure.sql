@@ -2,13 +2,12 @@
 CREATE DATABASE IF NOT EXISTS kwh;
 
 # Create MySQL user "pi"
-CREATE USER 'pi'@'localhost' IDENTIFIED BY '';
+CREATE USER IF NOT EXISTS 'pi'@'localhost' IDENTIFIED BY '';
 # Grant all privileges on kwh database to pi user
-GRANT ALL PRIVILEGES ON `kwh`.* TO 'pi'@'localhost'
-FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON `kwh`.* TO 'pi'@'localhost' IDENTIFIED BY '';
 
-# Switch to kwh database for table creation and inserts
-USE kwh;
+# Switch to new kwh database
+USE kwh
 
 # If config table doesn't already exist create it and insert mandatory config values
 CREATE TABLE IF NOT EXISTS `config`(`key` VARCHAR(30) NOT NULL, 
