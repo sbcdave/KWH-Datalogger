@@ -9,7 +9,7 @@ echo ""
 echo "Thank you for your interest, and enjoy! Courtesy of KiloWatts for Humanity (KWH)"
 echo ""
 echo "This installer requires that the RPi be rebooted when complete"
-echo "If you need to save any work, do not answer anything that starts with \"y\""
+echo "If you need to save any work, do not enter anything that starts with \"y\""
 echo ""
 echo "Would you like to continue with installation(y/n)?"
 read ans
@@ -30,30 +30,32 @@ status=$?
 wait
 if [ $status -ne 0 ]; then
     echo "unable to access git...aborting"
-    echo "contact dave@KiloWattsforHumanity.org for assistance"
+    echo "contact Dave@KiloWattsforHumanity.org for assistance"
 fi
 
 # Move to root and download data logger code from github
 cd /
-echo ""
-echo "Downloading data logger software to the root directory in /KWH"
-wait
-sudo git clone https://github.com/sbcdave/KWH.git
-status=$?
-wait
-if [ $status -ne 0 ]; then
-    echo ""
-    echo "GitHub download stalled...rerun DASInstaller.sh"
-    echo ""
-    exit
+if [ ! -d "kwh" ]; then
+  echo ""
+  echo "Downloading data logger software to the root directory in /kwh"
+  wait
+  sudo git clone https://github.com/sbcdave/KWH kwh
+  status=$?
+  wait
+  if [ $status -ne 0 ]; then
+      echo ""
+      echo "GitHub download stalled...rerun DASInstaller.sh"
+      echo ""
+      exit
+  fi
 fi
 
 # Download pigpio code from github
 cd /
 echo ""
-echo "Downloading pigpio code to /KWH/datalogger/lib"
+echo "Downloading pigpio code to /kwh/lib"
 wait
-cd /KWH/datalogger/lib
+cd /kwh/lib
 git clone https://github.com/joan2937/pigpio.git
 status=$?
 wait
@@ -66,9 +68,9 @@ fi
 
 # Change data logger code root directory owner:group to pi
 echo ""
-echo "Updating /KWH permissions"
+echo "Updating /kwh permissions"
 wait
-sudo chown -R pi:pi KWH
+sudo chown -R pi:pi kwh
 wait
 
 #investigate shutting down uneccesary services
