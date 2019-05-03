@@ -3,7 +3,7 @@ lock_file=/kwh/config/SIM_LOCK
 
 . /kwh/config/kwh.conf
 
-log="/kwh/transceive/tcp/tcp_send.log"
+log="/kwh/log/tcp_send.log"
 wait
 
 SIM_PORT=$(echo 'SELECT value FROM kwh.config WHERE `key` = "SIM_PORT" AND active = 1' | mysql -u pi); 
@@ -14,25 +14,33 @@ DOMAIN=$(echo 'SELECT value FROM kwh.config WHERE `key` = "DOMAIN" AND active = 
 DOMAIN=${DOMAIN:6}
 APN=$(echo 'SELECT value FROM kwh.config WHERE `key` = "APN" AND active = 1' | mysql -u pi); 
 APN=${APN:6}
-
-compress=$(echo 'SELECT value FROM kwh.config WHERE `key` = "COMPRESS" AND active = 1' | mysql -u pi);
-compress=${compress:6}
+COMPRESS=$(echo 'SELECT value FROM kwh.config WHERE `key` = "COMPRESS" AND active = 1' | mysql -u pi);
+COMPRESS=${COMPRESS:6}
 
 # Wait for lock
 lockfile -1 -l 100 $lock_file
 wait
 
 # Collect tx_string from the database
-echo 'SELECT tx_string FROM kwh.tx_string;' | mysql -u pi | while read tx_string
+first="TRUE"
+echo 'SELECT tx_string FROM kwh.tx_string LIMIT 100;' | mysql -u pi | while read record
 do
-    tx_string=${tx_string:9}
-    echo "$tx_string"
-
-    if [$compress -eq 1]
-        then
-            tx_string=$(/kwh/transceive/tcp/compress.py \"$tx_string\")
-	    echo "$tx_string"
+    if [ "$first" = "TRUE" ]; then
+      echo "discarding first token...column name"
+      read record
+      first="FALSE"
     fi
+    echo "$record"
+    wait
+
+    if [ $COMPRESS -eq 1 ]; then
+        tx_string=$(/kwh/transceive/tcp/compress.py $record)
+	echo "compressed: $tx_string"
+    else
+        tx_string=$record
+	echo "not compressed: $tx_string"
+    fi
+    wait
 
     # Send data to server
     echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
@@ -56,10 +64,11 @@ do
     echo AT+CIPSTART=\"TCP\",\"$DOMAIN\",\"$PORT\" \
     	| nc localhost $SIM_PORT >> $log
     wait
-    echo AT+CIPSEND | $tx_string | nc localhost $SIM_PORT >> $log
+    echo AT+CIPSEND | nc localhost $SIM_PORT >> $log
     wait
 
-    echo $1 | nc localhost $SIM_PORT >> $log
+    echo $tx_string$'\1a'
+    echo $tx_string$'\1a' | nc localhost $SIM_PORT >> $log
     wait
 
     echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log

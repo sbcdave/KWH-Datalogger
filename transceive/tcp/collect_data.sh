@@ -15,36 +15,43 @@ echo "truncate kwh.data" | mysql -u pi
 dtm=`date +%s`
 wait
 echo "datetime: $?" >> /kwh/log/collect_data.log
+echo "datetime: $?"
 
 # Analog inputs
 /kwh/data_collectors/analog.py $dtm
 wait
 echo "capture: $?" >> /kwh/log/collect_data.log
+echo "capture: $?"
 
 # One-Wire Temp sensors
 /kwh/data_collectors/one-wire_bus.sh $dtm
 wait
 echo "one-wire: $?" >> /kwh/log/collect_data.log
+echo "one-wire: $?"
 
 # RPi Processor Temp
 /kwh/data_collectors/rpi_temp.sh $dtm
 wait
 echo "rpi temp: $?" >> /kwh/log/collect_data.log
+echo "rpi temp: $?"
 
 # RPi Disk Use
 /kwh/data_collectors/disk_space.sh $dtm
 wait
 echo "rpi disk: $?" >> /kwh/log/collect_data.log
+echo "rpi disk: $?"
 
 # Signal Quality
 /kwh/data_collectors/signal_strength.sh $dtm
 wait
 echo "signal: $?" >> /kwh/log/collect_data.log
+echo "signal: $?"
 
 # ModBus
 /kwh/data_collectors/modbus.py $dtm
-echo "modbus: $?" >> /kwh/log/collect_data.log
 wait
+echo "modbus: $?" >> /kwh/log/collect_data.log
+echo "modbus: $?"
 
 ###################################
 # Build transmitable ASCII string #
@@ -55,6 +62,7 @@ wait
 # echo $'\cZ' >> /kwh/transceive/tcp/tstring
 wait
 echo "tx_string: $?" >> /kwh/log/collect_data.log
+echo "tx_string: $?"
 
 #############################
 # Initiate TCP transmission #

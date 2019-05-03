@@ -52,6 +52,11 @@ fi
 
 # MIGHT want to add a cd /kwh and git pull origin master here
 
+# Create log directory
+if [ ! -d /kwh/log ]; then
+  mkdir /kwh/log
+fi
+
 # Download pigpio code from github
 cd /kwh/lib
 if [ ! -d pigpio ]; then
@@ -153,11 +158,11 @@ sudo chmod 644 /etc/cron.d/kwh.cron
 wait
 
 # NEED TO add echo output about the following commands
-sudo apt-get install -y mysql-server mysql-client default-libmysqlclient-dev libusb-dev libusb-1.0-0-dev ppp at-spi2-core python3 python3-pip
+sudo apt-get install -y mysql-server mysql-client default-libmysqlclient-dev libusb-dev libusb-1.0-0-dev ppp at-spi2-core python3 python3-pip procmail
 wait
 sudo apt-get update
 wait
-sudo apt-get install -y mysql-server mysql-client default-libmysqlclient-dev libusb-dev libusb-1.0-0-dev ppp at-spi2-core python3 python3-pip
+sudo apt-get install -y mysql-server mysql-client default-libmysqlclient-dev libusb-dev libusb-1.0-0-dev ppp at-spi2-core python3 python3-pip procmail
 wait
 sudo pip3 install mysqlclient
 wait
@@ -169,6 +174,9 @@ if [ ! -d sakis3g ]; then
 fi
 
 sudo mysql < /kwh/other/MySQL/kwh_db_structure.sql
+
+# Disable GUI boot to lower power consumption and free up resources
+sudo raspi-config nonint do_boot_behaviour B1
 
 # NEED TO config setup here
 # NEED TO investigate shutting down uneccesary services
