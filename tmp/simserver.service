@@ -1,6 +1,6 @@
 [Unit]
-Description=simServer.py service
-After=sysinit.target
+Description=sim_server.py service
+After=sysinit.target mysql.service
 
 [Service]
 Type=simple
