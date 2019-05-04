@@ -23,24 +23,26 @@ wait
 
 # Collect tx_string from the database
 first="TRUE"
-echo 'SELECT tx_string FROM kwh.tx_string LIMIT 100;' | mysql -u pi | while read record
+echo 'SELECT tx_string FROM kwh.tx_string LIMIT 1;' | mysql -u pi | while read record
 do
     if [ "$first" = "TRUE" ]; then
       echo "discarding first token...column name"
       read record
       first="FALSE"
     fi
-    echo "$record"
     wait
 
     if [ $COMPRESS -eq 1 ]; then
-        tx_string=$(/kwh/transceive/tcp/compress.py $record)
+        tx_string=$(/kwh/transceive/tcp/compress.py $(echo $record))
 	echo "compressed: $tx_string"
     else
         tx_string=$record
 	echo "not compressed: $tx_string"
     fi
     wait
+
+    tx_string=${tx_string::-1}
+    tx_string+=";NET:23#"
 
     # Send data to server
     echo AT+CMEE=2 | nc localhost $SIM_PORT > $log
@@ -55,22 +57,19 @@ do
     wait
     echo AT+CIPMUX=0 | nc localhost $SIM_PORT >> $log
     wait
-    echo AT+CSTT=\"$APN\" | nc localhost $SIM_PORT >> $log
+    echo AT+CREG=3 | nc localhost $SIM_PORT >> $log
     wait
-    echo AT+CIICR | nc localhost $SIM_PORT >> $log
-    wait
-    echo AT+CIFSR | nc localhost $SIM_PORT >> $log
+    echo AT+CGDCONT=1,\"IP\",\"$APN\" | nc localhost $SIM_PORT >> $log
     wait
     echo AT+CIPSTART=\"TCP\",\"$DOMAIN\",\"$PORT\" \
     	| nc localhost $SIM_PORT >> $log
     wait
     echo AT+CIPSEND | nc localhost $SIM_PORT >> $log
     wait
-
-    echo $tx_string$'\1a'
-    echo $tx_string$'\1a' | nc localhost $SIM_PORT >> $log
+    echo $tx_string | nc localhost $SIM_PORT >> $log
     wait
-
+    echo $'\cZ' | nc localhost $SIM_PORT >> $log
+    wait
     echo AT+CIPCLOSE | nc localhost $SIM_PORT >> $log
     wait
     echo AT+CIPSHUT | nc localhost $SIM_PORT >> $log

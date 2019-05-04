@@ -1,6 +1,6 @@
-Add MODBUS serial communication settings to the config
+Add config to turn TEMP data collection off
 
-Update installer and add a line in it to create the log directory (it's empty because .log is in gitignore)
+Add MODBUS serial communication settings to the config
 
 Need to stop using cron for transmit so we can implement TX_INTERVAL,
 but more importantly so we can ensure getTime.sh runs before we start

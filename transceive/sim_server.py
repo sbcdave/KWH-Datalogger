@@ -18,7 +18,9 @@ RESET_LIMIT = 3
 def signal_handler(signal, frame):
     if DEBUG > 0: log('SIGINT received...Closing SIM Server\n')
     sim.close()
+    s.shutdown(socket.SHUT_RDWR)
     s.close()
+    cs.shutdown(socket.SHUT_RDWR)
     cs.close()
     exit(0)
 signal.signal(signal.SIGINT, signal_handler)
@@ -84,8 +86,10 @@ while True:
 
     # Beginning to process received command
     cmd = cs.recv(300000)
-    if DEBUG > 1: log("Received: "+cmd.decode('UTF-8')+"\n")
-
+    try:
+        if DEBUG > 1: log("Received: "+cmd.decode('UTF-8')+"\n")
+    except:
+        pass
     # Send command to SIM
     try:
         sim.write(cmd)
@@ -158,6 +162,7 @@ while True:
         sim.flushOutput()
     
         time.sleep(.5)
+        cs.shutdown(socket.SHUT_RDWR)
         cs.close()
     except:
         log("EXCEPTION: Write Failed\n")
@@ -169,5 +174,4 @@ while True:
         if DEBUG > 1: log("Executed ttyAMA0_setup.sh\n")    
         time.sleep(1)
 
-    cs.close()
     if DEBUG > 1: log("Client connection closed\n")

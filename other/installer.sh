@@ -158,6 +158,7 @@ sudo chmod 644 /etc/cron.d/kwh.cron
 wait
 
 # NEED TO add echo output about the following commands
+# Install dependencies
 sudo apt-get install -y mysql-server mysql-client default-libmysqlclient-dev libusb-dev libusb-1.0-0-dev ppp at-spi2-core python3 python3-pip procmail
 wait
 sudo apt-get update
@@ -168,15 +169,25 @@ sudo pip3 install mysqlclient
 wait
 sudo pip3 install minimalmodbus
 
+# Download sakis3g
 cd /kwh/lib
 if [ ! -d sakis3g ]; then
   git clone https://github.com/Trixarian/sakis3g-source.git sakis3g
 fi
 
+# Build sakis3g
+sudo cp /usr/include/libusb-1.0/libusb.h /usr/include
+wait
+/kwh/lib/sakis3g/compile
+wait
+sudo cp /kwh/lib/sakis3g/build/sakis3gz /usr/bin/sakis3g
+wait
+
+# Build database structure
 sudo mysql < /kwh/other/MySQL/kwh_db_structure.sql
 
 # Disable GUI boot to lower power consumption and free up resources
-sudo raspi-config nonint do_boot_behaviour B1
+sudo raspi-config nonint do_boot_behaviour B2
 
 # NEED TO config setup here
 # NEED TO investigate shutting down uneccesary services
