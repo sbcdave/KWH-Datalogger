@@ -1,13 +1,9 @@
 #!/bin/bash
 
-# Load alias so setconf will work
-source /kwh/config/kwh.conf
-
-# Start with APN="wholesale"
-setconf APN wholesale
-
 # Start simserver.service
 sudo systemctl start simserver.service
+sleep 10
+wait
 
 #1
 echo "truncate table kwh.tx_string" | mysql -u pi
@@ -299,6 +295,23 @@ wait
 
 # Stop simserver.service
 sudo systemctl stop simserver.service
-
+wait
 # sakis3g test
-/bin/sakis3g
+sudo /usr/bin/sakis3g connect --console
+wait
+echo "truncate table kwh.tx_string" | mysql -u pi
+wait
+/kwh/net/collect.sh
+wait
+# get tx_string from the database
+echo 'SELECT tx_string FROM kwh.tx_string LIMIT 1;' | mysql -u pi | while read record
+do
+  read record
+  tx_string=${record::-1}
+  tx_string+=";NET:7#"
+  echo $tx_string > /kwh/net/tx_string
+done
+cat /kwh/net/tx_string | nc kwhstg.org 11003
+wait
+
+sudo /usr/bin/sakis3g disconnect --console

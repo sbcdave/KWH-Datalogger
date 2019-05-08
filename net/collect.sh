@@ -45,25 +45,3 @@ echo "signal: $?"
 wait
 echo "tx_string: $?" >> /kwh/log/collect_data.log
 echo "tx_string: $?"
-
-#############################
-# Initiate TCP transmission #
-#############################
-
-# Decpricated by sakis3g
-#. /kwh/transceive/tcp/tcpSend.sh >> \
-#/kwh/transceive/tcp/collect_data.log 2>&1
-#wait
-#echo "tcpSend: $?" >> /kwh/transceive/tcp/collect_data.log
-
-#nc kwhstg.org 11001 < /kwh/transceive/tcp/tstring
-
-#########################################
-# Check for new SMS messages to process #
-#########################################
-
-# Moved due to switching to sakis3g
-#/kwh/transceive/sms/smsParse.py >> /kwh/transceive/sms/smsParse.log
-#wait
-#echo "smsParse: $?" >> /kwh/transceive/tcp/collect_data.log
-
