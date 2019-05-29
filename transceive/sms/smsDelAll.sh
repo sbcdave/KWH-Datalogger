@@ -2,9 +2,13 @@
 
 lock_file=/kwh/config/SIM_LOCK
 
-. /kwh/config.conf
+. /kwh/config/kwh.conf
 
 wait
+
+# Load environment variables from config table
+SIM_PORT=$(echo 'SELECT value FROM kwh.config WHERE `key` = "SIM_PORT" AND active = 1' | mysql -u pi);
+SIM_PORT=${SIM_PORT:6}
 
 lockfile -1 -l 100 $lock_file
 wait

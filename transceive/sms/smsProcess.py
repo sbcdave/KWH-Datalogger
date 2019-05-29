@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import re
 import subprocess
@@ -6,9 +6,10 @@ import os
 import mmap
 
 # Load environment variables
-execfile("/kwh/config/load_config.py")
-DEBUG = int(DEBUG)
+exec(open("/kwh/config/get_config.py").read())
+DEBUG = int(config_var["DEBUG"])
 smsPath = "/kwh/transceive/sms"
+ADMPW = config_var['ADMPW']
 
 # Setup regex and paths to command scripts
 sendPath = smsPath+"/smsSend.sh"
@@ -82,97 +83,104 @@ messageData = re.compile(r"\+CMGL: \d*,.*?,(.*?),.*?,.*?\n(.*)")
 # This array will be populated with the msg(s) that each have the 3 regex groups
 msgList = []
 
-if DEBUG: print messages
+if DEBUG: print(messages)
 for msg in messages:
     # Exclude the .gitMarker file that is only there so GitHub will retain the directory
-    if str(msg) <> ".gitMarker":
-        if DEBUG: print smsPath+"/msg/"+str(msg)
+    if str(msg) != ".gitMarker":
+        if DEBUG: print(smsPath+"/msg/"+str(msg))
         f = open(smsPath+"/msg/"+str(msg), 'r+')
-        msgData = mmap.mmap(f.fileno(), 0)
-        parts = messageData.search(msgData)
-        msgList.append([parts.group(1).replace('"', ''), parts.group(2)])
-        if DEBUG: print msgList
+        msgData = f.read()
+        print(msgData)
+        try:
+            parts = messageData.search(msgData)
+            msgList.append([parts.group(1).replace('"', ''), parts.group(2)])
+        except:
+            pass
+        if DEBUG: print(msgList)
         f.close()
+
+##########################
+print(msgList)
 
 # NOTE: msg[0] = phone number, msg[1] = the message
 for msg in msgList:
     found = False
     for command in commandList:
-        match = command.search(msg[1]) 
+        match = command.search(msg[1])
         if match and not found:
-	    found = True
+            found = True
             # Execute the corresponding command file and pass it the msg data
             if command == reset:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([resetPath, msg[0]])
                     p.communicate()
             elif command == admpw:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([admpwPath, msg[0], match.group(2)])
                     p.communicate()
             elif command == sta:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([staPath, msg[0], match.group(2)])
                     p.communicate()
             elif command == debug:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([debugPath, msg[0], match.group(2)])
                     p.communicate()
             elif command == domain:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([domainPath, msg[0], match.group(2)])
                     p.communicate()
             elif command == port:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([portPath, msg[0], match.group(2)])
                     p.communicate()
             elif command == apn:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([apnPath, msg[0], match.group(2)])
                     p.communicate()
             elif command == puxx:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([puxxPath, msg[0], match.group(2), match.group(3)])
                     p.communicate()
             elif command == puxxVal:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([puxxValPath, msg[0], match.group(2), match.group(3)])
                     p.communicate()
             elif command == adxx:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([adxxPath, msg[0], match.group(2), match.group(3)])
                     p.communicate()
             elif command == tx_intrvl:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([tx_intrvlPath, msg[0], match.group(2)])
                     p.communicate()
             elif command == inqConf:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([inqConfPath, msg[0]])
                     p.communicate()
             elif command == inqVal:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([inqValPath+"/tstring.py"])
                     p.communicate()
                     with open(inqValPath+"/tstring", "r") as val:
-			data=val.read().replace(';', ' ')
+                        data=val.read().replace(';', ' ')
                     p = subprocess.Popen([sendPath, msg[0], data])
                     p.communicate()
             elif command == invalid:
-	        if match.group(1) == ADMPW:
+                if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
                     p = subprocess.Popen([sendPath, msg[0], "Command not valid"])
-		    p.communicate()
+                    p.communicate()

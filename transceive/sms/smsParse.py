@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import re
 import subprocess
 import time
 
 # Load environment variables
-execfile("/kwh/config/load_config.py")
-DEBUG = int(DEBUG)
+exec(open("/kwh/config/get_config.py").read())
+DEBUG = int(config_var["DEBUG"])
 
 if DEBUG: print("Running smsRead.sh")
 p = subprocess.Popen("/kwh/transceive/sms/smsRead.sh")
@@ -25,9 +25,6 @@ msgNum = 1
 # MESSAGE TO READ. IT STILL WORKS, BUT IT WOULD BE NICE TO FIX THAT
 # BUG
 
-# Used to skip the first non relevant lines
-inMsg = False
-
 # Used to skip close on first temp file opening
 tempOpen = False
 
@@ -38,17 +35,14 @@ log = open("/kwh/transceive/sms/read.log", 'r+')
 while True:
     line = log.readline()
     if not line: break
-    if getMsgData.search(line) or inMsg:
-        inMsg = True
-        if getMsgData.search(line):
-            if tempOpen: temp.close()
-            temp = open("/kwh/transceive/sms/msg/msg"+str(msgNum), 'w+')
-            tempOpen = True
-            msgNum = msgNum + 1
-        temp.write(line)
+    if getMsgData.search(line):
+        with open("/kwh/transceive/sms/msg/msg"+str(msgNum), 'w+') as temp:
+            temp.write(line)
+            line = log.readline()
+            temp.write(line)
 
 log.close()
-temp.close()
+#temp.close()
 
 if DEBUG: print("Running smsProcess.py")
 p = subprocess.Popen("/kwh/transceive/sms/smsProcess.py")

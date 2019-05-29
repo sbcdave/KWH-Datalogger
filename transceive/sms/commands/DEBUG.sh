@@ -8,7 +8,7 @@ log=/kwh/transceive/sms/commands/DEBUG.log
 
 response="$STA - DEBUG value is now: $2"
 
-/kwh/config/setConf.sh DEBUG $2
+/kwh/config/set_config.py DEBUG $2
 wait
 
 echo "setconf DEBUG $2" > $log

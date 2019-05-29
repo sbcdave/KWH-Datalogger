@@ -7,7 +7,7 @@ log=/kwh/transceive/sms/commands/DOMAIN.log
 
 response="$STA - DOMAIN is now: $2"
 
-/kwh/config/setConf.sh DOMAIN $2
+/kwh/config/set_config.py DOMAIN $2
 wait
 
 echo "setconf DOMAIN $2" > $log

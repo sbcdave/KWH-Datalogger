@@ -5,7 +5,7 @@
 
 response="$STA - Admin password is now: $2"
 
-/kwh/config/setConf.sh ADMPW $2
+/kwh/config/set_config.py ADMPW $2
 wait
 
 echo "setconf ADMPW $2" > /kwh/transceive/sms/commands/ADMPW.log

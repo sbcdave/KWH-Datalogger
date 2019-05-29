@@ -8,7 +8,7 @@ log=/kwh/transceive/sms/commands/STA.log
 
 response="$STA is now: $2"
 
-/kwh/config/setConf.sh STA $2
+/kwh/config/set_config.py STA $2
 wait
 echo "setconf STA $2" > $log
 

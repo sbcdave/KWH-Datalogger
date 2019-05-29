@@ -7,7 +7,7 @@ log=/kwh/transceive/sms/commands/PUxx.log
 
 response="$STA - PU$2 is now: $3"
 
-/kwh/config/setConf.sh PU$2 $3
+/kwh/config/set_config.py PU$2 $3
 
 echo "setconf PU$2 $3" > $log
 
