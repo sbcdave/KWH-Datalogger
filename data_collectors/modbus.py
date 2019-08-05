@@ -37,71 +37,85 @@ for i in range(2,int(config_var['MAX_MODBUS_COUNT'])+2):
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="Voltage\","+str(mb.read_float(0, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_CURRENT'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="Current\","+str(mb.read_float(6, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_ACTIVE_POWER'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="ActivePower\","+str(mb.read_float(12, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_APPARENT_POWER'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="ApparentPower\","+str(mb.read_float(18, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_REACTIVE_POWER'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="ReactivePower\","+str(mb.read_float(24, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_POWER_FACTOR'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="PowerFactor\","+str(mb.read_float(30, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_PHASE_ANGLE'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="PhaseAngle\","+str(mb.read_float(36, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_FREQUENCY'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="Frequency\","+str(mb.read_float(70, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_IMPORT_ACTIVE_ENERGY'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="ImportActiveEnergy\","+str(mb.read_float(72, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_EXPORT_ACTIVE_ENERGY'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="ExportActiveEnergy\","+str(mb.read_float(74, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_IMPORT_REACTIVE_ENERGY'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="ImportReactiveEnergy\","+str(mb.read_float(76, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_EXPORT_REACTIVE_ENERGY'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="ExportReactiveEnergy\","+str(mb.read_float(78, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_TOTAL_ACTIVE_ENERGY'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="TotalActiveEnergy\","+str(mb.read_float(342, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
         if config_var['MB_TOTAL_REACTIVE_ENERGY'] == "1":
             sql="INSERT INTO data VALUES ("+timestamp+",\"M"+str(i)
             sql+="TotalReactiveEnergy\","+str(mb.read_float(344, 4, 2))+");"
             DB.INSERT(sql)
+            if DEBUG: log(sql)
 
     except:
         log("No response from address "+str(i))
