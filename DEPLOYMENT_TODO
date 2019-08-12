@@ -1,3 +1,5 @@
-in 1 hour cronjob, make sure to adjust APNs for each attempt
+ensure the proper transmit strategy is setup
 
-get sakis3g working
+BASELINE the config and the code so we know what gets deployed
+
+Ensure SMS is working for the installation instructions, primarly APN setting
