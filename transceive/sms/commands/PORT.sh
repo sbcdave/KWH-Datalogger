@@ -7,7 +7,7 @@ log=/kwh/transceive/sms/commands/PORT.log
 
 response="$STA - PORT is now: $2"
 
-/kwh/config/setConf.sh PORT $2
+/kwh/config/set_config.py PORT $2
 wait
 
 echo "setconf PORT $2" > $log

@@ -12,11 +12,11 @@ except:
 try:
     USER = sys.argv[2]
 except:
-    USER = ""
+    USER = " "
 try:
     PASS = sys.argv[3]
 except:
-    PASS = ""
+    PASS = " "
 
 DB = KWH_MySQL.KWH_MySQL()
 

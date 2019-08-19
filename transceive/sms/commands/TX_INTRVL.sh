@@ -7,7 +7,7 @@ log=/kwh/transceive/sms/commands/TX_INTRVL.log
 
 response="$STA - TX_INTRVL is now: $2"
 
-/kwh/config/setConf.sh TX_INTRVL $2
+/kwh/config/set_config.py TX_INTRVL $2
 wait
 
 echo "setconf TX_INTRVL $2" > $log
