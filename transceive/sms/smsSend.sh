@@ -13,6 +13,15 @@ fi
 log="/kwh/transceive/sms/smsSend.log"
 wait
 
+SIM_PORT=$(echo 'SELECT value FROM kwh.config WHERE `key` = "SIM_PORT" AND active = 1' | mysql -u pi); 
+SIM_PORT=${SIM_PORT:6}
+PORT=$(echo 'SELECT value FROM kwh.config WHERE `key` = "PORT" AND active = 1' | mysql -u pi); 
+PORT=${PORT:6}
+DOMAIN=$(echo 'SELECT value FROM kwh.config WHERE `key` = "DOMAIN" AND active = 1' | mysql -u pi); 
+DOMAIN=${DOMAIN:6}
+APN=$(echo 'SELECT value FROM kwh.config WHERE `key` = "APN" AND active = 1' | mysql -u pi); 
+APN=${APN:6}
+
 # Wait for lock
 lockfile -1 -l 100 $lock_file
 wait
