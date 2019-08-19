@@ -8,8 +8,8 @@ log=/kwh/transceive/sms/commands/APN.log
 
 response="$STA - APN is now: $2"
 
-/kwh/config/set_config.py APN $2
-echo "setconf APN $2" > $log
+/kwh/config/set_apn.py $2
+echo "setapn $2" > $log
 wait
 
 /kwh/transceive/sms/smsSend.sh $1 $response
