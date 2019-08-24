@@ -1,6 +1,6 @@
 [Unit]
 Description=sim_server.py service
-After=server.service multi-user.target
+After=kwhboot.service
 
 [Service]
 Type=simple
@@ -10,4 +10,4 @@ ExecStart=/kwh/transceive/sim_server.py
 Restart=on-abort
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=kwh_start_TX.service
