@@ -1,3 +1,3 @@
 * * * * * pi bash /kwh/transceive/tcp/collect_data.sh >> /kwh/log/cron.log 2>&1
-#*/5 * * * * pi /kwh/transceive/tcp/transmit.sh >> /kwh/log/cron.log 2>&1
+*/5 * * * * pi /kwh/transceive/tcp/transmit.sh >> /kwh/log/cron.log 2>&1
 */2 * * * * pi /kwh/transceive/sms/smsParse.py >> /kwh/log/cron.log 2>&1
