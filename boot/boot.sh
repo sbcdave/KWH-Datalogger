@@ -40,15 +40,7 @@ wait
 
 # use three step ntp process to set time via RPi time service
 date >> /kwh/log/boot.log
-sudo /etc/init.d/ntp stop >> /kwh/log/boot.log
-wait
-
-date >> /kwh/log/boot.log
 sudo ntpd -q -g >> /kwh/log/boot.log
-wait
-
-date >> /kwh/log/boot.log
-sudo /etc/init.d/ntp start >> /kwh/log/boot.log
 wait
 
 # shut off sakis3g connection
@@ -56,11 +48,10 @@ date >> /kwh/log/boot.log
 sudo /kwh/lib/sakis3g/sakis3g disconnect --console >> /kwh/log/boot.log
 wait
 
-# start sim_server.py
+# start simserver.service
 date >> /kwh/log/boot.log
-sudo /kwh/transceive/sim_server.py & 
-wait
-echo "sim_server.py started in backgroun" >> /kwh/log/boot.log
+sudo systemctl start simserver.service
+echo "sim_server.py started in background" >> /kwh/log/boot.log
 
 # re-implement the scheduler
 date >> /kwh/log/boot.log
