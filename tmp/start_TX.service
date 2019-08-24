@@ -1,12 +1,12 @@
 [Unit]
-Description=KWH Boot Service
-After=kwh_boot_delay.service
+Description=KWH Start TX Service
+After=simserver.service
 
 [Service]
 Type=simple
 User=pi
 WorkingDirectory=/kwh
-ExecStart=/kwh/boot/boot_step_2.sh
+ExecStart=/kwh/boot/start_TX.sh
 Restart=on-abort
 
 [Install]

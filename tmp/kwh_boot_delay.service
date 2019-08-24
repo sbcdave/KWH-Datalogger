@@ -10,4 +10,4 @@ ExecStart=/kwh/boot/boot_step_1.sh
 Restart=on-abort
 
 [Install]
-WantedBy=kwhboot.service
+WantedBy=multi-user.target

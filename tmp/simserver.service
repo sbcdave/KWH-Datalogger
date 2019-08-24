@@ -10,4 +10,4 @@ ExecStart=/kwh/transceive/sim_server.py
 Restart=on-abort
 
 [Install]
-WantedBy=kwh_start_TX.service
+WantedBy=multi-user.target
