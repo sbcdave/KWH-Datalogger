@@ -5,12 +5,9 @@
 # module is disabled to save on power.
 
 # This allows us to ensure a reliable boot sequence and to launch
-# the simserver.service only after updating the time via sakis3g.
+# the sim_server.py only after updating the time via sakis3g.
 
-# The simserver.service is dependent on completion of these services
-# and after simserver.service is started we re-enable the scheduler
-# via kwh_start_TX.service, which is dependent on completion of
-# simserver.service
+# Only after sim_server.py is started we re-enable the scheduler
 
 # lock cleanup
 sudo rm /kwh/config/SIM_LOCK
@@ -26,5 +23,30 @@ wait
 
 # sleep to ensure all needed service are up before starting up sakis3g
 # in the next step
-sleep 5
+sleep 10
 wait
+
+# start internet connection via sakis3g
+sudo /kwh/lib/sakis3g/sakis3g connect --console
+wait
+
+# use three step ntp process to set time via RPi time service
+sudo /etc/init.d/ntp stop
+wait
+
+sudo ntpd -q -g
+wait
+
+sudo /etc/init.d/ntp start
+wait
+
+# shut off sakis3g connection
+sudo /kwh/lib/sakis3g/sakis3g disconnect --console
+wait
+
+# start sim_server.py
+sudo /kwh/transceive/sim_server.py &
+wait
+
+# re-implement the scheduler
+sudo cp /kwh/boot/kwh_scheduler.cron /etc/cron.d/kwh_scheduler.cron
