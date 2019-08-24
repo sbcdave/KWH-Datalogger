@@ -6,28 +6,10 @@ Need to stop using cron for transmit so we can implement TX_INTERVAL,
 but more importantly so we can ensure getTime.sh runs before we start
 collecting data
 
-CIPSEND error might be due to needing a TCP header to get 
-into America. investigate AT+CIPHEAD
-To set PDP use the following instead of setting APN
-AT+CGDCONT=1,"IP","wholesale"
-
-AT+CREG takes arguments:
-Possible values for access technology are,
-0 GSM
-1 GSM Compact
-2 UTRAN
-3 GSM w/EGPRS
-4 UTRAN w/HSDPA
-5 UTRAN w/HSUPA
-6 UTRAN w/HSDPA and HSUPA
-7 E-UTRAN
-
-Setup config option to togle log level permanent vs log overwrite >> vs >
+Setup config option to toggle log level permanent vs log overwrite >> vs >
 
 Finish pulse code to launch configured channels on boot - might axe pulse
 code (or at least reduce channels) when modbus is working
-
-Consider schmit trigger, opto-isolators, or other safety hardware
 
 Setup bi-directional rsync for remote access back door
 
@@ -35,16 +17,6 @@ Add log cycling service to prevent filling the SD card, but still allow
 simple logging via DEBUG config - make log retention configurable
 
 setup SMS request for DEBUG and each log file so we can query logs remotely
-
-DONE:Set up transmit to transmit data about used/available memory for graphing
-
-DO THIS SERVER SIDE:Set up transmit to send data about bytes transmitted, so we can track our
-data usage and associate it to cost.
-
-Devise new server side TCPIP app so we can take advantage of a compressed
-transmission instead of sending KP format ASCII and wasting data
-This will also allow us to devise software retransmission of old data
-and completely eliminate missed data packets
 
 Consider rsync for sending the data and storing all data in a local 
 graphite/influxdb instance
@@ -55,8 +27,6 @@ Figure out server data delay
 
 Create email notification of data stopping, with another notification of it
 restarting, and when restarting send X bytes based on data stopped window
-
-DONE:have temp sensors get autosensed and created, bound to a TEMPx config
 
 Fix bug in smsParse that throws exception if there is no message to read
 

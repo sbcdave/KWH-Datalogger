@@ -7,6 +7,7 @@ import zlib
 
 # load config variables from kwh.config table
 exec(open("/kwh/config/get_config.py").read())
+DEBUG = int(config_var['DEBUG'])
 
 # Grab up to 100 tx_strings and tx them
 DB = KWH_MySQL.KWH_MySQL()
@@ -18,6 +19,8 @@ for row in records:
         bytedata = zlib.compress(row[1], 6)
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    if DEBUG: print(config_var['DOMAIN'])
+    if DEBUG: print(config_var['PORT'])
     server.connect((config_var['DOMAIN'], int(config_var['PORT'])))
     server.send(bytedata)
     rcv = server.recv(1024)

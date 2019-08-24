@@ -1,3 +1,0 @@
-* * * * * pi bash /kwh/transceive/tcp/collect_data.sh >> /kwh/log/cron.log 2>&1
-0 0 * * * pi bash /kwh/datetime/getTime.sh >> /kwh/log/cron.log 2>&1
-* * * * * pi /kwh/transceive/tcp/transmit.py >> /kwh/log/cron.log 2>&1

@@ -1,8 +1,0 @@
-1tcp: The original
-2tcp: Changed APN command (CSST="APN") to CGDCONT=1,"IP","APN"
-3tcp: Used 1tcp, but added TCP/IP Header i.e. AT+CIPHEAD=1
-4tcp: Used 2tcp, but added TCP/IP Header i.e. AT+CIPHEAD=1
-NOTE: 3 and 4 AT+CIPHEAD=1 is added directly before AT+CIPSTART
-
-1x : 1tcp with AT+CREG=x (i.e. AT+CREG=0 or AT+CREG=1 or ...)
-same applies to 2, 3, and 4
