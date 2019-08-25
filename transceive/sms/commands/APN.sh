@@ -6,6 +6,9 @@
 
 log=/kwh/transceive/sms/commands/APN.log
 
+STA=$(echo 'SELECT value FROM kwh.config WHERE `key` = "STA" AND active = 1' | mysql -u pi); 
+STA=${STA:6}
+
 response="$STA - APN is now: $2"
 
 /kwh/config/set_apn.py $2
