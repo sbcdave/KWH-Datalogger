@@ -16,7 +16,8 @@ wait
 
 # stop kwh scheduler
 date >> /kwh/log/boot.log
-sudo rm /etc/cron.d/kwh_scheduler.cron >> /kwh/log/boot.log
+sudo systemctl stop cron.service
+sudo rm /var/spool/cron/crontabs/pi >> /kwh/log/boot.log
 wait
 
 # shutdown wifi module
@@ -55,4 +56,6 @@ echo "sim_server.py started in background" >> /kwh/log/boot.log
 
 # re-implement the scheduler
 date >> /kwh/log/boot.log
-sudo cp /kwh/boot/kwh_scheduler.cron /etc/cron.d/kwh_scheduler.cron >> /kwh/log/boot.log
+sudo cp /kwh/boot/kwh_scheduler.cron /var/spool/cron/crontabs/pi >> /kwh/log/boot.log
+sudo chmod 600 /var/spool/cron/crontabs/pi >> /kwh/log/boot.log
+sudo systemctl start cron.service

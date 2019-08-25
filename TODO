@@ -33,3 +33,5 @@ Fix bug in smsParse that throws exception if there is no message to read
 Fix bug in simServer that doesn't show last response until next request
 
 Consider adding realtime clock
+
+Add sms control for MODBUS config, SQ, and new Pi data

@@ -29,18 +29,18 @@ apn = re.compile(r"(.*?)#APN:(.*?)#")
 commandList.append(apn)
 ################################################################################
 debugPath = smsPath+"/commands/DEBUG.sh" 
-debug = re.compile(r"(.*?)#DBG:([0-1])#")
+debug = re.compile(r"(.*?)#DBG:([0-2])#")
 commandList.append(debug)
 ################################################################################
 domainPath = smsPath+"/commands/DOMAIN.sh" 
 domain = re.compile(r"(.*?)#DOM:(.*?)#") 
 commandList.append(domain)
 ################################################################################
-inqConfPath = smsPath+"/commands/inqConf.sh" 
+inqConfPath = smsPath+"/commands/config_values.sh" 
 inqConf = re.compile(r"(.*?)#CONF#") 
 commandList.append(inqConf)
 ################################################################################
-inqValPath = "/kwh/transceive/tcp"
+inqValPath = smsPath+"/commands/data_values.sh"
 inqVal = re.compile(r"(.*?)#VAL#") 
 commandList.append(inqVal)
 ################################################################################
@@ -173,11 +173,7 @@ for msg in msgList:
             elif command == inqVal:
                 if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
-                    p = subprocess.Popen([inqValPath+"/tstring.py"])
-                    p.communicate()
-                    with open(inqValPath+"/tstring", "r") as val:
-                        data=val.read().replace(';', ' ')
-                    p = subprocess.Popen([sendPath, msg[0], data])
+                    p = subprocess.Popen([inqValPath, msg[0]])
                     p.communicate()
             elif command == invalid:
                 if match.group(1) == ADMPW:

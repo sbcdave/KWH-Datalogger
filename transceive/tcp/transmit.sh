@@ -1,19 +1,25 @@
 #!/bin/bash
 
-sudo systemctl stop simserver.service
+log="/kwh/log/transmit.log"
+
+sudo systemctl stop simserver.service >> $log
 wait
 
-sudo /kwh/sakis3g/sakis3g connect --console
+sudo /kwh/lib/sakis3g/sakis3g connect --console >> $log
 wait
 
-sudo ntpd -q -g
+echo "Sleeping 5" >> $log
+sleep 5
 wait
 
-sudo /kwh/transceive/tcp/transmit.py
+sudo ntpd -q -g >> $log
 wait
 
-sudo /kwh/sakis3g/sakis3g disconnect --console
+sudo /kwh/transceive/tcp/transmit.py >> $log
 wait
 
-sudo systemctl start simserver.service
+sudo /kwh/lib/sakis3g/sakis3g disconnect --console >> $log
+wait
+
+sudo systemctl start simserver.service >> $log
 wait
