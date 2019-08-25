@@ -2,7 +2,7 @@
 
 # Command file for resetting the admin password
 
-. /kwh/config.conf
+. /kwh/config/kwh.conf
 
 log=/kwh/transceive/sms/commands/APN.log
 
