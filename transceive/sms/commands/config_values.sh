@@ -4,8 +4,6 @@
 
 conf=$(config)
 
-
-
 source /kwh/transceive/sms/smsSend.sh $1 `echo $conf`
 wait
 

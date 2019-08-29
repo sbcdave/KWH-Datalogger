@@ -56,9 +56,9 @@ puxxValPath = smsPath+"/commands/PUxxVal.sh"
 puxxVal = re.compile(r"(.*?)#PU(\d\d)VAL:(\d*)#") 
 commandList.append(puxxVal)
 ################################################################################
-resetPath = smsPath+"/commands/RESET.sh" 
-reset = re.compile(r"(.*?)#RESET#") 
-commandList.append(reset)
+rebootPath = smsPath+"/commands/reboot.sh"
+reboot = re.compile(r"(.*?)#REBOOT#")
+commandList.append(reboot)
 ################################################################################
 staPath = smsPath+"/commands/STA.sh" 
 sta = re.compile(r"(.*?)#STA:(.*?)#") 
@@ -110,10 +110,10 @@ for msg in msgList:
         if match and not found:
             found = True
             # Execute the corresponding command file and pass it the msg data
-            if command == reset:
+            if command == reboot:
                 if match.group(1) == ADMPW:
                     if DEBUG: print("Password match")
-                    p = subprocess.Popen([resetPath, msg[0]])
+                    p = subprocess.Popen([rebootPath, msg[0]])
                     p.communicate()
             elif command == admpw:
                 if match.group(1) == ADMPW:

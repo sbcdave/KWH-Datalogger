@@ -11,7 +11,7 @@ STA=${STA:6}
 
 response="$STA - APN is now: $2"
 
-/kwh/config/set_apn.py $2
+setapn $2
 echo "setapn $2" > $log
 wait
 
