@@ -20,4 +20,4 @@ echo "Response sent to $1: $response" >> $log
 
 echo `date` >> $log
 
-sudo shutdown -r now
+/kwh/transceive/sms/commands/reboot_in_10s.sh &
