@@ -1,27 +1,23 @@
-Add config to turn TEMP data collection off
+Add config to turn temperature data collection off
 
 Add MODBUS serial communication settings to the config
 
-Need to stop using cron for transmit so we can implement TX_INTERVAL,
-but more importantly so we can ensure getTime.sh runs before we start
-collecting data
+Need to stop using cron for transmit so we can implement TX_INTERVAL
 
-Setup config option to toggle log level permanent vs log overwrite >> vs >
+Setup config option to toggle log level permanent vs log overwrite
 
-Finish pulse code to launch configured channels on boot - might axe pulse
-code (or at least reduce channels) when modbus is working
+Finish pulse code to launch configured channels on boot
 
-Setup bi-directional rsync for remote access back door
+Consider setting up bi-directional rsync for remote access back door,
+and investigate other backdoor options
 
 Add log cycling service to prevent filling the SD card, but still allow
 simple logging via DEBUG config - make log retention configurable
-
-setup SMS request for DEBUG and each log file so we can query logs remotely
+Move logs to database and build log request sms that sends compressed database file
+create logdel alias - and sms command to do it remotely.
 
 Consider rsync for sending the data and storing all data in a local 
 graphite/influxdb instance
-
-create logdel alias - and sms command to do it remotely.
 
 Figure out server data delay
 
@@ -32,8 +28,11 @@ Fix bug in smsParse that throws exception if there is no message to read
 
 Fix bug in simServer that doesn't show last response until next request
 
-Consider adding realtime clock
+Add realtime clock and stop relying so heavily on internet for timestamps
 
 Add sms control for MODBUS config, SQ, and new Pi data
 
-Move all logs to database and build log request sms that sends compressed database file
+Modularize code to support modularized hardware. E.g. disect RPi
+"ports" (e.g. I2C, SPI, UART, Bitbang other GPIO), into groups
+and write code, for each hardware module, that lets it use different "ports",
+providing the best modularization options we can
