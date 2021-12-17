@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# 20211216 DS-This file is the starting point for the RTC updates
+
 # First steps at boot, before starting, simserver.service
 # ensure the SIM_LOCK is gone for propper sim lock accessibility,
 # kill the scheduler by removing the scheduler file, and ensure the wifi
